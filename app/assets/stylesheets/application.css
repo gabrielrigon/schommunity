@@ -10,6 +10,19 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require jquery-ui
+ *= require adminlte
+ *= require bootstrap
+ *= require bootstrap-wysihtml5
+ *= require selectize
+ *= require selectize.default
+ *= require font-awesome
+ *= require dataTables/jquery.dataTables.bootstrap3
+ *= require dataTables/jquery.dataTables.responsive
+ *= require bootstrap-datepicker
+ *= require bootstrap-switch
+ *= require sweetalert2
+ *= require toastr
  *= require_tree .
  *= require_self
  */

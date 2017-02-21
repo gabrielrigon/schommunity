@@ -11,6 +11,18 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
+//= require bootstrap
+//= require adminlte
+//= require bootstrap-wysihtml5
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require selectize
+//= require bootstrap-datepicker
+//= require bootstrap-switch
+//= require sweetalert2
+//= require jquery.slimscroll
+//= require momentjs
+//= require toastr
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
