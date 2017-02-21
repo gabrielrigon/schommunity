@@ -1,45 +1,67 @@
 source 'https://rubygems.org'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# defaults
 gem 'rails', '4.2.3'
-# Use postgresql as the database for Active Record
 gem 'pg'
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'jquery-ui-rails'
 gem 'turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+# others
+gem 'devise'
+gem 'simple_form'
+gem 'simple-navigation'
+gem 'inherited_resources', '~> 1.6.0'
+gem 'has_scope', '~> 0.6.0'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'bootstrap_flash_messages', git: 'https://github.com/useruby/bootstrap_flash_messages.git'
+gem 'jquery-datatables-rails', '1.12.2'
+gem 'default_value_for', '~> 3.0.0'
+gem 'squeel', '~> 1.2.3'
+gem 'cancancan', '~> 1.10'
+gem 'chosen-rails', '1.4.3'
+gem 'bootstrap-wysihtml5-rails'
+gem 'selectize-rails'
+gem 'wicked_pdf'
+gem 'sidekiq', '3.4.2'
+gem 'sidetiq'
+gem 'paranoia', '~> 2.0'
+gem 'acts_as_tree'
+gem 'searchkick'
+gem 'humanize_boolean'
+gem 'slim'
+gem 'font-awesome-rails', '4.7.0'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap', '3.3.6'
+  gem 'rails-assets-bootstrap-iconpicker'
+  gem 'rails-assets-bootstrap-switch'
+  gem 'rails-assets-bootstrap-file-input'
+  gem 'rails-assets-jquery.slimscroll', '1.3.6'
+  gem 'rails-assets-momentjs'
+  gem 'rails-assets-bootstrap-datepicker'
+  gem 'rails-assets-css-spinners'
+  gem 'rails-assets-toastr'
+  gem 'rails-assets-sweetalert2', '5.2.1'
 end
 
+group :doc do
+  gem 'sdoc', require: false
+end
+
+group :development, :test do
+  gem 'byebug'
+  gem 'rails_best_practices'
+  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'brakeman', :require => false
+  gem 'bullet'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'quiet_assets'
+end
