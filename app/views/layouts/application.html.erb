@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TCC</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>TCC</title>
 
-<%= yield %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
 
-</body>
+  <body>
+    <%= yield %>
+  </body>
 </html>
