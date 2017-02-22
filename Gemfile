@@ -24,6 +24,7 @@ end
 # others
 gem 'inherited_resources', '~> 1.6.0'
 gem 'devise'
+gem 'devise_invitable'
 gem 'cancancan', '~> 1.10'
 gem 'simple_form'
 gem 'simple-navigation'

@@ -78,6 +78,9 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    devise_invitable (1.7.1)
+      actionmailer (>= 4.1.0)
+      devise (>= 4.0.0)
     elasticsearch (5.0.3)
       elasticsearch-api (= 5.0.3)
       elasticsearch-transport (= 5.0.3)
@@ -278,6 +281,7 @@ DEPENDENCIES
   crummy (~> 1.8.0)
   default_value_for (~> 3.0.0)
   devise
+  devise_invitable
   font-awesome-rails (= 4.7.0)
   has_scope (~> 0.6.0)
   humanize_boolean
