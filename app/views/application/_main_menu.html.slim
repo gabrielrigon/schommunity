@@ -1,9 +1,3 @@
 aside.main-sidebar
   section.sidebar
-    ul.sidebar-menu
-      li.header.text-center
-        | MENU
-      li
-        = link_to admin_dashboard_index_path do
-          i.fa.fa-database
-          | Dashboard
+    = render_navigation(expand_all: true, ul_class: 'breadcrumb')
