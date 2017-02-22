@@ -4,20 +4,18 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="author" content="Gabriel" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>TCCAdmin</title>
+    <title>TCC</title>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body class="hold-transition login-page">
-    <div class="login-box">
-      <div class="login-logo">
-        <b>TCC</b>Admin
-      </div>
-      <div class="login-box-body">
-        <%= yield %>
-      </div>
+  <body class="skin-blue sidebar-mini">
+    <div class="wrapper">
+      <%= render 'main_header' %>
+      <%= render 'main_menu' %>
+
+      <%= yield %>
     </div>
 
     <%= javascript_include_tag 'application' %>

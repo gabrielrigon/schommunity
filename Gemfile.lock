@@ -51,6 +51,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-wysihtml5-rails (0.3.3.8)
       railties (>= 3.0)
+    breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
     byebug (9.0.6)
     cancancan (1.16.0)
@@ -68,7 +69,6 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.4)
     connection_pool (2.2.1)
-    crummy (1.8.0)
     debug_inspector (0.0.2)
     default_value_for (3.0.2)
       activerecord (>= 3.2.0, < 5.1)
@@ -274,10 +274,10 @@ DEPENDENCIES
   acts_as_tree
   bootstrap-wysihtml5-rails
   bootstrap_flash_messages!
+  breadcrumbs_on_rails
   byebug
   cancancan (~> 1.10)
   coffee-rails (~> 4.1.0)
-  crummy (~> 1.8.0)
   default_value_for (~> 3.0.0)
   devise
   devise_invitable

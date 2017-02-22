@@ -37,7 +37,7 @@ gem 'paperclip', '~> 5.0.0'
 gem 'slim'
 gem 'jquery-datatables-rails', '1.12.2' # verificar rails g
 gem 'will_paginate-bootstrap'
-gem 'crummy', '~> 1.8.0'
+gem 'breadcrumbs_on_rails'
 gem 'bootstrap_flash_messages', git: 'https://github.com/useruby/bootstrap_flash_messages.git' # verificar rails g
 gem 'bootstrap-wysihtml5-rails'
 gem 'selectize-rails'
