@@ -11,23 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222010043) do
+ActiveRecord::Schema.define(version: 20170221212053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "institutions", force: :cascade do |t|
-    t.string   "name",           limit: 45
-    t.integer  "cnpj"
-    t.string   "address",        limit: 100
-    t.string   "address_number", limit: 11
-    t.string   "district",       limit: 45
-    t.string   "city",           limit: 45
-    t.string   "state",          limit: 2
-    t.string   "postal_code",    limit: 8
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
 
   create_table "user_types", force: :cascade do |t|
     t.string   "name"
@@ -37,16 +24,16 @@ ActiveRecord::Schema.define(version: 20170222010043) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                             default: "", null: false
-    t.string   "encrypted_password",                default: "", null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.integer  "sign_in_count",                     default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.integer  "failed_attempts",                   default: 0,  null: false
+    t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "invitation_token"
@@ -56,10 +43,9 @@ ActiveRecord::Schema.define(version: 20170222010043) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.integer  "invited_by_type"
-    t.string   "user_type",              limit: 20
-    t.string   "invitation_token_flat"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.integer  "user_type_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -68,5 +54,7 @@ ActiveRecord::Schema.define(version: 20170222010043) do
   add_index "users", ["invited_by_type"], name: "index_users_on_invited_by_type", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
+  add_index "users", ["user_type_id"], name: "index_users_on_user_type_id", using: :btree
 
+  add_foreign_key "users", "user_types"
 end
