@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="author" content="Gabriel" />
+    <meta name="robots" content="noindex, nofollow" />
     <title>TCC</title>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="skin-blue fixed sidebar-mini">
+    <div class="wrapper">
+      <%= render 'main_header' %>
+      <%= render 'main_menu' %>
+
+      <%= yield %>
+    </div>
+
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>

@@ -16,7 +16,6 @@
 //= require adminlte
 //= require bootstrap-wysihtml5
 //= require dataTables/jquery.dataTables
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require selectize
 //= require bootstrap-datepicker
 //= require bootstrap-switch
