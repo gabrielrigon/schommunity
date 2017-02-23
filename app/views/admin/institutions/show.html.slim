@@ -7,9 +7,12 @@ section.content
         | Informações
     .box-body
       .row
+        .col-md-12
+          label.control-label= t 'simple_form.labels.institution.company_name'
+          p= deal_value resource.company_name
         .col-md-6
-          label.control-label= t 'simple_form.labels.institution.name'
-          p= deal_value resource.name
+          label.control-label= t 'simple_form.labels.institution.trading_name'
+          p= deal_value resource.trading_name
         .col-md-6
           label.control-label= t 'simple_form.labels.institution.cnpj'
           p= deal_value resource.cnpj

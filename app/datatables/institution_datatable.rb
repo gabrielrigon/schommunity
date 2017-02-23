@@ -3,7 +3,7 @@ class InstitutionDatatable < BaseDatatable
 
   def initialize(view)
     @view = view
-    @columns = %w(institutions.name addresses.city_name addresses.state_state)
+    @columns = %w(institutions.trading_name addresses.city_name addresses.state_state)
   end
 
   protected
@@ -14,11 +14,10 @@ class InstitutionDatatable < BaseDatatable
 
   private
 
-  #
   def data
     collection.map do |item|
       [
-        item.name,
+        item.trading_name,
         item.address_city_name,
         item.address_state_name,
 

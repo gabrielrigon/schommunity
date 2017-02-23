@@ -10,5 +10,5 @@ class Institution < ActiveRecord::Base
 
   # ---- scoped search ----
 
-  scoped_search on: [:name]
+  scoped_search on: [:trading_name, :company_name]
 end

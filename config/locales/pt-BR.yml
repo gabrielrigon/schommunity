@@ -17,6 +17,7 @@ pt-BR:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
     models:
+      institution: "Instituição"
     attributes:
 
   date:

@@ -12,8 +12,9 @@ pt-BR:
 
     labels:
       institution:
-        name: "Nome"
-        address_number: "Número"
+        company_name: "Razão Social"
+        trading_name: "Nome"
+        address_number: "Nr"
         address_district: "Bairro"
         address_complement: "Complemento"
         address_city_name: "Cidade"

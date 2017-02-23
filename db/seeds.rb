@@ -24,7 +24,7 @@ City.create!([
   ])
 
 Institution.create!([
-    { name: 'Fatec', cnpj: 15457042000124 }
+    { trading_name: 'Fatec Mogi Mirim', company_name: 'Faculdade de Tecnologia Arthur de Azevedo', cnpj: 15457042000124 }
   ])
 
 Address.create!([
