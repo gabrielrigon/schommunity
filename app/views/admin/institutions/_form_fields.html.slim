@@ -1,0 +1,10 @@
+.row
+  .col-md-12
+    = form.input :company_name
+.row
+  .col-md-6
+    = form.input :trading_name
+  .col-md-6
+    = form.input :cnpj
+    
+= render 'address_fields', form: form

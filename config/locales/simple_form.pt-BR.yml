@@ -14,9 +14,20 @@ pt-BR:
       institution:
         company_name: "Razão Social"
         trading_name: "Nome"
+        address_street: "Rua"
         address_number: "Nr"
         address_district: "Bairro"
         address_complement: "Complemento"
         address_city_name: "Cidade"
-        address_state_name: "UF"
+        address_state_name: "Estado"
         address_zipcode: "CEP"
+      address:
+        street: "Rua"
+        number: "Nr"
+        district: "Bairro"
+        city: "Cidade"
+        state: "Estado"
+        zipcode: "CEP"
+      user:
+        email: "E-mail"
+        user_type: "Tipo de usuário"

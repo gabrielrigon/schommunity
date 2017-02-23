@@ -8,6 +8,11 @@ pt-BR:
       description: "manutenção de cadastros"
       new: "Incluir instituição"
       edit: "Editar instituição"
+    user:
+      title: "Usuários"
+      description: "manutenção de cadastros"
+      new: "Incluir usuário"
+      edit: "Editar usuário"
 
   activerecord:
     errors:

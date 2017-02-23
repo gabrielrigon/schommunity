@@ -1,15 +1,15 @@
-class InstitutionDatatable < BaseDatatable
+class UserDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path, to: :@view
 
   def initialize(view)
     @view = view
-    @columns = %w(institutions.trading_name cities.name states.name)
+    @columns = %w(email user_types.name)
   end
 
   protected
 
   def total_records
-    Institution.count
+    User.count
   end
 
   private
@@ -17,9 +17,9 @@ class InstitutionDatatable < BaseDatatable
   def data
     collection.map do |item|
       [
-        item.trading_name,
-        item.address_city_name,
-        item.address_state_name,
+        # item.name,
+        item.email,
+        item.user_type_name,
 
         content_tag(:div, class: 'btn-group') do
           link_to('javascript:;', class: 'btn btn-default btn-sm') do
@@ -55,12 +55,12 @@ class InstitutionDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = Institution.search_for(params[:sSearch]).ids
+      ids = User.search_for(params[:sSearch]).ids
       query[:id] = ids
     end
 
-    Institution.joins(address: { city: :state }).includes(address: { city: :state })
-               .where(query).order("#{sort_column} #{sort_direction}")
-               .page(page).per_page(per_page)
+    User.joins(:user_type).includes(:user_type)
+        .where(query).order("#{sort_column} #{sort_direction}")
+        .page(page).per_page(per_page)
   end
 end

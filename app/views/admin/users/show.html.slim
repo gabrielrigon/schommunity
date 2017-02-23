@@ -1,0 +1,21 @@
+= render 'form_header'
+
+section.content
+  .box.box-default
+    .box-header.with-border
+      h3.box-title
+        | Informações
+    .box-body
+      .row
+        .col-md-6
+          label.control-label= t 'simple_form.labels.user.email'
+          p= deal_value resource.email
+        .col-md-6
+          label.control-label= t 'simple_form.labels.user.type_name'
+          p= deal_value resource.user_type_name
+    .box-footer
+      .row
+        .col-xs-6
+          = link_to 'Editar', edit_resource_path(resource), class: 'btn btn-default btn-sm'
+        .col-xs-6.text-right
+          = link_to 'Voltar', collection_path(resource), class: 'btn btn-default btn-sm'

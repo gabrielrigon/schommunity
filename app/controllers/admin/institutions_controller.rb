@@ -11,6 +11,7 @@ class Admin::InstitutionsController < InheritedResources::Base
 
   add_breadcrumb 'Instituições', :admin_institutions_path
 
+
   # ---- methods ----
 
   def index
@@ -18,5 +19,11 @@ class Admin::InstitutionsController < InheritedResources::Base
       format.html
       format.json { render json: InstitutionDatatable.new(view_context) }
     end
+  end
+
+  private
+
+  def institution_params
+    params.require(:institution).permit!
   end
 end

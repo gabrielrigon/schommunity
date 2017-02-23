@@ -1,4 +1,5 @@
 module ApplicationHelper
+  # ---- icons and labels -----
 
   def fa_icon(icon)
     content_tag(:i, class: "fa fa-#{icon}") {}
@@ -76,5 +77,21 @@ module ApplicationHelper
     link_to(path, options) do
       fa_icon(icon) + ' ' + title
     end
+  end
+
+  # ---- flash messages ----
+
+  def custom_bootstrap_flash
+    types = {'notice' => 'success', 'info' => 'info', 'warning' => 'warning', 'alert' => 'error'}
+    titles = {'notice' => 'Sucesso', 'info' => 'Mensagem', 'warning' => 'Advertência', 'alert' => 'Atenção'}
+    flash_messages = []
+    flash.each do |type, message|
+      next unless types.key?(type)
+      text = "<script>
+      $.notify.autoHideNotify('#{types[type]}', 'top right', '#{titles[type]}','#{message}');
+      </script>"
+      flash_messages << text.html_safe if message
+    end
+    flash_messages.join("\n").html_safe
   end
 end

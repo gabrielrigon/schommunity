@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: :index
+    
     resources :institutions
+    resources :users
   end
 
   namespace :teachers do

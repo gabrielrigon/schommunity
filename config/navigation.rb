@@ -5,6 +5,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.dom_class = 'sidebar-menu'
     primary.item :admin_dashboard, menu_label_icon('Dashboard', 'dashboard'), admin_dashboard_index_path, class: 'root-level', highlights_on: %r{/dashboard}
     primary.item :admin_institutions, menu_label_icon('Instituições', 'university'), admin_institutions_path, class: 'root-level', highlights_on: %r{/institutions}
+    primary.item :admin_users, menu_label_icon('Usuários', 'user'), admin_users_path, class: 'root-level', highlights_on: %r{/users}
   end
 
   #   # Add an item to the primary navigation. The following params apply:
