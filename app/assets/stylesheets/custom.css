@@ -1,3 +1,17 @@
 body {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica,Arial, sans-serif;
 }
+
+.dataTables_processing {
+  text-align: center;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background-color: #f4f4f4 !important;
+  border-color: #ddd !important;
+  color: #444 !important;
+}
+
+.pagination > li > a, .pagination > li > span {
+  padding: 4px 8px !important;
+}

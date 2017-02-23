@@ -1,0 +1,11 @@
+.box-body
+  .row
+    .col-md-12
+      table#institutions.table.table-bordered.datatable.dataTable data-source= collection_url(form: 'json')
+        thead
+          tr
+            th width="*" Nome
+            th width="*" Cidade
+            th width="*" UF
+            th.text-center width="100"
+        tbody

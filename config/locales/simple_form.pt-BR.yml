@@ -1,0 +1,21 @@
+pt-BR:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+
+    required:
+      text: 'required'
+      mark: '*'
+
+    error_notification:
+      default_message: "Please review the problems below:"
+
+    labels:
+      institution:
+        name: "Nome"
+        address_number: "Número"
+        address_district: "Bairro"
+        address_complement: "Complemento"
+        address_city_name: "Cidade"
+        address_state_name: "UF"
+        address_zipcode: "CEP"

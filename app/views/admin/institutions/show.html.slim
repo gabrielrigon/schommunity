@@ -1,0 +1,44 @@
+= render 'form_header'
+
+section.content
+  .box.box-default
+    .box-header.with-border
+      = fa_icon 'eye'
+      h3.box-title
+        | Informações
+    .box-body
+      .row
+        .col-md-6
+          label.control-label= t 'simple_form.labels.institution.name'
+          p= deal_value resource.name
+        .col-md-6
+          label.control-label= t 'simple_form.labels.institution.cnpj'
+          p= deal_value resource.cnpj
+      .row
+        .col-md-12
+          hr
+        .col-md-6
+          label.control-label= t 'simple_form.labels.institution.address_street'
+          p= deal_value resource.address_street
+        .col-md-2
+          label.control-label= t 'simple_form.labels.institution.address_number'
+          p= deal_value resource.address_number
+        .col-md-4
+          label.control-label= t 'simple_form.labels.institution.address_district'
+          p= deal_value resource.address_district
+      .row
+        .col-md-4
+          label.control-label= t 'simple_form.labels.institution.address_city_name'
+          p= deal_value resource.address_city_name
+        .col-md-4
+          label.control-label= t 'simple_form.labels.institution.address_state_name'
+          p= deal_value resource.address_state_name
+        .col-md-4
+          label.control-label= t 'simple_form.labels.institution.address_zipcode'
+          p= deal_value resource.address_zipcode
+    .box-footer
+      .row
+        .col-xs-6
+          = link_to 'Editar', edit_resource_path(resource), class: 'btn btn-default btn-sm'
+        .col-xs-6.text-right
+          = link_to 'Voltar', collection_path(resource), class: 'btn btn-default btn-sm'

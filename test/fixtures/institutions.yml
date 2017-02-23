@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  cnpj: 1
+  address_id: 
+
+two:
+  name: MyString
+  cnpj: 1
+  address_id: 

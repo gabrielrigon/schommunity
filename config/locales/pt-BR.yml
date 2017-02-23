@@ -1,10 +1,14 @@
 pt-BR:
   resources:
-    user:
-      title: "Usuários"
-      description: "manutenção do cadastro de usuários"
-      new: "Novo Usuário"
-      edit: "Editar Usuário"
+    dashboard:
+      title: "Dashboard"
+      description: "resumo geral das ultimas atividades"
+    institution:
+      title: "Instituições"
+      description: "manutenção de cadastros"
+      new: "Incluir instituição"
+      edit: "Editar instituição"
+
   activerecord:
     errors:
       messages:
@@ -13,12 +17,8 @@ pt-BR:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
     models:
-      user: User
     attributes:
-      # usuario:
-      #   email: "E-mail"
-      #   password: "Senha"
-      #   password_confirmation: "Confirme sua Senha"
+
   date:
     abbr_day_names:
     - Dom
@@ -70,6 +70,7 @@ pt-BR:
     - :day
     - :month
     - :year
+
   datetime:
     distance_in_words:
       about_x_hours:
@@ -113,6 +114,7 @@ pt-BR:
       month: Mês
       second: Segundo
       year: Ano
+
   errors:
     format: "%{attribute} %{message}"
     messages:
@@ -151,6 +153,7 @@ pt-BR:
       header:
         one: 'Não foi possível gravar %{model}: 1 erro'
         other: 'Não foi possível gravar %{model}: %{count} erros'
+
   helpers:
     select:
       prompt: Por favor selecione
@@ -158,6 +161,7 @@ pt-BR:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
+
   number:
     currency:
       format:
@@ -214,11 +218,13 @@ pt-BR:
     precision:
       format:
         delimiter: "."
+
   support:
     array:
       last_word_connector: " e "
       two_words_connector: " e "
       words_connector: ", "
+
   time:
     am: ''
     formats:

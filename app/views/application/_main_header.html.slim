@@ -1,4 +1,17 @@
 header.main-header
   a.logo
-    | TCCAdmin
+    span.logo-lg
+      = fa_icon 'leanpub'
+      |  TCCAdmin
+    span.logo-mini
+      = fa_icon 'leanpub'
   nav.navbar.navbar-static-top
+    a.sidebar-toggle data-toggle="offcanvas" role="button"
+      span.sr-only
+        | tn
+    .navbar-custom-menu
+      ul.nav.navbar-nav
+        li.signout
+          = link_to destroy_user_session_path, method: :delete do
+            = fa_icon 'sign-out'
+            |  Sign out

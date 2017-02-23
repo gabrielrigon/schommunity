@@ -11,10 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221212053) do
+ActiveRecord::Schema.define(version: 20170222202243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street"
+    t.integer  "number"
+    t.string   "district"
+    t.string   "complement"
+    t.integer  "city_id"
+    t.integer  "institution_id"
+    t.integer  "state_id"
+    t.string   "zipcode"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
+  add_index "addresses", ["institution_id"], name: "index_addresses_on_institution_id", using: :btree
+  add_index "addresses", ["state_id"], name: "index_addresses_on_state_id", using: :btree
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "state_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "cities", ["state_id"], name: "index_cities_on_state_id", using: :btree
+
+  create_table "institutions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "cnpj"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string   "name"
+    t.string   "initials"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "user_types", force: :cascade do |t|
     t.string   "name"
@@ -56,5 +96,9 @@ ActiveRecord::Schema.define(version: 20170221212053) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   add_index "users", ["user_type_id"], name: "index_users_on_user_type_id", using: :btree
 
+  add_foreign_key "addresses", "cities"
+  add_foreign_key "addresses", "institutions"
+  add_foreign_key "addresses", "states"
+  add_foreign_key "cities", "states"
   add_foreign_key "users", "user_types"
 end

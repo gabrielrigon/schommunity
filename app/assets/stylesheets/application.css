@@ -15,13 +15,13 @@
  *= require selectize
  *= require selectize.default
  *= require font-awesome
- *= require dataTables/jquery.dataTables.bootstrap3
- *= require dataTables/jquery.dataTables.responsive
  *= require bootstrap-datepicker
  *= require bootstrap-switch
  *= require sweetalert2
  *= require toastr
  *= require adminlte
+ *= require dataTables/jquery.dataTables.responsive
+ *= require dataTables/jquery.dataTables.bootstrap3
  *= require_tree .
  *= require_self
  */

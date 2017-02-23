@@ -14,8 +14,10 @@
     <div class="wrapper">
       <%= render 'main_header' %>
       <%= render 'main_menu' %>
-
-      <%= yield %>
+      
+      <div class="content-wrapper">
+        <%= yield %>
+      </div>
     </div>
 
     <%= javascript_include_tag 'application' %>

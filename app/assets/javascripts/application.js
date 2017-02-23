@@ -15,7 +15,6 @@
 //= require bootstrap
 //= require adminlte
 //= require bootstrap-wysihtml5
-//= require dataTables/jquery.dataTables
 //= require selectize
 //= require bootstrap-datepicker
 //= require bootstrap-switch
@@ -24,4 +23,7 @@
 //= require momentjs
 //= require toastr
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.bootstrap3
+//= require dataTables/jquery.dataTables.responsive
 //= require_tree .
