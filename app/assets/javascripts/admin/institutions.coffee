@@ -31,7 +31,7 @@ $ ->
 
     aoColumnDefs: [
       bSortable: false
-      aTargets: [1, 2, 3]
+      aTargets: [3]
     ]
 
     fnRowCallback: (nRow, aData, iDisplayIndex, iDisplayIndexFull) ->

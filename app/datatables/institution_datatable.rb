@@ -3,7 +3,7 @@ class InstitutionDatatable < BaseDatatable
 
   def initialize(view)
     @view = view
-    @columns = %w(name address_city_name address_state_state)
+    @columns = %w(institutions.name addresses.city_name addresses.state_state)
   end
 
   protected
@@ -60,7 +60,8 @@ class InstitutionDatatable < BaseDatatable
       query[:id] = ids
     end
 
-    Institution.where(query).order("#{sort_column} #{sort_direction}")
+    Institution.joins(:address).includes(:address)
+               .where(query).order("#{sort_column} #{sort_direction}")
                .page(page).per_page(per_page)
   end
 end
