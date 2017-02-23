@@ -15,3 +15,7 @@ body {
 .pagination > li > a, .pagination > li > span {
   padding: 4px 8px !important;
 }
+
+.btn-success {
+  color: #fff !important;
+}

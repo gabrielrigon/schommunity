@@ -77,9 +77,4 @@ module ApplicationHelper
       fa_icon(icon) + ' ' + title
     end
   end
-
-  # def action_path(resource, parent)
-  #   path_name = action_name == 'edit' ? controller_name.singularize : controller_name
-  #   Rails.application.routes.url_helpers.send('admin_city_'+ path_name +'_path', city_id: parent, id: resource)
-  # end
 end

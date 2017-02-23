@@ -1,8 +1,4 @@
 class Admin::InstitutionsController < InheritedResources::Base
-  # ---- inherited resources ----
-
-  defaults route_prefix: 'admin'
-
   # ---- layout ----
 
   layout 'admin'
