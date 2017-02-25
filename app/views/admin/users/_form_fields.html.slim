@@ -1,7 +1,22 @@
 .row
-  .col-md-6
-    = form.input :email
-  .col-md-6
+  .col-md-8
+    = form.association :institution
+  .col-md-4
     = form.association :user_type
+.row
+  .col-md-6
+    = form.input :first_name
+  .col-md-6
+    = form.input :last_name
+.row
+  .col-md-5
+    = form.input :cpf
+  .col-md-5
+    = form.input :phone
+  .col-md-2
+    = form.association :gender
+.row
+  .col-md-12
+    = form.input :email
     
-/ = render 'address_fields', form: form
+= render 'shared/address_form_fields', form: form

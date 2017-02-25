@@ -2,10 +2,10 @@ pt-BR:
   flash:
     actions:
       create:
-        notice: "%{resource_name} criado com sucesso."
-        alert: "* Preencha todos os campos corretamente."
+        notice: "%{resource_name} criado com sucesso"
+        alert: "Preencha todos os campos corretamente"
       update:
-        notice: "%{resource_name} foi atualizado com sucesso."
+        notice: "%{resource_name} foi atualizado com sucesso"
       destroy:
-        notice: "%{resource_name} foi removido com sucesso."
-        alert: "%{resource_name} não pode ser removido."
+        notice: "%{resource_name} foi removido com sucesso"
+        alert: "%{resource_name} não pode ser removido"

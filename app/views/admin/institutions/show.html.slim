@@ -17,28 +17,7 @@ section.content
         .col-md-6
           label.control-label= t 'simple_form.labels.institution.cnpj'
           p= deal_value resource.cnpj
-      .row
-        .col-md-12
-          hr
-        .col-md-6
-          label.control-label= t 'simple_form.labels.institution.address_street'
-          p= deal_value resource.address_street
-        .col-md-2
-          label.control-label= t 'simple_form.labels.institution.address_number'
-          p= deal_value resource.address_number
-        .col-md-4
-          label.control-label= t 'simple_form.labels.institution.address_district'
-          p= deal_value resource.address_district
-      .row
-        .col-md-4
-          label.control-label= t 'simple_form.labels.institution.address_city_name'
-          p= deal_value resource.address_city_name
-        .col-md-4
-          label.control-label= t 'simple_form.labels.institution.address_state_name'
-          p= deal_value resource.address_state_name
-        .col-md-4
-          label.control-label= t 'simple_form.labels.institution.address_zipcode'
-          p= deal_value resource.address_zipcode
+      = render 'shared/address_fields'
     .box-footer
       .row
         .col-xs-6

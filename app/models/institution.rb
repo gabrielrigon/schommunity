@@ -1,7 +1,8 @@
 class Institution < ActiveRecord::Base
   # ---- relationships ----
 
-  has_one :address
+  has_one :address, as: :linkable, dependent: :destroy
+  has_many :courses
 
   # ---- delegates -----
 
@@ -15,4 +16,8 @@ class Institution < ActiveRecord::Base
   # ---- scoped search ----
 
   scoped_search on: [:trading_name, :company_name]
+
+  # ---- aliases ----
+
+  alias_attribute :name, :trading_name
 end

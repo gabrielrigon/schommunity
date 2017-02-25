@@ -7,6 +7,10 @@ class Admin::InstitutionsController < InheritedResources::Base
 
   before_filter :authenticate_user!
 
+  # ---- Inherited Resources Setting ----
+
+  actions :all
+
   # ---- breadcrumbs ----
 
   add_breadcrumb 'Instituições', :admin_institutions_path
@@ -19,6 +23,11 @@ class Admin::InstitutionsController < InheritedResources::Base
       format.html
       format.json { render json: InstitutionDatatable.new(view_context) }
     end
+  end
+
+  def new
+    @institution = Institution.new
+    @institution.build_address
   end
 
   private

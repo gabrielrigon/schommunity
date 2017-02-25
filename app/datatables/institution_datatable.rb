@@ -1,5 +1,6 @@
 class InstitutionDatatable < BaseDatatable
-  delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path, to: :@view
+  delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
+           :current_ability, to: :@view
 
   def initialize(view)
     @view = view
@@ -9,7 +10,7 @@ class InstitutionDatatable < BaseDatatable
   protected
 
   def total_records
-    Institution.count
+    Institution.accessible_by(current_ability).count
   end
 
   private
@@ -55,11 +56,12 @@ class InstitutionDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = Institution.search_for(params[:sSearch]).ids
+      ids = Institution.accessible_by(current_ability).search_for(params[:sSearch]).ids
       query[:id] = ids
     end
 
-    Institution.joins(address: { city: :state }).includes(address: { city: :state })
+    Institution.accessible_by(current_ability)
+               .joins(address: { city: :state }).includes(address: { city: :state })
                .where(query).order("#{sort_column} #{sort_direction}")
                .page(page).per_page(per_page)
   end

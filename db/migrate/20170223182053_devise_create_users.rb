@@ -31,7 +31,15 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer  :invited_by_type
 
       # defaults
+      t.string     :first_name
+      t.string     :last_name
+      t.string     :phone
+      t.string     :cpf
+      t.references :gender, index: true, foreign_key: true
       t.references :user_type, index: true, foreign_key: true
+      t.references :address, index: true, foreign_key: true
+      t.references :institution, index: true, foreign_key: true
+
       t.timestamps null: false
     end
 

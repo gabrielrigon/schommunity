@@ -1,15 +1,16 @@
 class UserDatatable < BaseDatatable
-  delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path, to: :@view
+  delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
+           :current_ability, to: :@view
 
   def initialize(view)
     @view = view
-    @columns = %w(email user_types.name)
+    @columns = %w(name email institutions.trading_name user_types.name)
   end
 
   protected
 
   def total_records
-    User.count
+    User.accessible_by(current_ability).count
   end
 
   private
@@ -17,8 +18,9 @@ class UserDatatable < BaseDatatable
   def data
     collection.map do |item|
       [
-        # item.name,
+        item.name,
         item.email,
+        item.institution_trading_name,
         item.user_type_name,
 
         content_tag(:div, class: 'btn-group') do
@@ -55,11 +57,12 @@ class UserDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = User.search_for(params[:sSearch]).ids
+      ids = User.accessible_by(current_ability).search_for(params[:sSearch]).ids
       query[:id] = ids
     end
 
-    User.joins(:user_type).includes(:user_type)
+    User.accessible_by(current_ability)
+        .joins(:institution, :user_type).includes(:institution, :user_type)
         .where(query).order("#{sort_column} #{sort_direction}")
         .page(page).per_page(per_page)
   end

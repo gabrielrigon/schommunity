@@ -21,6 +21,11 @@ class Admin::UsersController < InheritedResources::Base
     end
   end
 
+  def new
+    @user = User.new
+    @user.build_address
+  end
+
   private
 
   def user_params

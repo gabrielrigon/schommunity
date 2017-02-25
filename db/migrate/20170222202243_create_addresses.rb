@@ -5,10 +5,10 @@ class CreateAddresses < ActiveRecord::Migration
       t.integer :number
       t.string :district
       t.string :complement
-      t.references :city, index: true, foreign_key: true
-      t.references :institution, index: true, foreign_key: true
-      t.references :state, index: true, foreign_key: true
       t.string :zipcode
+      t.references :linkable, polymorphic: true, index: true
+      t.references :city, index: true, foreign_key: true
+      t.references :state, index: true, foreign_key: true
 
       t.timestamps null: false
     end

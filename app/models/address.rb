@@ -1,8 +1,8 @@
 class Address < ActiveRecord::Base
   # ---- relationships ----
 
+  belongs_to :linkable, polymorphic: true
   belongs_to :city
-  belongs_to :institution
   belongs_to :state
 
   # ---- delegates ----

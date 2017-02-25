@@ -21,6 +21,7 @@
 //= require sweetalert2
 //= require jquery.slimscroll
 //= require momentjs
+//= require notifyjs
 //= require toastr
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables

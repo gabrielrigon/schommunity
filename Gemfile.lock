@@ -81,6 +81,11 @@ GEM
     devise_invitable (1.7.1)
       actionmailer (>= 4.1.0)
       devise (>= 4.0.0)
+    draper (1.4.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
     elasticsearch (5.0.3)
       elasticsearch-api (= 5.0.3)
       elasticsearch-transport (= 5.0.3)
@@ -106,6 +111,7 @@ GEM
       i18n
     i18n (0.8.0)
     ice_cube (0.11.1)
+    iconv (1.0.4)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
       has_scope (~> 0.6.0.rc)
@@ -176,6 +182,7 @@ GEM
     rails-assets-jquery.slimscroll (1.3.6)
       rails-assets-jquery (>= 1.7)
     rails-assets-momentjs (2.17.1)
+    rails-assets-notifyjs (0.4.2)
     rails-assets-sweetalert2 (5.2.1)
       rails-assets-es6-promise
     rails-assets-toastr (2.1.3)
@@ -198,6 +205,7 @@ GEM
     redis (3.3.3)
     redis-namespace (1.5.3)
       redis (~> 3.0, >= 3.0.4)
+    request_store (1.3.2)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     sass (3.4.23)
@@ -283,9 +291,11 @@ DEPENDENCIES
   default_value_for (~> 3.0.0)
   devise
   devise_invitable
+  draper (~> 1.3)
   font-awesome-rails (= 4.7.0)
   has_scope (~> 0.6.0)
   humanize_boolean
+  iconv
   inherited_resources (~> 1.6.0)
   jbuilder (~> 2.0)
   jquery-datatables-rails (= 1.12.2)
@@ -301,6 +311,7 @@ DEPENDENCIES
   rails-assets-bootstrap-switch!
   rails-assets-jquery.slimscroll (= 1.3.6)!
   rails-assets-momentjs!
+  rails-assets-notifyjs!
   rails-assets-sweetalert2 (= 5.2.1)!
   rails-assets-toastr!
   responders

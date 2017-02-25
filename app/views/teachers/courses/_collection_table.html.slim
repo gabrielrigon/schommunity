@@ -1,0 +1,12 @@
+.box-body
+  .row
+    .col-md-12
+      table#courses.table.table-bordered.datatable.dataTable data-source= collection_url(form: 'json')
+        thead
+          tr
+            th width="*" Nome
+            th width="*" Iniciais
+            th width="*" Coordenador
+            th width="*" Instituição
+            th.text-center width="100"
+        tbody

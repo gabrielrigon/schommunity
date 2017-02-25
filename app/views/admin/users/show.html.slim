@@ -7,12 +7,20 @@ section.content
         | Informações
     .box-body
       .row
-        .col-md-6
-          label.control-label= t 'simple_form.labels.user.email'
-          p= deal_value resource.email
-        .col-md-6
-          label.control-label= t 'simple_form.labels.user.type_name'
+        .col-md-8
+          label.control-label= t 'simple_form.labels.user.institution_trading_name'
+          p= deal_value resource.institution_trading_name
+        .col-md-4
+          label.control-label= t 'simple_form.labels.user.user_type_name'
           p= deal_value resource.user_type_name
+      .row
+        .col-md-6
+          label.control-label= t 'simple_form.labels.user.first_name'
+          p= deal_value resource.first_name
+        .col-md-6
+          label.control-label= t 'simple_form.labels.user.last_name'
+          p= deal_value resource.last_name
+      = render 'shared/address_fields'
     .box-footer
       .row
         .col-xs-6

@@ -11,23 +11,35 @@ pt-BR:
       default_message: "Please review the problems below:"
 
     labels:
+      address:
+        street: "Rua/Av "
+        number: "Nr"
+        district: "Bairro"
+        city: "Cidade"
+        state: "Estado"
+        zipcode: "CEP"
+      course:
+        name: "Nome"
+        initials: "Iniciais"
+        coordinator: "Coordenador"
+        description: "Descrição"
       institution:
         company_name: "Razão Social"
         trading_name: "Nome"
-        address_street: "Rua"
+        address_street: "Rua/Av"
         address_number: "Nr"
         address_district: "Bairro"
         address_complement: "Complemento"
         address_city_name: "Cidade"
         address_state_name: "Estado"
         address_zipcode: "CEP"
-      address:
-        street: "Rua"
-        number: "Nr"
-        district: "Bairro"
-        city: "Cidade"
-        state: "Estado"
-        zipcode: "CEP"
       user:
+        institution_trading_name: "Instituição"
+        user_type_name: "Tipo de usuário"
+        first_name: "Nome"
+        last_name: "Sobrenome"
+        cpf: "CPF"
+        phone: "Telefone"
+        gender: "Gênero"
         email: "E-mail"
         user_type: "Tipo de usuário"

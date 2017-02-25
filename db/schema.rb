@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222202243) do
+ActiveRecord::Schema.define(version: 20170224003416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,16 +21,17 @@ ActiveRecord::Schema.define(version: 20170222202243) do
     t.integer  "number"
     t.string   "district"
     t.string   "complement"
-    t.integer  "city_id"
-    t.integer  "institution_id"
-    t.integer  "state_id"
     t.string   "zipcode"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "linkable_id"
+    t.string   "linkable_type"
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
-  add_index "addresses", ["institution_id"], name: "index_addresses_on_institution_id", using: :btree
+  add_index "addresses", ["linkable_type", "linkable_id"], name: "index_addresses_on_linkable_type_and_linkable_id", using: :btree
   add_index "addresses", ["state_id"], name: "index_addresses_on_state_id", using: :btree
 
   create_table "cities", force: :cascade do |t|
@@ -41,6 +42,26 @@ ActiveRecord::Schema.define(version: 20170222202243) do
   end
 
   add_index "cities", ["state_id"], name: "index_cities_on_state_id", using: :btree
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "initials"
+    t.text     "description"
+    t.integer  "coordinator_id"
+    t.integer  "institution_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "courses", ["coordinator_id"], name: "index_courses_on_coordinator_id", using: :btree
+  add_index "courses", ["institution_id"], name: "index_courses_on_institution_id", using: :btree
+
+  create_table "genders", force: :cascade do |t|
+    t.string   "name"
+    t.string   "alias"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "institutions", force: :cascade do |t|
     t.string   "company_name"
@@ -84,12 +105,22 @@ ActiveRecord::Schema.define(version: 20170222202243) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.integer  "invited_by_type"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "cpf"
+    t.integer  "gender_id"
     t.integer  "user_type_id"
+    t.integer  "address_id"
+    t.integer  "institution_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
 
+  add_index "users", ["address_id"], name: "index_users_on_address_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["gender_id"], name: "index_users_on_gender_id", using: :btree
+  add_index "users", ["institution_id"], name: "index_users_on_institution_id", using: :btree
   add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", unique: true, using: :btree
   add_index "users", ["invited_by_type"], name: "index_users_on_invited_by_type", unique: true, using: :btree
@@ -98,8 +129,12 @@ ActiveRecord::Schema.define(version: 20170222202243) do
   add_index "users", ["user_type_id"], name: "index_users_on_user_type_id", using: :btree
 
   add_foreign_key "addresses", "cities"
-  add_foreign_key "addresses", "institutions"
   add_foreign_key "addresses", "states"
   add_foreign_key "cities", "states"
+  add_foreign_key "courses", "institutions"
+  add_foreign_key "courses", "users", column: "coordinator_id"
+  add_foreign_key "users", "addresses"
+  add_foreign_key "users", "genders"
+  add_foreign_key "users", "institutions"
   add_foreign_key "users", "user_types"
 end

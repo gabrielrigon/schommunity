@@ -1,8 +1,10 @@
 pt-BR:
   resources:
-    dashboard:
-      title: "Dashboard"
-      description: "resumo geral das ultimas atividades"
+    course:
+      title: "Cursos"
+      description: "manutenção de cadastros"
+      new: "Incluir curso"
+      edit: "Editar curso"
     institution:
       title: "Instituições"
       description: "manutenção de cadastros"
@@ -22,7 +24,9 @@ pt-BR:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
     models:
+      course: "Curso"
       institution: "Instituição"
+      user: "Usuário"
     attributes:
 
   date:
