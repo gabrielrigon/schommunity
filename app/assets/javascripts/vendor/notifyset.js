@@ -10,36 +10,36 @@ $.notify.addStyle("metro", {
         default: {
             "color": "#444 !important",
             "background-color": "#f4f4f4",
-            "border": "1px solid #ddd"
+            "border": "0px solid #ddd"
         },
         error: {
             "color": "#fafafa !important",
             "background-color": "#dd4b39",
-            "border": "1px solid #d73925"
+            "border": "0px solid #d73925"
         },
         success: {
             "color": "#fafafa !important",
             "background-color": "#00a65a",
-            "border": "1px solid #008d4c"
+            "border": "0px solid #008d4c"
         },
         info: {
             "color": "#fafafa !important",
             "background-color": "#00c0ef",
-            "border": "1px solid #00acd6"
+            "border": "0px solid #00acd6"
         },
         warning: {
             "color": "#fafafa !important",
             "background-color": "#f39c12",
-            "border": "1px solid #e08e0b"
+            "border": "0px solid #e08e0b"
         },
         black: {
             "color": "#fafafa !important",
             "background-color": "#444",
-            "border": "1px solid #323232"
+            "border": "0px solid #323232"
         },
         white: {
             "background-color": "#e6eaed",
-            "border": "1px solid #ddd"
+            "border": "0px solid #ddd"
         }
     }
 });

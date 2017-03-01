@@ -15,20 +15,17 @@ pt-BR:
       description: "manutenção de cadastros"
       new: "Incluir usuário"
       edit: "Editar usuário"
-
   activerecord:
+    models:
+      course: "Curso"
+      institution: "Instituição"
+      user: "Usuário"
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
-    models:
-      course: "Curso"
-      institution: "Instituição"
-      user: "Usuário"
-    attributes:
-
   date:
     abbr_day_names:
     - Dom
@@ -39,6 +36,7 @@ pt-BR:
     - Sex
     - Sáb
     abbr_month_names:
+    -
     - Jan
     - Fev
     - Mar
@@ -64,6 +62,7 @@ pt-BR:
       long: "%d de %B de %Y"
       short: "%d de %B"
     month_names:
+    -
     - Janeiro
     - Fevereiro
     - Março
@@ -80,7 +79,6 @@ pt-BR:
     - :day
     - :month
     - :year
-
   datetime:
     distance_in_words:
       about_x_hours:
@@ -114,6 +112,9 @@ pt-BR:
       x_months:
         one: 1 mês
         other: "%{count} meses"
+      x_years:
+        one: 1 ano
+        other: "%{count} anos"
       x_seconds:
         one: 1 segundo
         other: "%{count} segundos"
@@ -124,7 +125,6 @@ pt-BR:
       month: Mês
       second: Segundo
       year: Ano
-
   errors:
     format: "%{attribute} %{message}"
     messages:
@@ -146,7 +146,7 @@ pt-BR:
       not_a_number: não é um número
       not_an_integer: não é um número inteiro
       odd: deve ser ímpar
-      required: deve existir
+      required: é obrigatório(a)
       taken: já está em uso
       too_long:
         one: 'é muito longo (máximo: 1 caracter)'
@@ -163,7 +163,6 @@ pt-BR:
       header:
         one: 'Não foi possível gravar %{model}: 1 erro'
         other: 'Não foi possível gravar %{model}: %{count} erros'
-
   helpers:
     select:
       prompt: Por favor selecione
@@ -171,7 +170,6 @@ pt-BR:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
-
   number:
     currency:
       format:
@@ -207,8 +205,8 @@ pt-BR:
             other: trilhões
           unit: ''
       format:
-        delimiter: "."
-        precision: 2
+        delimiter: ""
+        precision: 3
         significant: true
         strip_insignificant_zeros: true
       storage_units:
@@ -228,21 +226,22 @@ pt-BR:
     precision:
       format:
         delimiter: "."
-
   support:
     array:
       last_word_connector: " e "
       two_words_connector: " e "
       words_connector: ", "
-
   time:
     am: ''
     formats:
       default: "%a, %d de %B de %Y, %H:%M:%S %z"
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
+      devise:
+        mailer:
+          invitation_instructions:
+            accept_until_format: "%d de %B de %Y, %H:%M"
     pm: ''
-
   will_paginate:
     previous_label: "&#8592;"
     next_label: "&#8594;"

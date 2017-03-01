@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   # ---- devise ----
 
-  devise :database_authenticatable, :recoverable, :registerable, :trackable,
-         :timeoutable, :lockable, :validatable, :invitable
+  devise :database_authenticatable, :invitable, :recoverable, :registerable,
+         :trackable, :timeoutable, :validatable
 
   # ---- relationships ----
 

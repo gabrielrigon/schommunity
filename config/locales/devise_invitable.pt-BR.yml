@@ -1,31 +1,23 @@
-en:
+pt-BR:
   devise:
     failure:
-      invited: "You have a pending invitation, accept it to finish creating your account."
+      invited: 'Você tem um convite pendente, aceite para finalizar sua conta.'
     invitations:
-      send_instructions: "An invitation email has been sent to %{email}."
-      invitation_token_invalid: "The invitation token provided is not valid!"
-      updated: "Your password was set successfully. You are now signed in."
-      updated_not_active: "Your password was set successfully."
-      no_invitations_remaining: "No invitations remaining"
-      invitation_removed: "Your invitation was removed."
+      send_instructions: 'Um email de convite foi enviado para %{email}.'
+      invitation_token_invalid: 'O código do convite não é válido!'
+      updated: 'Sua senha foi atualizada com sucesso. Você está autenticado agora.'
+      no_invitations_remaining: "Sem convites pendentes"
+      invitation_removed: 'Seu convite foi removido.'
       new:
-        header: "Send invitation"
-        submit_button: "Send an invitation"
+        header: "Enviar convite"
+        submit_button: "Enviar um convite"
       edit:
-        header: "Set your password"
-        submit_button: "Set my password"
+        header: "Escolha sua senha"
+        submit_button: "Atualizar minha senha"
     mailer:
       invitation_instructions:
-        subject: "Invitation instructions"
-        hello: "Hello %{email}"
-        someone_invited_you: "Someone has invited you to %{url}, you can accept it through the link below."
-        accept: "Accept invitation"
-        accept_until: "This invitation will be due in %{due_date}."
-        ignore: "If you don't want to accept the invitation, please ignore this email.<br />\nYour account won't be created until you access the link above and set your password."
-  time:
-    formats:
-      devise:
-        mailer:
-          invitation_instructions:
-            accept_until_format: "%B %d, %Y %I:%M %p"
+        subject: 'Instruções do convite'
+        hello: 'Olá %{email}'
+        someone_invited_you: 'Alguém convidou você para acessar %{url}, você pode aceitar o convite através do link abaixo.'
+        accept: 'Aceitar convite'
+        ignore: "Se você não quer aceitar esse convite, por favor ignore esse e-mail.<br />Sua conta não será criada até você acessar o link abaixo e escolher sua senha."
