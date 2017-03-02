@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # ---- devise ----
 
   devise :database_authenticatable, :invitable, :recoverable, :registerable,
-         :trackable, :timeoutable#, :validatable
+         :trackable, :timeoutable
 
   # ---- relationships ----
 
@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
   end
 
   def invite
-    invite!
+    invite! if encrypted_password.blank?
   end
 
   # ---- user types ----

@@ -1,8 +1,8 @@
 .row
   .col-md-8
-    = form.association :institution
+    = form.association :institution, collection: institutions_collection, input_html: { class: 'selectize-single' }
   .col-md-4
-    = form.association :user_type
+    = form.association :user_type, input_html: { class: 'selectize-single' }
 .row
   .col-md-6
     = form.input :first_name
@@ -14,7 +14,7 @@
   .col-md-5
     = form.input :phone, input_html: { class: 'phone' }
   .col-md-2
-    = form.association :gender
+    = form.association :gender, input_html: { class: 'selectize-single' }
 .row
   .col-md-12
     = form.input :email

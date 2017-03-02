@@ -14,8 +14,8 @@
     .col-md-4
       = f.input :district
     .col-md-3
-      = f.association :city
+      = f.association :city, input_html: { class: 'selectize-single' }
     .col-md-3
-      = f.association :state
+      = f.association :state, input_html: { class: 'selectize-single' }
     .col-md-2
       = f.input :zipcode, input_html: { class: 'cep' }

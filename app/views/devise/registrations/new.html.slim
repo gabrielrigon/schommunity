@@ -3,10 +3,10 @@ h2
 
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   .form-inputs
-    = f.association :institution, required: true
+    = f.association :institution, required: true, collection: institutions_collection, input_html: { class: 'selectize-single' }
     = f.input :cpf, required: true, autofocus: true, input_html: { class: 'cpf' }
     = f.input :email, required: true, autofocus: true
-    / = f.input :password, required: true, hint: ("Mínimo de #{@minimum_password_length} caracteres" if @minimum_password_length)
+    = f.input :password, required: true, hint: ("Mínimo de #{@minimum_password_length} caracteres" if @minimum_password_length)
     / = f.input :password_confirmation, required: true
   .form-actions
     = f.button :submit, 'Inscrever-se'

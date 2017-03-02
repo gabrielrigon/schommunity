@@ -13,7 +13,7 @@
  *= require bootstrap
  *= require bootstrap-wysihtml5
  *= require selectize
- *= require selectize.default
+ *= require selectize.bootstrap3
  *= require font-awesome
  *= require bootstrap-datepicker
  *= require bootstrap-switch
