@@ -11,6 +11,9 @@ header.main-header
         | tn
     .navbar-custom-menu
       ul.nav.navbar-nav
+        li.institution
+          = link_to 'javascript:;' 
+            = current_user.decorate.institution_trading_name
         li.signout
           = link_to destroy_user_session_path, method: :delete do
             = fa_icon 'sign-out'

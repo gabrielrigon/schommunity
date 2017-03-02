@@ -26,6 +26,10 @@ class Admin::UsersController < InheritedResources::Base
     @user.build_address
   end
 
+  def edit
+    resource.build_address if resource.address.blank?
+  end
+
   private
 
   def user_params

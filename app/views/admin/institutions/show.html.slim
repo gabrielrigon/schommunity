@@ -16,7 +16,7 @@ section.content
           p= deal_value resource.trading_name
         .col-md-6
           label.control-label= t 'simple_form.labels.institution.cnpj'
-          p= deal_value resource.cnpj
+          p.cnpj= deal_value resource.cnpj
       = render 'shared/address_fields'
     .box-footer
       .row

@@ -111,13 +111,11 @@ ActiveRecord::Schema.define(version: 20170224003416) do
     t.string   "cpf"
     t.integer  "gender_id"
     t.integer  "user_type_id"
-    t.integer  "address_id"
     t.integer  "institution_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["address_id"], name: "index_users_on_address_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["gender_id"], name: "index_users_on_gender_id", using: :btree
   add_index "users", ["institution_id"], name: "index_users_on_institution_id", using: :btree
@@ -133,7 +131,6 @@ ActiveRecord::Schema.define(version: 20170224003416) do
   add_foreign_key "cities", "states"
   add_foreign_key "courses", "institutions"
   add_foreign_key "courses", "users", column: "coordinator_id"
-  add_foreign_key "users", "addresses"
   add_foreign_key "users", "genders"
   add_foreign_key "users", "institutions"
   add_foreign_key "users", "user_types"

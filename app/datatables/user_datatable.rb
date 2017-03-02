@@ -10,7 +10,7 @@ class UserDatatable < BaseDatatable
   protected
 
   def total_records
-    User.accessible_by(current_ability).count
+    User.valid.count
   end
 
   private
@@ -57,12 +57,11 @@ class UserDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = User.accessible_by(current_ability).search_for(params[:sSearch]).ids
+      ids = User.valid.search_for(params[:sSearch]).ids
       query[:id] = ids
     end
 
-    User.accessible_by(current_ability)
-        .joins(:institution, :user_type).includes(:institution, :user_type)
+    User.valid.joins(:institution.outer, :user_type.outer).includes(:institution, :user_type)
         .where(query).order("#{sort_column} #{sort_direction}")
         .page(page).per_page(per_page)
   end

@@ -3,20 +3,23 @@ class Ability
 
   def initialize(user)
 
-    # ---- defaults / can ----
+    # ---- defaults ----
 
-    can :manage, Course, institution_id: user.institution.id
-
-    # ---- defaults / cannot ----
-
+    cannot :manage, Course
     cannot :manage, Institution
     cannot :manage, User
 
-    # ---- admin ----
+    # ---- each ----
 
     if user.admin?
+      can :manage, Course, institution_id: user.institution_id
       can :manage, Institution
       can :manage, User
+    elsif user.schoolmaster?
+      can :manage, Course, institution_id: user.institution_id
+      can :manage, Institution, id: user.institution_id
+    elsif user.coordinator?
+      can :manage, Course, coordinator_id: user.id
     end
 
   end

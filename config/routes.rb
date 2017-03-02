@@ -2,7 +2,14 @@ Rails.application.routes.draw do
 
   root 'admin/dashboard#index'
 
-  devise_for :users
+  devise_for :users, path: '',
+    path_names: { sign_in: 'sign_in',
+                  sign_out: 'sign_out',
+                  password: 'secret',
+                  confirmation: 'verification',
+                  unlock: 'unblock',
+                  registration: 'register',
+                  sign_up: 'cmon_let_me_in' }
 
   # user types
 

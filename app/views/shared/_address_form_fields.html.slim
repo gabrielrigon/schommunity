@@ -2,16 +2,20 @@
   .row
     .col-md-12
       hr
+
+  .row
     .col-md-6
       = f.input :street
     .col-md-2
       = f.input :number
     .col-md-4
-      = f.input :district
+      = f.input :complement
   .row
     .col-md-4
+      = f.input :district
+    .col-md-3
       = f.association :city
-    .col-md-4
+    .col-md-3
       = f.association :state
-    .col-md-4
-      = f.input :zipcode
+    .col-md-2
+      = f.input :zipcode, input_html: { class: 'cep' }

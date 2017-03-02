@@ -30,6 +30,10 @@ class Admin::InstitutionsController < InheritedResources::Base
     @institution.build_address
   end
 
+  def edit
+    resource.build_address if resource.address.blank?
+  end
+
   private
 
   def institution_params

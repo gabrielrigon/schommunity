@@ -10,9 +10,9 @@
     = form.input :last_name
 .row
   .col-md-5
-    = form.input :cpf
+    = form.input :cpf, input_html: { class: 'cpf' }
   .col-md-5
-    = form.input :phone
+    = form.input :phone, input_html: { class: 'phone' }
   .col-md-2
     = form.association :gender
 .row

@@ -17,7 +17,7 @@ UserType.create!([
 # data
 
 Institution.create!([
-    { trading_name: 'Fatec Mogi Mirim', company_name: 'Faculdade de Tecnologia Arthur de Azevedo', cnpj: '15.457.042/0001-24' }
+    { trading_name: '', company_name: '', cnpj: '' }
   ])
 
 State.create!([
@@ -40,10 +40,11 @@ Address.create!([
 User.create!(first_name: '',
              last_name: '',
              phone: '',
-             cpf: '',
+             cpf: '000.000.000-00',
              email: 'admin@admin.com',
              password: 'qwerty123',
              password_confirmation: 'qwerty123',
              gender_id: 1,
+             institution_id: 1,
              user_type_id: 1
              )

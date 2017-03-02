@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # ---- devise ----
 
   devise :database_authenticatable, :invitable, :recoverable, :registerable,
-         :trackable, :timeoutable, :validatable
+         :trackable, :timeoutable#, :validatable
 
   # ---- relationships ----
 
@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
   belongs_to :gender
   has_many :courses, as: :coordinator
   has_one :address, as: :linkable, dependent: :destroy
+
+  # ---- validates ----
+
+  validates :institution, presence: true
+  validates :user_type, presence: true
+  validates :cpf, presence: true, uniqueness: true, length: { is: 14 } # mudar para 11 sem mascara
+  validates :email, presence: true, uniqueness: true
 
   # ---- callbacks ----
 
@@ -27,13 +34,18 @@ class User < ActiveRecord::Base
   # ---- delegates ----
 
   delegate :name, to: :user_type, prefix: true, allow_nil: true
-  delegate :trading_name, to: :institution, prefix: true, allow_nil: true
+  delegate :name, to: :gender, prefix: true, allow_nil: true
+  delegate :id, :trading_name, to: :institution, prefix: true, allow_nil: true
   delegate :street, :number, :district, :complement, :city_name,
            :state_name, :zipcode, to: :address, prefix: true, allow_nil: true
 
   # ---- scoped search ----
 
   scoped_search on: [:first_name, :last_name, :email]
+
+  # ---- scope ----
+
+  scope :valid, -> { where.not(first_name: '') }
 
   # ---- aliases ----
 
@@ -49,7 +61,17 @@ class User < ActiveRecord::Base
     invite!
   end
 
+  # ---- user types ----
+
   def admin?
     user_type_id == invoke(UserType, :admin)
+  end
+
+  def schoolmaster?
+    user_type_id == invoke(UserType, :schoolmaster)
+  end
+
+  def coordinator?
+    user_type_id == invoke(UserType, :coordinator)
   end
 end

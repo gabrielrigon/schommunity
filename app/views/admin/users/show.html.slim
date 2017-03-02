@@ -8,10 +8,10 @@ section.content
     .box-body
       .row
         .col-md-8
-          label.control-label= t 'simple_form.labels.user.institution_trading_name'
+          label.control-label= t 'simple_form.labels.user.institution'
           p= deal_value resource.institution_trading_name
         .col-md-4
-          label.control-label= t 'simple_form.labels.user.user_type_name'
+          label.control-label= t 'simple_form.labels.user.user_type'
           p= deal_value resource.user_type_name
       .row
         .col-md-6
@@ -20,6 +20,20 @@ section.content
         .col-md-6
           label.control-label= t 'simple_form.labels.user.last_name'
           p= deal_value resource.last_name
+      .row
+        .col-md-5
+          label.control-label= t 'simple_form.labels.user.cpf'
+          p.cpf= deal_value resource.cpf
+        .col-md-5
+          label.control-label= t 'simple_form.labels.user.phone'
+          p.phone= deal_value resource.phone
+        .col-md-2
+          label.control-label= t 'simple_form.labels.user.gender'
+          p= deal_value resource.gender_name
+      .row
+        .col-md-12
+          label.control-label= t 'simple_form.labels.user.email'
+          p= deal_value resource.email
       = render 'shared/address_fields'
     .box-footer
       .row

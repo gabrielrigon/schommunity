@@ -58,6 +58,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-datepicker'
   gem 'rails-assets-bootstrap-switch'
   gem 'rails-assets-jquery.slimscroll', '1.3.6'
+  gem 'rails-assets-jQuery-Mask-Plugin'
   gem 'rails-assets-momentjs'
   gem 'rails-assets-notifyjs'
   gem 'rails-assets-sweetalert2', '5.2.1'

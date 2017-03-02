@@ -5,6 +5,6 @@
   .col-md-6
     = form.input :trading_name
   .col-md-6
-    = form.input :cnpj
+    = form.input :cnpj, input_html: { class: 'cnpj' }
     
 = render 'shared/address_form_fields', form: form

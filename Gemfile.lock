@@ -178,6 +178,7 @@ GEM
       rails-assets-bootstrap (>= 2.3.2)
       rails-assets-jquery (>= 1.9.0)
     rails-assets-es6-promise (4.0.5)
+    rails-assets-jQuery-Mask-Plugin (1.14.8)
     rails-assets-jquery (2.2.4)
     rails-assets-jquery.slimscroll (1.3.6)
       rails-assets-jquery (>= 1.7)
@@ -309,6 +310,7 @@ DEPENDENCIES
   rails-assets-bootstrap (= 3.3.6)!
   rails-assets-bootstrap-datepicker!
   rails-assets-bootstrap-switch!
+  rails-assets-jQuery-Mask-Plugin!
   rails-assets-jquery.slimscroll (= 1.3.6)!
   rails-assets-momentjs!
   rails-assets-notifyjs!

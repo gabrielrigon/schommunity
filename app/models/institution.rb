@@ -20,4 +20,8 @@ class Institution < ActiveRecord::Base
   # ---- aliases ----
 
   alias_attribute :name, :trading_name
+
+  # ---- scope ----
+
+  scope :valid, -> { where.not(trading_name: '') }
 end
