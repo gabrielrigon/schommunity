@@ -37,7 +37,7 @@ Address.create!([
       city_id: 1, state_id: 1, zipcode: '13800-700', linkable_type: Institution, linkable_id: 1 },
   ])
 
-User.create!(first_name: '',
+User.create!(first_name: 'Administrador',
              last_name: '',
              phone: '',
              cpf: '000.000.000-00',

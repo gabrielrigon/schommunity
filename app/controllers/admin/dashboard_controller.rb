@@ -6,6 +6,7 @@ class Admin::DashboardController < InheritedResources::Base
   # ---- devise ----
 
   before_filter :authenticate_user!
+  load_and_authorize_resource class: :admin_dashboard
 
   # ---- breadcrumbs ----
 

@@ -67,8 +67,12 @@ ActiveRecord::Schema.define(version: 20170224003416) do
     t.string   "company_name"
     t.string   "trading_name"
     t.string   "cnpj"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "states", force: :cascade do |t|
@@ -112,6 +116,10 @@ ActiveRecord::Schema.define(version: 20170224003416) do
     t.integer  "gender_id"
     t.integer  "user_type_id"
     t.integer  "institution_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end

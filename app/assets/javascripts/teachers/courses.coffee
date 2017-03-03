@@ -31,11 +31,11 @@ $ ->
 
     aoColumnDefs: [
       bSortable: false
-      aTargets: [4]
+      aTargets: [2,3]
     ]
 
     fnRowCallback: (nRow, aData, iDisplayIndex, iDisplayIndexFull) ->
-      $("td:eq(4)", nRow).addClass "text-center"
+      $("td:eq(3)", nRow).addClass "text-center"
 
     bAutoWidth: false
   )

@@ -3,7 +3,15 @@ SimpleNavigation::Configuration.run do |navigation|
 
   navigation.items do |primary|
     primary.dom_class = 'sidebar-menu'
-    primary.item :admin_dashboard, menu_label_icon('Dashboard', 'dashboard'), admin_dashboard_index_path, class: 'root-level', highlights_on: %r{/dashboard}
+
+    if current_user.admin?
+      primary.item :admin_dashboard, menu_label_icon('Dashboard', 'dashboard'), admin_dashboard_index_path, class: 'root-level', highlights_on: %r{/dashboard} if can?(:manage, :admin_dashboard)
+    elsif current_user.student?
+
+    else
+      primary.item :teachers_dashboard, menu_label_icon('Dashboard', 'dashboard'), teachers_dashboard_index_path, class: 'root-level', highlights_on: %r{/dashboard} if can?(:manage, :teachers_dashboard)
+    end
+
     primary.item :teachers_courses, menu_label_icon('Cursos', 'graduation-cap'), teachers_courses_path, class: 'root-level', highlights_on: %r{/courses} if can?(:manage, Course)
     primary.item :admin_institutions, menu_label_icon('Instituições', 'university'), admin_institutions_path, class: 'root-level', highlights_on: %r{/institutions} if can?(:manage, Institution)
     primary.item :admin_users, menu_label_icon('Usuários', 'user'), admin_users_path, class: 'root-level', highlights_on: %r{/users} if can?(:manage, User)

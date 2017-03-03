@@ -4,6 +4,16 @@ class Institution < ActiveRecord::Base
   has_one :address, as: :linkable, dependent: :destroy
   has_many :courses
 
+  # ---- paperclip ----
+
+  has_attached_file :logo, styles: {
+    thumb:  '60x60#',
+    medium: '120x120#',
+    large:  '230x230#'
+  }, default_url: '/vendor/images/img_placeholder.png'
+
+  validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
+
   # ---- delegates -----
 
   delegate :street, :number, :district, :complement, :city_name,

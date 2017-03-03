@@ -7,6 +7,13 @@ section.content
         | Informações
     .box-body
       .row
+        .col-md-12
+          label.control-label
+            | Foto
+          = image_attachment resource.avatar.url(:large)
+      hr
+      
+      .row
         .col-md-8
           label.control-label= t 'simple_form.labels.user.institution'
           p= deal_value resource.institution_trading_name

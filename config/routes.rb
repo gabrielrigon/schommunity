@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'admin/dashboard#index'
+  root 'application#go_home'
 
   devise_for :users, path: '',
     path_names: { sign_in: 'sign_in',
@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   end
 
   namespace :teachers do
+    resources :dashboard, only: :index
+
     resources :courses
   end
 

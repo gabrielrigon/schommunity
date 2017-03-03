@@ -19,3 +19,23 @@ body {
 .btn-success {
   color: #fff !important;
 }
+
+.img-crud {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 15px;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.text-ajust {
+  display: table-cell;
+  height: 45px;
+  vertical-align: middle;
+  white-space: normal !important;
+}
+
+.user-panel > .info {
+  padding-top: 0 !important;
+}

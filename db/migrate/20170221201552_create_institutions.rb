@@ -4,6 +4,7 @@ class CreateInstitutions < ActiveRecord::Migration
       t.string :company_name
       t.string :trading_name
       t.string :cnpj
+      t.attachment :logo
 
       t.timestamps null: false
     end

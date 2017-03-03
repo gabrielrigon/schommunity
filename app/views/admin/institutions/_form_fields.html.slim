@@ -1,5 +1,15 @@
 .row
   .col-md-12
+    label
+      | Logotipo
+.row
+  .col-md-12
+    = image_attachment resource.logo.url(:large)
+    = form.input :logo, as: :file, label: false
+hr
+
+.row
+  .col-md-12
     = form.input :company_name
 .row
   .col-md-6
