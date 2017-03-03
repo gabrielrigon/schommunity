@@ -129,6 +129,8 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (1.8.6)
+    lazyload-rails (0.3.1)
+      nokogiri (~> 1.5)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -302,6 +304,7 @@ DEPENDENCIES
   jquery-datatables-rails (= 1.12.2)
   jquery-rails
   jquery-ui-rails
+  lazyload-rails
   paperclip (~> 5.0.0)
   paranoia (~> 2.0)
   pg

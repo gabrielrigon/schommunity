@@ -1,0 +1,29 @@
+= render 'form_header'
+
+section.content
+  .box.box-default
+    .box-header.with-border
+      h3.box-title
+        | Informações
+    .box-body
+      .row
+        .col-md-5
+          label.control-label= t 'simple_form.labels.course.name'
+          p= deal_value resource.name
+        .col-md-2
+          label.control-label= t 'simple_form.labels.course.initials'
+          p= deal_value resource.initials
+        .col-md-5
+          label.control-label= t 'simple_form.labels.course.coordinator'
+          p= deal_value resource.coordinator_name
+      .row
+        .col-md-12
+          label.control-label= t 'simple_form.labels.course.description'
+          div
+            = resource.description.html_safe
+    .box-footer
+      .row
+        .col-xs-6
+          = link_to 'Editar', edit_resource_path(resource), class: 'btn btn-default btn-sm'
+        .col-xs-6.text-right
+          = link_to 'Voltar', collection_path(resource), class: 'btn btn-default btn-sm'

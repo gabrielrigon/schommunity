@@ -4,7 +4,8 @@
       | Logotipo
 .row
   .col-md-12
-    = image_attachment resource.logo.url(:large)
+    - if resource.persisted?
+      = image_tag resource.logo.url(:large), class: 'img-crud img-responsive', lazy: true
     = form.input :logo, as: :file, label: false
 hr
 

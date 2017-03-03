@@ -7,6 +7,7 @@ window.applyFormControls = ->
     'link': false
     'image': false
 
+  $('img').lazyload()
 
   $('.cpf').mask '000.000.000-00'
   $('.cnpj').mask '00.000.000/0000-00'

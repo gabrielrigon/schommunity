@@ -24,14 +24,6 @@ module ApplicationHelper
     end
   end
 
-  def image_attachment(url)
-    content_tag(:div, class: 'img-crud img-responsive', style: "background-image: url(#{url})") {}
-  end
-
-  def image_menu(url)
-    content_tag(:div, class: 'img-circle', style: "background-image: url(#{url})") {}
-  end
-
   # ----- resource -----
 
   def resource_title
@@ -57,7 +49,7 @@ module ApplicationHelper
   # ---- block on partial ----
 
   def block_to_partial(partial_name, options = {}, &block)
-    options.merge!(body: capture(&block))
+    options[:body] = capture(&block)
     render(partial: partial_name, locals: options)
   end
 
@@ -80,7 +72,8 @@ module ApplicationHelper
     css_class = options.delete(:class) || 'btn btn-default btn-xs pull-right'
     id = options.delete(:id)
 
-    options.merge!(class: css_class, id: id)
+    options[:class] = css_class
+    options[:id] = id
 
     link_to(path, options) do
       fa_icon(icon) + ' ' + title
@@ -90,9 +83,11 @@ module ApplicationHelper
   # ---- flash messages ----
 
   def custom_bootstrap_flash
-    types = {'notice' => 'success', 'info' => 'info', 'warning' => 'warning', 'alert' => 'error'}
-    titles = {'notice' => 'Sucesso', 'info' => 'Mensagem', 'warning' => 'Advertência', 'alert' => 'Atenção'}
+    types = { 'notice' => 'success', 'info' => 'info', 'warning' => 'warning', 'alert' => 'error' }
+    titles = { 'notice' => 'Sucesso', 'info' => 'Mensagem', 'warning' => 'Advertência', 'alert' => 'Atenção' }
+
     flash_messages = []
+
     flash.each do |type, message|
       next unless types.key?(type)
       text = "<script>
@@ -100,6 +95,7 @@ module ApplicationHelper
       </script>"
       flash_messages << text.html_safe if message
     end
+
     flash_messages.join("\n").html_safe
   end
 end

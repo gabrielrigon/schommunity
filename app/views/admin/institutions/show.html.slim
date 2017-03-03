@@ -10,7 +10,7 @@ section.content
         .col-md-12
           label.control-label
             | Logotipo
-          = image_attachment resource.logo.url(:large)
+          = image_tag resource.logo.url(:large), class: 'img-crud img-responsive', lazy: true
       hr
       
       .row

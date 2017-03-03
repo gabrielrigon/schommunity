@@ -4,7 +4,8 @@
       | Foto
 .row
   .col-md-12
-    = image_attachment resource.avatar.url(:large)
+    - if resource.persisted?
+      = image_tag resource.avatar.url(:large), class: 'img-crud img-responsive', lazy: true
     = form.input :avatar, as: :file, label: false
 hr
 

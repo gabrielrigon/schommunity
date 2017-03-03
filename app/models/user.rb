@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
 
   # ---- scope ----
 
-  scope :valid, -> { where.not(first_name: '') }
+  scope :valid, -> { where.not(id: 1) }
 
   # ---- aliases ----
 

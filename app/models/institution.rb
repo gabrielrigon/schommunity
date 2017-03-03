@@ -33,5 +33,5 @@ class Institution < ActiveRecord::Base
 
   # ---- scope ----
 
-  scope :valid, -> { where.not(trading_name: '') }
+  scope :valid, -> { where.not(id: 1) }
 end
