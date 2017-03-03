@@ -10,6 +10,20 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # ---- methods ----
+
+  def go_home
+    if user_signed_in?
+      if current_user.admin?
+        redirect_to admin_dashboard_index_path
+      else
+        redirect_to teachers_courses_path
+      end
+    else
+      redirect_to new_user_session_path
+    end
+  end
+
   protected
 
   def configure_permitted_parameters

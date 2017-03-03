@@ -24,6 +24,14 @@ module ApplicationHelper
     end
   end
 
+  def image_attachment(url)
+    content_tag(:div, class: 'img-crud img-responsive', style: "background-image: url(#{url})") {}
+  end
+
+  def image_menu(url)
+    content_tag(:div, class: 'img-circle', style: "background-image: url(#{url})") {}
+  end
+
   # ----- resource -----
 
   def resource_title

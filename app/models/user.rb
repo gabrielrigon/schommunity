@@ -12,6 +12,16 @@ class User < ActiveRecord::Base
   has_many :courses, as: :coordinator
   has_one :address, as: :linkable, dependent: :destroy
 
+  # ---- paperclip ----
+
+  has_attached_file :avatar, styles: {
+    thumb:  '60x60#',
+    medium: '120x120#',
+    large:  '230x230#'
+  }, default_url: '/vendor/images/img_placeholder.png'
+
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
   # ---- validates ----
 
   validates :institution, presence: true
@@ -73,5 +83,9 @@ class User < ActiveRecord::Base
 
   def coordinator?
     user_type_id == invoke(UserType, :coordinator)
+  end
+
+  def student?
+    user_type_id == invoke(UserType, :student)
   end
 end

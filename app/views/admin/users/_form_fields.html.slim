@@ -1,4 +1,14 @@
 .row
+  .col-md-12
+    label
+      | Foto
+.row
+  .col-md-12
+    = image_attachment resource.avatar.url(:large)
+    = form.input :avatar, as: :file, label: false
+hr
+
+.row
   .col-md-8
     = form.association :institution, collection: institutions_collection, input_html: { class: 'selectize-single' }
   .col-md-4

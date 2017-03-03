@@ -9,18 +9,27 @@ class Ability
     cannot :manage, Institution
     cannot :manage, User
 
-    # ---- each ----
+    cannot :manage, :admin_dashboard
+    cannot :manage, :teachers_dashboard
+
+    # ---- user types ----
 
     if user.admin?
-      can :manage, Course, institution_id: user.institution_id
       can :manage, Institution
       can :manage, User
-    elsif user.schoolmaster?
-      can :manage, Course, institution_id: user.institution_id
-      can :manage, Institution, id: user.institution_id
-    elsif user.coordinator?
-      can :manage, Course, coordinator_id: user.id
+
+      can :manage, :admin_dashboard
     end
 
+    if user.schoolmaster?
+      can :manage, Course, institution_id: user.institution_id
+
+      can :manage, :teachers_dashboard
+    end
+
+    if user.coordinator?
+
+      can :manage, :teachers_dashboard
+    end
   end
 end

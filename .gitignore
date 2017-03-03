@@ -6,6 +6,9 @@
 !/log/.keep
 /tmp
 
+# Ignore files
+/public/system
+
 # Compiled source
 *.com
 *.class

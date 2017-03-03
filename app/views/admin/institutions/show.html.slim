@@ -8,6 +8,13 @@ section.content
     .box-body
       .row
         .col-md-12
+          label.control-label
+            | Logotipo
+          = image_attachment resource.logo.url(:large)
+      hr
+      
+      .row
+        .col-md-12
           label.control-label= t 'simple_form.labels.institution.company_name'
           p= deal_value resource.company_name
       .row

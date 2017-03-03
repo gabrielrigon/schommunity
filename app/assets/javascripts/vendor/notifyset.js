@@ -66,10 +66,10 @@ $.notify.autoHideNotify = function (style, position, title, text) {
         className: style,
         globalPosition: position,
         showAnimation: "slideDown",
-        showDuration: 150,
+        showDuration: 200,
         hideAnimation: "slideUp",
-        hideDuration: 150,
-        autoHideDelay: 3500,
+        hideDuration: 200,
+        autoHideDelay: 5000,
         autoHide: true,
         clickToHide: true
     });

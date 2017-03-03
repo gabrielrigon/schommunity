@@ -4,7 +4,7 @@ class CourseDatatable < BaseDatatable
 
   def initialize(view)
     @view = view
-    @columns = %w(name initials coordinators.name institutions.trading_name)
+    @columns = %w(name initials coordinators.name)
   end
 
   protected
@@ -21,7 +21,6 @@ class CourseDatatable < BaseDatatable
         item.name,
         item.initials,
         item.coordinator_name,
-        item.institution_trading_name,
 
         content_tag(:div, class: 'btn-group') do
           link_to('javascript:;', class: 'btn btn-default btn-sm') do
@@ -62,7 +61,7 @@ class CourseDatatable < BaseDatatable
     end
 
     Course.accessible_by(current_ability)
-          .joins(:coordinator, :institution).includes(:coordinator, :institution)
+          .joins(:coordinator).includes(:coordinator)
           .where(query).order("#{sort_column} #{sort_direction}")
           .page(page).per_page(per_page)
   end

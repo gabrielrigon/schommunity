@@ -38,6 +38,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.references :gender, index: true, foreign_key: true
       t.references :user_type, index: true, foreign_key: true
       t.references :institution, index: true, foreign_key: true
+      t.attachment :avatar
 
       t.timestamps null: false
     end
