@@ -7,7 +7,7 @@
 /tmp
 
 # Ignore files
-# /public/system/*
+/public/system
 
 # Compiled source
 *.com
