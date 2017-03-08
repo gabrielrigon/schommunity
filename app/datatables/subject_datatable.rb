@@ -1,16 +1,16 @@
-class UserDatatable < BaseDatatable
+class SubjectDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
-           to: :@view
+           :current_ability, :current_user, to: :@view
 
   def initialize(view)
     @view = view
-    @columns = %w(name email institutions.trading_name user_types.name)
+    @columns = %w(subjects.name subjects.initials courses.name)
   end
 
   protected
 
   def total_records
-    User.valid.count
+    Subject.accessible_by(current_ability).count
   end
 
   private
@@ -19,9 +19,8 @@ class UserDatatable < BaseDatatable
     collection.map do |item|
       [
         item.name,
-        item.email,
-        item.institution_trading_name,
-        item.user_type_name,
+        item.initials,
+        item.course_name,
 
         content_tag(:div, class: 'btn-group') do
           link_to('javascript:;', class: 'btn btn-default btn-sm') do
@@ -64,12 +63,13 @@ class UserDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = User.valid.search_for(params[:sSearch]).ids
+      ids = Subject.accessible_by(current_ability).search_for(params[:sSearch]).ids
       query[:id] = ids
     end
 
-    User.valid.joins(:institution, :user_type).includes(:institution, :user_type)
-        .where(query).order("#{sort_column} #{sort_direction}")
-        .page(page).per_page(per_page)
+    Subject.accessible_by(current_ability)
+          .joins(:course).includes(:course)
+          .where(query).order("#{sort_column} #{sort_direction}")
+          .page(page).per_page(per_page)
   end
 end

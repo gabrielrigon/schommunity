@@ -1,6 +1,6 @@
 class InstitutionDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
-           :current_ability, to: :@view
+           to: :@view
 
   def initialize(view)
     @view = view
@@ -44,6 +44,13 @@ class InstitutionDatatable < BaseDatatable
                 content_tag(:i, class: 'fa fa-pencil') {} +
                 ' Editar'
               end
+            end +
+
+            content_tag(:li) do
+              link_to resource_path(item), method: :delete, data: { confirm: 'Confirma?' } do
+                content_tag(:i, class: 'fa fa-trash-o') {} +
+                ' Excluir'
+              end
             end
           end
         end
@@ -60,7 +67,7 @@ class InstitutionDatatable < BaseDatatable
       query[:id] = ids
     end
 
-    Institution.valid.joins(:address.outer).includes(address: { city: :state })
+    Institution.valid.joins(:address).includes(address: { city: :state })
                .where(query).order("#{sort_column} #{sort_direction}")
                .page(page).per_page(per_page)
   end

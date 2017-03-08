@@ -34,3 +34,13 @@ body {
 .user-panel > .info {
   padding-top: 0 !important;
 }
+
+.description-box {
+  padding: 13px;
+  background-color: #fafafa;
+  color: #454545;
+}
+
+blockquote {
+  margin: 20px 0 !important;
+}

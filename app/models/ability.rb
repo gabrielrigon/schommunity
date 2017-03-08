@@ -23,11 +23,13 @@ class Ability
 
     if user.schoolmaster?
       can :manage, Course, institution_id: user.institution_id
+      can :manage, Subject, institution_id: user.institution_id
 
       can :manage, :teachers_dashboard
     end
 
     if user.coordinator?
+      can :manage, Subject, course_id: user.coordinated_course_id
 
       can :manage, :teachers_dashboard
     end

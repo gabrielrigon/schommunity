@@ -1,4 +1,4 @@
-class Teachers::DashboardController < ApplicationController
+class Teachers::DashboardController < InheritedResources::Base
   # ---- layout ----
 
   layout 'admin'

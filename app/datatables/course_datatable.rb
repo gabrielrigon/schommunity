@@ -44,6 +44,13 @@ class CourseDatatable < BaseDatatable
                 content_tag(:i, class: 'fa fa-pencil') {} +
                 ' Editar'
               end
+            end +
+
+            content_tag(:li) do
+              link_to resource_path(item), method: :delete, data: { confirm: 'Confirma?' } do
+                content_tag(:i, class: 'fa fa-trash-o') {} +
+                ' Excluir'
+              end
             end
           end
         end

@@ -8,6 +8,10 @@ class Teachers::CoursesController < InheritedResources::Base
   before_filter :authenticate_user!
   load_and_authorize_resource
 
+  # ---- Inherited Resources Setting ----
+
+  actions :all
+
   # ---- breadcrumbs ----
 
   add_breadcrumb 'Cursos', :teachers_courses_path
@@ -22,10 +26,9 @@ class Teachers::CoursesController < InheritedResources::Base
     end
   end
 
-  def create
-    @course = Course.new course_params
+  def new
+    @course = Course.new
     @course.institution = current_user.institution
-    @course.save
   end
 
   private

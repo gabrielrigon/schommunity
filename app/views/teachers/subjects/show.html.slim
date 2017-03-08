@@ -8,19 +8,19 @@ section.content
     .box-body
       .row
         .col-md-5
-          label.control-label= t 'simple_form.labels.course.name'
+          label.control-label= t 'simple_form.labels.subject.name'
           p= deal_value resource.name
         .col-md-2
-          label.control-label= t 'simple_form.labels.course.initials'
+          label.control-label= t 'simple_form.labels.subject.initials'
           p= deal_value resource.initials
         .col-md-5
-          label.control-label= t 'simple_form.labels.course.coordinator'
-          p= deal_value resource.coordinator_name
+          label.control-label= t 'simple_form.labels.subject.course'
+          p= deal_value resource.course_name
       hr
       
       .row
         .col-md-12
-          label.control-label= t 'simple_form.labels.course.description'
+          label.control-label= t 'simple_form.labels.subject.description'
           div.description-box
             = resource.description.html_safe
     .box-footer

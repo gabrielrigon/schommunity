@@ -16,7 +16,6 @@ class Admin::InstitutionsController < InheritedResources::Base
 
   add_breadcrumb 'Instituições', :admin_institutions_path
 
-
   # ---- methods ----
 
   def index

@@ -12,7 +12,6 @@ class Admin::UsersController < InheritedResources::Base
 
   add_breadcrumb 'Usuários', :admin_users_path
 
-
   # ---- methods ----
 
   def index

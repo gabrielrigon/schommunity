@@ -3,6 +3,7 @@ class Institution < ActiveRecord::Base
 
   has_one :address, as: :linkable, dependent: :destroy
   has_many :courses
+  has_many :subjects
 
   # ---- paperclip ----
 

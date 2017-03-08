@@ -71,6 +71,11 @@ class User < ActiveRecord::Base
     invite! if encrypted_password.blank?
   end
 
+  def coordinated_course_id
+    courses = Course.where(coordinator_id: id)
+    courses.any? ? courses.first.id : nil
+  end
+
   # ---- user types ----
 
   def admin?
@@ -82,7 +87,7 @@ class User < ActiveRecord::Base
   end
 
   def coordinator?
-    user_type_id == invoke(UserType, :coordinator)
+    coordinated_course_id.present?
   end
 
   def student?

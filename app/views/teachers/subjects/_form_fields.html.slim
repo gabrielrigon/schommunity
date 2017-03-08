@@ -4,7 +4,7 @@
   .col-md-2
     = form.input :initials
   .col-md-5
-    = form.association :coordinator, collection: coordinators_collection(current_user.institution_id), input_html: { class: 'selectize-single' }
+    = form.association :course, collection: courses_collection(current_user), input_html: { class: 'selectize-single' }
 .row
   .col-md-12
     = form.input :description, input_html: { class: 'texteditor' }

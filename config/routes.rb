@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: :index
 
     resources :courses
+    resources :subjects
   end
 
   namespace :students do

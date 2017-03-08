@@ -5,6 +5,11 @@ pt-BR:
       description: "manutenção de cadastros"
       new: "Incluir curso"
       edit: "Editar curso"
+    subject:
+      title: "Discipinas"
+      description: "manutenção de cadastros"
+      new: "Incluir disciplina"
+      edit: "Editar disciplins"
     institution:
       title: "Instituições"
       description: "manutenção de cadastros"
@@ -19,6 +24,7 @@ pt-BR:
     models:
       course: "Curso"
       institution: "Instituição"
+      subject: "Disciplina"
       user: "Usuário"
     errors:
       messages:

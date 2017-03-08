@@ -16,8 +16,10 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       if current_user.admin?
         redirect_to admin_dashboard_index_path
-      else
+      elsif current_user.schoolmaster?
         redirect_to teachers_courses_path
+      else
+        redirect_to teachers_subjects_path
       end
     else
       redirect_to new_user_session_path

@@ -27,6 +27,11 @@ pt-BR:
       institution:
         company_name: "Razão Social"
         trading_name: "Nome"
+      subject:
+        name: "Nome"
+        initials: "Iniciais"
+        course: "Curso"
+        description: "Descrição"
       user:
         institution: "Instituição"
         user_type: "Tipo de usuário"
