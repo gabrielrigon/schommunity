@@ -26,7 +26,7 @@ City.create!([
     { name: 'Poços de Caldas', state_id: 2 }
   ])
 
-intitution = Institution.new(trading_name: 'Administration')
+institution = Institution.new(trading_name: 'Administration')
 institution.save(validate: false)
 
 user = User.new(first_name: 'Administrador',
