@@ -5,6 +5,10 @@ class Institution < ActiveRecord::Base
   has_many :courses
   has_many :subjects
 
+  # ---- searchkick ----
+
+  searchkick match: :word_start, searchable: [:trading_name, :company_name, :cnpj]
+
   # ---- paperclip ----
 
   has_attached_file :logo, styles: {
@@ -24,10 +28,6 @@ class Institution < ActiveRecord::Base
 
   accepts_nested_attributes_for :address
 
-  # ---- scoped search ----
-
-  scoped_search on: [:trading_name, :company_name]
-
   # ---- aliases ----
 
   alias_attribute :name, :trading_name
@@ -35,4 +35,14 @@ class Institution < ActiveRecord::Base
   # ---- scope ----
 
   scope :valid, -> { where.not(id: 1) }
+
+  # ---- searchkick ----
+
+  def search_data
+    {
+      trading_name: trading_name,
+      company_name: company_name,
+      cnpj: cnpj
+    }
+  end
 end

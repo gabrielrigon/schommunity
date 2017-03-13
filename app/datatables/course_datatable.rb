@@ -63,7 +63,7 @@ class CourseDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = Course.accessible_by(current_ability).search_for(params[:sSearch]).ids
+      ids = Course.accessible_by(current_ability).search(params[:sSearch]).records.ids
       query[:id] = ids
     end
 

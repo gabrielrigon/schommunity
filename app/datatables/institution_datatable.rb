@@ -63,7 +63,7 @@ class InstitutionDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = Institution.valid.search_for(params[:sSearch]).ids
+      ids = Institution.valid.search(params[:sSearch]).records.ids
       query[:id] = ids
     end
 

@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :invitable, :recoverable, :registerable,
          :trackable, :timeoutable
 
+  # ---- searchkick ----
+
+  searchkick match: :word_start, searchable: [:name, :email, :institution]
+
   # ---- relationships ----
 
   belongs_to :user_type
@@ -49,10 +53,6 @@ class User < ActiveRecord::Base
   delegate :street, :number, :district, :complement, :city_name,
            :state_name, :zipcode, to: :address, prefix: true, allow_nil: true
 
-  # ---- scoped search ----
-
-  scoped_search on: [:first_name, :last_name, :email]
-
   # ---- scope ----
 
   scope :valid, -> { where.not(id: 1) }
@@ -92,5 +92,15 @@ class User < ActiveRecord::Base
 
   def student?
     user_type_id == invoke(UserType, :student)
+  end
+
+  # ---- searchkick ----
+
+  def search_data
+    {
+      name: full_name,
+      email: email,
+      institution: institution_trading_name
+    }
   end
 end

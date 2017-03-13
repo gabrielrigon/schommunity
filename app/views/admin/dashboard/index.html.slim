@@ -1,4 +1,13 @@
-.row
-  .col-md-12
-    h2
-      | Dashboard : Admin
+section.content-header
+  h1
+    | Dashboard
+    small
+      | 
+
+  ol.breadcrumb
+    = render_breadcrumbs tag: :li, separator: '>'
+
+section.content
+  .row
+    = render 'shared/dashboard_tile', icon: 'users', name: 'Usuários', collection: @registered_users
+    = render 'shared/dashboard_tile', icon: 'university', name: 'Instituições', collection: @registered_institutions

@@ -218,8 +218,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    scoped_search (4.0.0)
-      activerecord (>= 4.2.0)
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -321,7 +319,6 @@ DEPENDENCIES
   rails-assets-toastr!
   responders
   sass-rails (~> 5.0)
-  scoped_search
   sdoc (~> 0.4.0)
   searchkick
   selectize-rails

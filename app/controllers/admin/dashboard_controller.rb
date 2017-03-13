@@ -15,5 +15,7 @@ class Admin::DashboardController < InheritedResources::Base
   # ---- methods ----
 
   def index
+    @registered_users = User.valid.count
+    @registered_institutions = Institution.valid.count
   end
 end

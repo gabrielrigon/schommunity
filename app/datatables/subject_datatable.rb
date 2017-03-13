@@ -63,7 +63,7 @@ class SubjectDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = Subject.accessible_by(current_ability).search_for(params[:sSearch]).ids
+      ids = Subject.accessible_by(current_ability).search(params[:sSearch]).records.ids
       query[:id] = ids
     end
 

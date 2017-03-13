@@ -64,7 +64,7 @@ class UserDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = User.valid.search_for(params[:sSearch]).ids
+      ids = User.valid.search(params[:sSearch]).records.ids
       query[:id] = ids
     end
 
