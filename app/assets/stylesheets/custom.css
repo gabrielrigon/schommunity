@@ -108,6 +108,11 @@ button, input, optgroup, select, textarea {
   border-radius: 4px !important;
 }
 
+.btn-success {
+  background-color: #15CD72 !important;
+  border: none !important;
+}
+
 /* end theme */
 
 .profile-user-img {
