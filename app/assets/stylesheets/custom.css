@@ -69,7 +69,7 @@ abbr[title], abbr[data-original-title] {
   border: none !important;
 }
 
-/* theme */
+/* theme override */
 
 .content-wrapper, .right-side {
   background-color: #F3F4F5 !important;
@@ -113,8 +113,38 @@ button, input, optgroup, select, textarea {
   border: none !important;
 }
 
-/* end theme */
-
 .profile-user-img {
   border: 2px solid #d2d6de !important;
+}
+
+.info-box-text {
+  margin-top: 19px;
+}
+
+.info-box-content {
+  padding-left: 21px;
+}
+
+.info-box {
+  border-radius: 4px;
+}
+
+.info-box-icon {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.skin-black .sidebar a {
+  color: #fff !important;
+}
+
+.login-box-body, .register-box-body {
+  border-radius: 4px;
+}
+
+/* end theme override */
+
+.bg-dark-gray {
+  background-color: #646C7F;
+  color: #fff;
 }
