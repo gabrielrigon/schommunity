@@ -1,5 +1,6 @@
 body {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica,Arial, sans-serif;
+  /*font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica,Arial, sans-serif;*/
+  font-family: 'Muli', sans-serif;
 }
 
 .dataTables_processing {
@@ -43,4 +44,72 @@ body {
 
 blockquote {
   margin: 20px 0 !important;
+}
+
+.login-page, .register-page {
+  background: #0069ff;
+}
+
+.login-logo, .register-logo {
+  color: #fff;
+}
+
+.login-links {
+  margin-top: 19px;
+  padding-top: 10px;
+  border-top: 1px solid #eeeeee;
+}
+
+.login-links a {
+  color: #0069ff !important;
+}
+
+abbr[title], abbr[data-original-title] {
+  cursor: default !important;
+  border: none !important;
+}
+
+/* theme */
+
+.content-wrapper, .right-side {
+  background-color: #F3F4F5 !important;
+}
+
+.skin-black .main-header>.logo, .skin-black .main-header>.navbar>.sidebar-toggle, .skin-black .main-header>.navbar {
+  background-color: #0069ff !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.skin-black .main-header>.navbar .navbar-custom-menu .navbar-nav>li>a, .skin-black .main-header>.navbar .navbar-right>li>a {
+  background-color: none !important;
+  border: none !important;
+}
+
+.skin-black .main-header>.navbar .navbar-custom-menu .navbar-nav>li>a, .skin-black .main-header>.navbar .navbar-right>li>a {
+  border: none !important;
+  color: #fff !important;
+}
+
+.skin-black .main-header>.navbar .nav>li>a:hover, .nav>li>a:focus, .nav>li>a:active {
+  background: none !important;
+  color: #fff !important;
+}
+
+.skin-black .wrapper, .skin-black .main-sidebar, .skin-black .left-side {
+  background-color: #323232 !important;
+}
+
+.skin-black .sidebar-menu>li:hover>a, .skin-black .sidebar-menu>li.active>a {
+  background-color: #2a2a2a !important;
+}
+
+button, input, optgroup, select, textarea {
+  border-radius: 4px !important;
+}
+
+/* end theme */
+
+.profile-user-img {
+  border: 2px solid #d2d6de !important;
 }

@@ -12,25 +12,25 @@ $.notify.addStyle("metro", {
             "background-color": "#f4f4f4",
             "border": "0px solid #ddd"
         },
-        error: {
-            "color": "#fafafa !important",
-            "background-color": "#dd4b39",
-            "border": "0px solid #d73925"
+        error: { // ok
+            "color": "#ED4F32 !important",
+            "background-color": "#fff",
+            "border": "1px solid #ED4F32"
         },
-        success: {
-            "color": "#fafafa !important",
-            "background-color": "#00a65a",
-            "border": "0px solid #008d4c"
+        success: { // ok
+            "color": "#15CD72 !important",
+            "background-color": "#fff",
+            "border": "1px solid #15CD72"
         },
         info: {
             "color": "#fafafa !important",
             "background-color": "#00c0ef",
             "border": "0px solid #00acd6"
         },
-        warning: {
-            "color": "#fafafa !important",
-            "background-color": "#f39c12",
-            "border": "0px solid #e08e0b"
+        warning: { // ok
+            "color": "#ED4F32 !important",
+            "background-color": "#fff",
+            "border": "1px solid #ED4F32"
         },
         black: {
             "color": "#fafafa !important",

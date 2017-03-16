@@ -1,10 +1,10 @@
 header.main-header
   a.logo
     span.logo-lg
-      = fa_icon 'leanpub'
-      |  TCCAdmin
+      = fa_icon 'dashcube'
+      |  Schommunity
     span.logo-mini
-      = fa_icon 'leanpub'
+      = fa_icon 'dashcube'
   nav.navbar.navbar-static-top
     a.sidebar-toggle data-toggle="offcanvas" role="button"
       span.sr-only
@@ -12,9 +12,9 @@ header.main-header
     .navbar-custom-menu
       ul.nav.navbar-nav
         li.institution
-          = link_to 'javascript:;' 
+          = link_to 'javascript:;'
             = current_user.decorate.institution_trading_name
         li.signout
           = link_to destroy_user_session_path, method: :delete do
             = fa_icon 'sign-out'
-            |  Sign out
+            |  Sair

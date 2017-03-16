@@ -4,8 +4,9 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="author" content="Gabriel" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>TCCAdmin</title>
+    <title>Schommunity | Entrar</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
   </head>
@@ -13,7 +14,7 @@
   <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-        <b>TCC</b>Admin
+        <%= fa_icon 'dashcube' %> Schommunity
       </div>
       <div class="login-box-body">
         <%= yield %>

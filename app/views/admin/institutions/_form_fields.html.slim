@@ -5,7 +5,7 @@
 .row
   .col-md-12
     - if resource.persisted?
-      = image_tag resource.logo.url(:large), class: 'img-crud img-responsive', lazy: true
+      = image_tag resource.logo.url(:large), class: 'img-crud img-responsive img-circle', lazy: true
     = form.input :logo, as: :file, label: false
 hr
 
