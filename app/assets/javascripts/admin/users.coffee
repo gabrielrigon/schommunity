@@ -1,9 +1,9 @@
 $ ->
-  window.UserDataTable = $("#users").dataTable(
+  window.AdminUserDataTable = $("#dt_admin_users").dataTable(
     sDom: "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>"
     bProcessing: true
     bServerSide: true
-    sAjaxSource: $("#users").data("source")
+    sAjaxSource: $("#dt_admin_users").data("source")
     fnServerData: (sSource, aaData, fnCallback) ->
       $.getJSON sSource, aaData, (json) ->
         fnCallback json

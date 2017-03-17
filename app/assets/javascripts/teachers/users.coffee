@@ -1,9 +1,9 @@
 $ ->
-  window.SubjectDataTable = $("#subjects").dataTable(
+  window.TeacherUserDataTable = $("#dt_teachers_users").dataTable(
     sDom: "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>"
     bProcessing: true
     bServerSide: true
-    sAjaxSource: $("#subjects").data("source")
+    sAjaxSource: $("#dt_teachers_users").data("source")
     fnServerData: (sSource, aaData, fnCallback) ->
       $.getJSON sSource, aaData, (json) ->
         fnCallback json

@@ -1,4 +1,4 @@
-class UserDatatable < BaseDatatable
+class Admin::UserDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
            to: :@view
 

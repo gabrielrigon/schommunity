@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
     resources :courses
     resources :subjects
+    resources :users
   end
 
   namespace :students do

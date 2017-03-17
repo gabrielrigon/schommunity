@@ -69,7 +69,7 @@ $.notify.autoHideNotify = function (style, position, title, text) {
         showDuration: 200,
         hideAnimation: "slideUp",
         hideDuration: 200,
-        autoHideDelay: 5000,
+        autoHideDelay: 7000,
         autoHide: true,
         clickToHide: true
     });

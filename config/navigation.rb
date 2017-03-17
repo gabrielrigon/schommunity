@@ -16,7 +16,13 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :teachers_courses, menu_label_icon('Cursos', 'graduation-cap'), teachers_courses_path, class: 'root-level', highlights_on: %r{/courses} if can?(:manage, Course)
     primary.item :teachers_subjects, menu_label_icon('Disciplinas', 'book'), teachers_subjects_path, class: 'root-level', highlights_on: %r{/subjects} if can?(:manage, Subject)
     primary.item :admin_institutions, menu_label_icon('Instituições', 'university'), admin_institutions_path, class: 'root-level', highlights_on: %r{/institutions} if can?(:manage, Institution)
-    primary.item :admin_users, menu_label_icon('Usuários', 'user'), admin_users_path, class: 'root-level', highlights_on: %r{/users} if can?(:manage, User)
+
+    # ---- types of users ----
+    if current_user.admin?
+      primary.item :admin_users, menu_label_icon('Usuários', 'user'), admin_users_path, class: 'root-level', highlights_on: %r{/users} if can?(:manage, User)
+    elsif current_user.schoolmaster?
+      primary.item :teachers_users, menu_label_icon('Usuários', 'user'), teachers_users_path, class: 'root-level', highlights_on: %r{/users} if can?(:manage, User)
+    end
   end
 
   #   # Add an item to the primary navigation. The following params apply:
