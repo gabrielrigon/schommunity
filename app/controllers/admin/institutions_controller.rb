@@ -8,10 +8,6 @@ class Admin::InstitutionsController < InheritedResources::Base
   before_filter :authenticate_user!
   load_and_authorize_resource
 
-  # ---- Inherited Resources Setting ----
-
-  actions :all
-
   # ---- breadcrumbs ----
 
   add_breadcrumb 'Instituições', :admin_institutions_path

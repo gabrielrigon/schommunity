@@ -10,7 +10,7 @@ class InstitutionDatatable < BaseDatatable
   protected
 
   def total_records
-    Institution.valid.count
+    Institution.accessible_by(current_ability).valid.count
   end
 
   private
@@ -63,11 +63,12 @@ class InstitutionDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = Institution.valid.search(params[:sSearch]).records.ids
+      ids = Institution.accessible_by(current_ability).valid.search(params[:sSearch]).records.ids
       query[:id] = ids
     end
 
-    Institution.valid.joins(:address).includes(address: { city: :state })
+    Institution.accessible_by(current_ability)
+               .valid.joins(:address).includes(address: { city: :state })
                .where(query).order("#{sort_column} #{sort_direction}")
                .page(page).per_page(per_page)
   end

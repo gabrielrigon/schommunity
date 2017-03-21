@@ -1,6 +1,6 @@
 class Admin::UserDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
-           to: :@view
+           :current_ability, to: :@view
 
   def initialize(view)
     @view = view
@@ -10,7 +10,7 @@ class Admin::UserDatatable < BaseDatatable
   protected
 
   def total_records
-    User.valid.count
+    User.accessible_by(current_ability).valid.count
   end
 
   private
@@ -64,11 +64,13 @@ class Admin::UserDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = User.valid.search(params[:sSearch]).records.ids
+      ids = User.accessible_by(current_ability)
+                .valid.search(params[:sSearch]).records.ids
       query[:id] = ids
     end
 
-    User.valid.joins(:institution, :user_type).includes(:institution, :user_type)
+    User.accessible_by(current_ability)
+        .valid.joins(:institution, :user_type).includes(:institution, :user_type)
         .where(query).order("#{sort_column} #{sort_direction}")
         .page(page).per_page(per_page)
   end

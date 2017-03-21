@@ -29,5 +29,6 @@ Rails.application.routes.draw do
   end
 
   namespace :students do
+    resources :dashboard, only: :index
   end
 end

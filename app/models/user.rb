@@ -90,6 +90,10 @@ class User < ActiveRecord::Base
     coordinated_course_id.present?
   end
 
+  def teacher?
+    user_type_id == invoke(UserType, :teacher)
+  end
+
   def student?
     user_type_id == invoke(UserType, :student)
   end

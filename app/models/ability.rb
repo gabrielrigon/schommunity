@@ -21,7 +21,6 @@ class Ability
       can :manage, User
 
       can :manage, :admin_dashboard
-      can :manage, :admin_users
     end
 
     if user.schoolmaster?
@@ -30,13 +29,20 @@ class Ability
       can :manage, User, institution_id: user.institution_id
 
       can :manage, :teachers_dashboard
-      can :manage, :teachers_users
     end
 
     if user.coordinator?
       can :manage, Subject, course_id: user.coordinated_course_id
 
       can :manage, :teachers_dashboard
+    end
+
+    if user.teacher?
+      can :manage, :teachers_dashboard
+    end
+
+    if user.student?
+      can :manage, :students_dashboard
     end
   end
 end

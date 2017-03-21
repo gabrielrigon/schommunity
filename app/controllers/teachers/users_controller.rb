@@ -6,7 +6,7 @@ class Teachers::UsersController < InheritedResources::Base
   # ---- devise ----
 
   before_filter :authenticate_user!
-  load_and_authorize_resource class: :teachers_users
+  load_and_authorize_resource
 
   # ---- breadcrumbs ----
 
@@ -24,7 +24,11 @@ class Teachers::UsersController < InheritedResources::Base
   def new
     @user = User.new
     @user.build_address
-    @user.institution = current_user.institution
+  end
+
+  def create
+    resource.institution = current_user.institution
+    create!
   end
 
   def edit

@@ -21,10 +21,10 @@ class Teachers::SubjectsController < InheritedResources::Base
     end
   end
 
-  def new
-    @subject = Subject.new
-    @subject.institution = current_user.institution
-    @subject.course_id = current_user.coordinated_course_id if current_user.coordinator?
+  def create
+    resource.course_id = current_user.coordinated_course_id if current_user.coordinator?
+    resource.institution = current_user.institution
+    create!
   end
 
   private
