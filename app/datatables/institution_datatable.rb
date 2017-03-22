@@ -1,6 +1,6 @@
 class InstitutionDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
-           to: :@view
+           :current_ability, to: :@view
 
   def initialize(view)
     @view = view

@@ -14,6 +14,12 @@ UserType.create!([
     { name: 'Aluno', alias: 'student' }
   ])
 
+ClassroomTime.create!([
+    { name: 'Manhã', alias: 'morning' },
+    { name: 'Tarde', alias: 'afternoon' },
+    { name: 'Noite', alias: 'night' }
+  ])
+
 # data
 
 State.create!([

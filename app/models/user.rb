@@ -71,9 +71,10 @@ class User < ActiveRecord::Base
     invite! if encrypted_password.blank?
   end
 
-  def coordinated_course_id
-    courses = Course.where(coordinator_id: id)
-    courses.any? ? courses.first.id : nil
+  def coordinated_courses_ids
+    courses_ids = Course.where(coordinator_id: id).pluck(:id)
+    courses_ids << nil # not ok
+    courses_ids.presence
   end
 
   # ---- user types ----
@@ -87,7 +88,7 @@ class User < ActiveRecord::Base
   end
 
   def coordinator?
-    coordinated_course_id.present?
+    coordinated_courses_ids.any?
   end
 
   def teacher?

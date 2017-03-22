@@ -22,7 +22,6 @@ class Teachers::SubjectsController < InheritedResources::Base
   end
 
   def create
-    resource.course_id = current_user.coordinated_course_id if current_user.coordinator?
     resource.institution = current_user.institution
     create!
   end

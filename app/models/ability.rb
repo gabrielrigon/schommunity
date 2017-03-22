@@ -7,12 +7,11 @@ class Ability
 
     cannot :manage, Course
     cannot :manage, Institution
+    cannot :manage, Subject
     cannot :manage, User
 
     cannot :manage, :admin_dashboard
     cannot :manage, :teachers_dashboard
-    cannot :manage, :admin_users
-    cannot :manage, :teachers_users
 
     # ---- user types ----
 
@@ -32,7 +31,7 @@ class Ability
     end
 
     if user.coordinator?
-      can :manage, Subject, course_id: user.coordinated_course_id
+      can :manage, Subject, course_id: user.coordinated_courses_ids
 
       can :manage, :teachers_dashboard
     end
