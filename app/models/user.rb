@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   belongs_to :institution
   belongs_to :gender
   has_many :courses, as: :coordinator
+  has_many :classrooms, as: :teacher
   has_one :address, as: :linkable, dependent: :destroy
 
   # ---- paperclip ----
@@ -56,6 +57,7 @@ class User < ActiveRecord::Base
   # ---- scope ----
 
   scope :valid, -> { where.not(id: 1) }
+  scope :students, -> { where(user_type_id: invoke(UserType, :student)) }
 
   # ---- aliases ----
 

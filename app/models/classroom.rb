@@ -6,6 +6,7 @@ class Classroom < ActiveRecord::Base
   belongs_to :subject
   belongs_to :classroom_time
   belongs_to :representative, class_name: 'User', foreign_key: 'representative_id'
+  belongs_to :teacher, class_name: 'User', foreign_key: 'teacher_id'
 
   # ---- delegates ----
 
@@ -14,6 +15,7 @@ class Classroom < ActiveRecord::Base
   delegate :initials, :name, to: :subject, prefix: true, allow_nil: true
   delegate :name, to: :classroom_time, prefix: true, allow_nil: true
   delegate :name, to: :representative, prefix: true, allow_nil: true
+  delegate :name, to: :teacher, prefix: true, allow_nil: true
 
   # ---- callbacks ----
 

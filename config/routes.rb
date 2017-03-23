@@ -23,6 +23,12 @@ Rails.application.routes.draw do
   namespace :teachers do
     resources :dashboard, only: :index
 
+    resources :classrooms do
+      collection do
+        get 'subject_field'
+      end
+    end
+
     resources :courses
     resources :subjects
     resources :users

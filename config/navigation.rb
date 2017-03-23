@@ -5,24 +5,18 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.dom_class = 'sidebar-menu'
 
     # ---- types of dashboards ----
-    if current_user.admin?
-      primary.item :admin_dashboard, menu_label_icon('Dashboard', 'dashboard'), admin_dashboard_index_path, class: 'root-level', highlights_on: %r{/dashboard} if can?(:manage, :admin_dashboard)
-    elsif current_user.student?
-
-    else
-      primary.item :teachers_dashboard, menu_label_icon('Dashboard', 'dashboard'), teachers_dashboard_index_path, class: 'root-level', highlights_on: %r{/dashboard} if can?(:manage, :teachers_dashboard)
-    end
+    primary.item :admin_dashboard, menu_label_icon('Dashboard', 'dashboard'), admin_dashboard_index_path, class: 'root-level', highlights_on: %r{/dashboard} if can?(:manage, :admin_dashboard)
+    primary.item :students_dashboard, menu_label_icon('Dashboard', 'dashboard'), students_dashboard_index_path, class: 'root-level', highlights_on: %r{/dashboard} if can?(:manage, :students_dashboard)
+    primary.item :teachers_dashboard, menu_label_icon('Dashboard', 'dashboard'), teachers_dashboard_index_path, class: 'root-level', highlights_on: %r{/dashboard} if can?(:manage, :teachers_dashboard)
 
     primary.item :teachers_courses, menu_label_icon('Cursos', 'graduation-cap'), teachers_courses_path, class: 'root-level', highlights_on: %r{/courses} if can?(:manage, Course)
     primary.item :teachers_subjects, menu_label_icon('Disciplinas', 'book'), teachers_subjects_path, class: 'root-level', highlights_on: %r{/subjects} if can?(:manage, Subject)
     primary.item :admin_institutions, menu_label_icon('Instituições', 'university'), admin_institutions_path, class: 'root-level', highlights_on: %r{/institutions} if can?(:manage, Institution)
+    primary.item :teachers_classrooms, menu_label_icon('Salas', 'users'), teachers_classrooms_path, class: 'root-level', highlights_on: %r{/classrooms} if can?(:manage, Classroom)
 
     # ---- types of users ----
-    if current_user.admin?
-      primary.item :admin_users, menu_label_icon('Usuários', 'user'), admin_users_path, class: 'root-level', highlights_on: %r{/users} if can?(:manage, User)
-    elsif current_user.schoolmaster?
-      primary.item :teachers_users, menu_label_icon('Usuários', 'user'), teachers_users_path, class: 'root-level', highlights_on: %r{/users} if can?(:manage, User)
-    end
+    primary.item :admin_users, menu_label_icon('Usuários', 'user'), admin_users_path, class: 'root-level', highlights_on: %r{/users} if can?(:manage, :admin_users)
+    primary.item :teachers_users, menu_label_icon('Usuários', 'user'), teachers_users_path, class: 'root-level', highlights_on: %r{/users} if can?(:manage, :teachers_users)
   end
 
   #   # Add an item to the primary navigation. The following params apply:

@@ -1,0 +1,10 @@
+.row
+  .col-md-4
+    = form.association :course, collection: courses_collection(current_user), input_html: { class: 'selectize-single selectize-course' }
+  #subject_container.col-md-4
+    = form.association :subject, collection: subjects_collection(form.object.course_id), input_html: { class: 'selectize-single selectize-subject' }
+  .col-md-4
+    = form.association :classroom_time, input_html: { class: 'selectize-single' }
+.row
+  .col-md-12
+    = form.association :representative, collection: representative_collection(current_user), input_html: { class: 'selectize-single' }

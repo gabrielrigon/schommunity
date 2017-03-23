@@ -64,13 +64,14 @@ class Admin::UserDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = User.accessible_by(current_ability)
-                .valid.search(params[:sSearch]).records.ids
+      ids = User.accessible_by(current_ability).valid
+                .search(params[:sSearch]).records
       query[:id] = ids
     end
 
-    User.accessible_by(current_ability)
-        .valid.joins(:institution, :user_type).includes(:institution, :user_type)
+    User.accessible_by(current_ability).valid
+        .joins(:institution.outer, :user_type.outer)
+        .includes(:institution, :user_type)
         .where(query).order("#{sort_column} #{sort_direction}")
         .page(page).per_page(per_page)
   end

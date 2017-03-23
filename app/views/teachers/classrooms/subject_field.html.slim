@@ -1,0 +1,6 @@
+.form-group.select.required
+  label.select.required.control-label
+    / abbr title="required" *
+    | Disciplina
+  div
+    = collection_select(:classroom, :subject_id, @subjects, :id, :name, { prompt: '' }, { class: 'select required form-control selectize-subject' })

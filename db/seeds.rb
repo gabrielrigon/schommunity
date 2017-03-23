@@ -15,9 +15,9 @@ UserType.create!([
   ])
 
 ClassroomTime.create!([
-    { name: 'Manhã', alias: 'morning' },
-    { name: 'Tarde', alias: 'afternoon' },
-    { name: 'Noite', alias: 'night' }
+    { name: 'Manhã', initial: 'M', alias: 'morning' },
+    { name: 'Tarde', initial: 'T', alias: 'afternoon' },
+    { name: 'Noite', initial: 'N', alias: 'night' }
   ])
 
 # data

@@ -63,12 +63,14 @@ class InstitutionDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = Institution.accessible_by(current_ability).valid.search(params[:sSearch]).records.ids
+      ids = Institution.accessible_by(current_ability).valid
+                       .search(params[:sSearch]).records
       query[:id] = ids
     end
 
-    Institution.accessible_by(current_ability)
-               .valid.joins(:address).includes(address: { city: :state })
+    Institution.accessible_by(current_ability).valid
+               .joins(:address.outer)
+               .includes(address: { city: :state })
                .where(query).order("#{sort_column} #{sort_direction}")
                .page(page).per_page(per_page)
   end

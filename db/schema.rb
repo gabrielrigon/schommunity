@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170322161004) do
 
   create_table "classroom_times", force: :cascade do |t|
     t.string   "name"
+    t.string   "initial"
     t.string   "alias"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -56,8 +57,10 @@ ActiveRecord::Schema.define(version: 20170322161004) do
     t.integer  "subject_id"
     t.integer  "classroom_time_id"
     t.integer  "representative_id"
+    t.integer  "teacher_id"
     t.string   "uuid"
     t.text     "description"
+    t.boolean  "active"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -67,6 +70,7 @@ ActiveRecord::Schema.define(version: 20170322161004) do
   add_index "classrooms", ["institution_id"], name: "index_classrooms_on_institution_id", using: :btree
   add_index "classrooms", ["representative_id"], name: "index_classrooms_on_representative_id", using: :btree
   add_index "classrooms", ["subject_id"], name: "index_classrooms_on_subject_id", using: :btree
+  add_index "classrooms", ["teacher_id"], name: "index_classrooms_on_teacher_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -180,6 +184,7 @@ ActiveRecord::Schema.define(version: 20170322161004) do
   add_foreign_key "classrooms", "institutions"
   add_foreign_key "classrooms", "subjects"
   add_foreign_key "classrooms", "users", column: "representative_id"
+  add_foreign_key "classrooms", "users", column: "teacher_id"
   add_foreign_key "courses", "institutions"
   add_foreign_key "courses", "users", column: "coordinator_id"
   add_foreign_key "subjects", "courses"

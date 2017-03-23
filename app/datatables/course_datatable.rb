@@ -63,12 +63,14 @@ class CourseDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = Course.accessible_by(current_ability).search(params[:sSearch]).records.ids
+      ids = Course.accessible_by(current_ability)
+                  .search(params[:sSearch]).records
       query[:id] = ids
     end
 
     Course.accessible_by(current_ability)
-          .joins(:coordinator).includes(:coordinator)
+          .joins(:coordinator.outer)
+          .includes(:coordinator)
           .where(query).order("#{sort_column} #{sort_direction}")
           .page(page).per_page(per_page)
   end

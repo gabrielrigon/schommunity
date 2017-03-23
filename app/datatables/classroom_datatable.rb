@@ -1,16 +1,16 @@
-class SubjectDatatable < BaseDatatable
+class ClassroomDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
            :current_ability, :current_user, to: :@view
 
   def initialize(view)
     @view = view
-    @columns = %w(subjects.name subjects.initials courses.name)
+    @columns = %w(uuid courses.name subjects.name classroom_times.name teachers.name)
   end
 
   protected
 
   def total_records
-    Subject.accessible_by(current_ability).count
+    Classroom.accessible_by(current_ability).count
   end
 
   private
@@ -18,9 +18,11 @@ class SubjectDatatable < BaseDatatable
   def data
     collection.map do |item|
       [
-        item.name,
-        item.initials,
+        item.uuid,
         item.course_name,
+        item.subject_name,
+        item.classroom_time_name,
+        item.teacher_name,
 
         content_tag(:div, class: 'btn-group') do
           link_to('javascript:;', class: 'btn btn-default btn-sm') do
@@ -63,15 +65,15 @@ class SubjectDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = Subject.accessible_by(current_ability)
-                   .search(params[:sSearch]).records
+      ids = Classroom.accessible_by(current_ability)
+                     .search(params[:sSearch]).records
       query[:id] = ids
     end
 
-    Subject.accessible_by(current_ability)
-          .joins(:course.outer)
-          .includes(:course)
-          .where(query).order("#{sort_column} #{sort_direction}")
-          .page(page).per_page(per_page)
+    Classroom.accessible_by(current_ability)
+             .joins(:course.outer, :subject.outer, :classroom_time.outer, :teacher.outer)
+             .includes(:course, :subject, :classroom_time, :teacher)
+             .where(query).order("#{sort_column} #{sort_direction}")
+             .page(page).per_page(per_page)
   end
 end
