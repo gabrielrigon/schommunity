@@ -5,15 +5,15 @@ default: &default
 
 development:
   <<: *default
-  database: tcc
+  database: trabalho_graduacao
 
 # test:
 #   <<: *default
-#   database: tcc_test
+#   database: trabalho_graduacao_test
 #
 # production:
 #   <<: *default
-#   database: tcc_production
+#   database: trabalho_graduacao_production
   username: gabriel
   # password: <%= ENV['TCC_DATABASE_PASSWORD'] %>
   password:
