@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :courses, as: :coordinator
   has_many :classrooms, as: :teacher
   has_one :address, as: :linkable, dependent: :destroy
+  has_one :student, dependent: :destroy
 
   # ---- paperclip ----
 
@@ -37,6 +38,7 @@ class User < ActiveRecord::Base
   # ---- callbacks ----
 
   after_create :invite
+  after_create :create_student
 
   # ---- nested values ----
 
@@ -77,6 +79,10 @@ class User < ActiveRecord::Base
     courses_ids = Course.where(coordinator_id: id).pluck(:id)
     courses_ids << nil # not ok
     courses_ids.presence
+  end
+
+  def create_student
+    Student.create(user: self, institution: institution) if student?
   end
 
   # ---- user types ----

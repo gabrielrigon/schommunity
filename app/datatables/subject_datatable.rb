@@ -69,9 +69,9 @@ class SubjectDatatable < BaseDatatable
     end
 
     Subject.accessible_by(current_ability)
-          .joins(:course.outer)
-          .includes(:course)
-          .where(query).order("#{sort_column} #{sort_direction}")
-          .page(page).per_page(per_page)
+           .joins(:course.outer)
+           .includes(:course)
+           .where(query).order("#{sort_column} #{sort_direction}")
+           .page(page).per_page(per_page)
   end
 end

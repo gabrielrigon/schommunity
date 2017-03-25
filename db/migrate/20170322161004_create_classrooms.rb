@@ -9,7 +9,7 @@ class CreateClassrooms < ActiveRecord::Migration
       t.references :teacher, index: true, references: :users
       t.string :uuid
       t.text :description
-      t.boolean :active
+      t.boolean :active, default: true
 
       t.timestamps null: false
     end
