@@ -55,6 +55,7 @@ class User < ActiveRecord::Base
   delegate :id, :trading_name, to: :institution, prefix: true, allow_nil: true
   delegate :street, :number, :district, :complement, :city_name,
            :state_name, :zipcode, to: :address, prefix: true, allow_nil: true
+  delegate :number, to: :student, prefix: true, allow_nil: true
 
   # ---- scope ----
 
