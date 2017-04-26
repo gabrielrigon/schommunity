@@ -34,7 +34,10 @@ class Teachers::ClassroomsController < InheritedResources::Base
   private
 
   def classroom_params
-    params.require(:classroom).permit!
+    if request.patch?
+      params.require(:classroom).permit(:teacher_id, :representative_id)
+    else
+      params.require(:classroom).permit!
+    end
   end
-
 end

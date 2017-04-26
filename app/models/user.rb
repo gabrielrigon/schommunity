@@ -61,6 +61,7 @@ class User < ActiveRecord::Base
 
   scope :valid, -> { where.not(id: 1) }
   scope :students, -> { where(user_type_id: invoke(UserType, :student)) }
+  scope :teachers, -> { where(user_type_id: invoke(UserType, :teacher)) }
 
   # ---- aliases ----
 

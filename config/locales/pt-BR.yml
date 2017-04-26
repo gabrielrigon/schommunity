@@ -1,5 +1,10 @@
 pt-BR:
   resources:
+    classroom:
+      title: "Salas de Aula"
+      description: "manutenção de cadastros"
+      new: "Incluir sala de aula"
+      edit: "Editar sala de aula"
     course:
       title: "Cursos"
       description: "manutenção de cadastros"
@@ -22,6 +27,7 @@ pt-BR:
       edit: "Editar usuário"
   activerecord:
     models:
+      classroom: "Sala de Aula"
       course: "Curso"
       institution: "Instituição"
       subject: "Disciplina"

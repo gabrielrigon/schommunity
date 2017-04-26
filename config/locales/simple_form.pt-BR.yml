@@ -12,20 +12,27 @@ pt-BR:
 
     labels:
       address:
-        street: "Rua/Av "
+        street: "Rua/Av"
         number: "Nr"
         complement: "Complemento"
         district: "Bairro"
         city: "Cidade"
         state: "Estado"
         zipcode: "CEP"
+      classroom:
+        course: "Curso"
+        subject: "Disciplina"
+        classroom_time: "Período"
+        representative: "Aluno representante"
+        teacher: "Professor"
+        uuid: "ID"
       course:
         name: "Nome"
         initials: "Iniciais"
         coordinator: "Coordenador"
         description: "Descrição"
       institution:
-        company_name: "Razão Social"
+        company_name: "Razão social"
         trading_name: "Nome"
       subject:
         name: "Nome"

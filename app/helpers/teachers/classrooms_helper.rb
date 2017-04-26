@@ -6,4 +6,8 @@ module Teachers::ClassroomsHelper
   def representative_collection(user)
     User.students.where(institution: user.institution)
   end
+
+  def teachers_collection(user)
+    User.teachers.where(institution: user.institution)
+  end
 end
