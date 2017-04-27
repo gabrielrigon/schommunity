@@ -13,7 +13,12 @@ hr
   .col-md-8
     = form.association :institution, collection: institutions_collection, input_html: { class: 'selectize-single' }
   .col-md-4
-    = form.association :user_type, input_html: { class: 'selectize-single' }
+    = form.association :user_type, collection: user_type_collection,input_html: { class: 'selectize-single' }
+
+#student_number_container.row style="display: #{ display_student_number_container(resource) }"
+  .col-md-12
+    = form.input :attribute_student_number
+
 .row
   .col-md-6
     = form.input :first_name

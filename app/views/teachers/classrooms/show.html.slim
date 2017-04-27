@@ -26,9 +26,4 @@ section.content
         .col-md-6
           label.control-label= t 'simple_form.labels.classroom.representative'
           p= deal_value resource.representative_name
-    .box-footer
-      .row
-        .col-xs-6
-          = link_to 'Editar', edit_resource_path(resource), class: 'btn btn-default btn-sm'
-        .col-xs-6.text-right
-          = link_to 'Voltar', collection_path(resource), class: 'btn btn-default btn-sm'
+    = render 'form_footer'

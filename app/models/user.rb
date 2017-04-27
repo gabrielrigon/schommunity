@@ -38,11 +38,15 @@ class User < ActiveRecord::Base
   # ---- callbacks ----
 
   after_create :invite
-  after_create :create_student
+  after_save   :update_student
 
   # ---- nested values ----
 
   accepts_nested_attributes_for :address
+
+  # ---- virtual attributes ----
+
+  attr_accessor :attribute_student_number
 
   # ---- default values ----
 
@@ -83,8 +87,22 @@ class User < ActiveRecord::Base
     courses_ids.presence
   end
 
-  def create_student
-    Student.create(user: self, institution: institution) if student?
+  def attribute_student_number
+    student.present? ? student_number : ''
+  end
+
+  def update_student
+    if user_type_id == invoke(UserType, :student)
+      if student.present?
+        student.update_attributes(number: @attribute_student_number)
+      else
+        Student.create(user: self, institution: institution,
+                       number: @attribute_student_number)
+      end
+    else
+      return unless student.present?
+      student.destroy
+    end
   end
 
   # ---- user types ----

@@ -24,9 +24,4 @@ section.content
           label.control-label= t 'simple_form.labels.institution.cnpj'
           p.cnpj= deal_value resource.cnpj
       = render 'shared/address_fields'
-    .box-footer
-      .row
-        .col-xs-6
-          = link_to 'Editar', edit_resource_path(resource), class: 'btn btn-default btn-sm'
-        .col-xs-6.text-right
-          = link_to 'Voltar', collection_path(resource), class: 'btn btn-default btn-sm'
+    = render 'form_footer'

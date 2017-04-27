@@ -39,3 +39,10 @@ $ ->
 
     bAutoWidth: false
   )
+
+  $('#user_user_type_id').on 'change', ->
+    if $(@).val() == "<%= Constantine.invoke(UserType, :student) %>"
+      $('#student_number_container').show()
+    else
+      $('#student_number_container').hide()
+      $('#user_student_attributes_number').val("")

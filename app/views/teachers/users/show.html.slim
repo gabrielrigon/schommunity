@@ -23,6 +23,13 @@ section.content
         .col-md-4
           label.control-label= t 'simple_form.labels.user.last_name'
           p= deal_value resource.last_name
+
+      - if resource.student?
+        .row
+          .col-md-12
+            label.control-label= t 'simple_form.labels.user.attribute_student_number'
+            p= deal_value resource.attribute_student_number
+
       .row
         .col-md-5
           label.control-label= t 'simple_form.labels.user.cpf'
@@ -38,9 +45,4 @@ section.content
           label.control-label= t 'simple_form.labels.user.email'
           p= deal_value resource.email
       = render 'shared/address_fields'
-    .box-footer
-      .row
-        .col-xs-6
-          = link_to 'Editar', edit_resource_path(resource), class: 'btn btn-default btn-sm'
-        .col-xs-6.text-right
-          = link_to 'Voltar', collection_path(resource), class: 'btn btn-default btn-sm'
+    = render 'form_footer'

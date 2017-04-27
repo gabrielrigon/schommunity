@@ -10,7 +10,7 @@ UserType.create!([
     { name: 'Diretor', alias: 'schoolmaster' },
     # { name: 'Coordenador', alias: 'coordinator' },
     { name: 'Professor', alias: 'teacher' },
-    { name: 'Representante de Classe', alias: 'representant' },
+    # { name: 'Representante de Classe', alias: 'representant' },
     { name: 'Aluno', alias: 'student' }
   ])
 

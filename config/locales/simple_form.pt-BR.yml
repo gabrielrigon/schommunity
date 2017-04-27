@@ -49,3 +49,4 @@ pt-BR:
         gender: "Gênero"
         email: "E-mail"
         password: "Senha"
+        attribute_student_number: "Código do aluno - RA"
