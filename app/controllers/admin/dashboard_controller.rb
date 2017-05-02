@@ -12,7 +12,7 @@ class Admin::DashboardController < InheritedResources::Base
 
   add_breadcrumb 'Dashboard', :admin_dashboard_index_path
 
-  # ---- methods ----
+  # ---- actions ----
 
   def index
     @registered_users = User.valid.count

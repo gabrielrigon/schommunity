@@ -40,6 +40,6 @@ Rails.application.routes.draw do
 
   # extras
 
-  get 'profile', action: :edit, controller: 'profile'
   resource :profile, only: :update
+  get 'profile', action: :edit, controller: 'profiles'
 end

@@ -12,7 +12,7 @@ class Teachers::SubjectsController < InheritedResources::Base
 
   add_breadcrumb 'Disciplinas', :teachers_subjects_path
 
-  # ---- methods ----
+  # ---- actions ----
 
   def index
     respond_to do |format|
@@ -25,6 +25,8 @@ class Teachers::SubjectsController < InheritedResources::Base
     resource.institution = current_user.institution
     create!
   end
+
+  # ---- methods ----
 
   private
 

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # ---- methods ----
+  # ---- actions ----
 
   def go_home
     if user_signed_in?
@@ -26,9 +26,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # ---- methods ----
+
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:institution_id, :cpf, :email])
+    devise_parameter_sanitizer
+      .permit(:sign_up, keys: [:institution_id, :cpf, :email])
   end
 end

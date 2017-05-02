@@ -1,0 +1,12 @@
+.row
+  .col-md-12
+    .box.box-default
+      .box-header.with-border
+        h3.box-title
+          | Seus dados
+      = simple_form_for resource, url: profile_path do |form|
+        .box-body
+          = render 'form_fields', form: form
+        .box-footer
+          = render 'form_navigation', form: form
+      

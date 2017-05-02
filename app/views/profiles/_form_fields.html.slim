@@ -1,0 +1,25 @@
+.row
+  .col-md-12
+    = form.input :avatar, as: :file
+.row
+  .col-md-6
+    = form.input :first_name
+  .col-md-6
+    = form.input :last_name
+.row
+  .col-md-5
+    = form.input :cpf, disabled: true
+  .col-md-5
+    = form.input :phone, input_html: { class: 'phone' }
+  .col-md-2
+    = form.association :gender, input_html: { class: 'selectize-single' }
+.row
+  .col-md-12
+    = form.input :email
+    
+#student_number_container.row style="display: #{ display_student_number_container(resource) }"
+  .col-md-12
+    = form.simple_fields_for :student do |f|
+      = f.input :number
+      
+= render 'shared/address_form_fields', form: form

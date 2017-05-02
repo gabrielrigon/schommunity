@@ -1,21 +1,21 @@
-= form.simple_fields_for :address do |f|
+= form.simple_fields_for :address do |form_address|
   .row
     .col-md-12
       hr
 
   .row
     .col-md-6
-      = f.input :street
+      = form_address.input :street
     .col-md-2
-      = f.input :number
+      = form_address.input :number
     .col-md-4
-      = f.input :complement
+      = form_address.input :complement
   .row
     .col-md-4
-      = f.input :district
+      = form_address.input :district
     .col-md-3
-      = f.association :city, input_html: { class: 'selectize-single' }
+      = form_address.association :city, input_html: { class: 'selectize-single' }
     .col-md-3
-      = f.association :state, input_html: { class: 'selectize-single' }
+      = form_address.association :state, input_html: { class: 'selectize-single' }
     .col-md-2
-      = f.input :zipcode, input_html: { class: 'cep' }
+      = form_address.input :zipcode, input_html: { class: 'cep' }

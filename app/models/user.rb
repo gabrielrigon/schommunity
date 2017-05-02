@@ -85,7 +85,11 @@ class User < ActiveRecord::Base
   end
 
   def update_student
-    student.update_attributes(institution: institution)
+    if student.present?
+      student.update_attributes(institution: institution)
+    else
+      Student.create(user: self, institution: institution)
+    end
   end
 
   # ---- user types ----

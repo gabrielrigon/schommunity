@@ -1,0 +1,31 @@
+.content
+  #profile-header.row
+    .col-md-12
+      .box.box-widget.widget-user
+        .widget-user-header.bg-black
+          h3.widget-user-username
+            | Perfil
+        .widget-user-image
+          = image_tag current_user.avatar.url(:medium), class: 'img-circle', lazy: true
+        .box-footer
+          .row
+            .col-sm-4.border-right
+              .description-block
+                h5.description-header
+                  | Instituição
+                span.description-text
+                  = current_user.try(:institution_trading_name)
+            .col-sm-4.border-right
+              .description-block
+                h5.description-header
+                  | Acesso
+                span.description-text
+                  = current_user.try(:user_type_name)
+            .col-sm-4
+              .description-block
+                h5.description-header
+                  | Membro Desde
+                span.description-text
+                  = current_user.try(:created_at).strftime('%d - %m - %Y')
+
+  = render 'form'

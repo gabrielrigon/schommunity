@@ -12,7 +12,7 @@ class Teachers::ClassroomsController < InheritedResources::Base
 
   add_breadcrumb 'Salas', :teachers_classrooms_path
 
-  # ---- methods ----
+  # ---- actions ----
 
   def index
     respond_to do |format|
@@ -25,6 +25,8 @@ class Teachers::ClassroomsController < InheritedResources::Base
     resource.institution = current_user.institution
     create!
   end
+
+  # ---- methods ----
 
   def subject_field
     @subjects = Course.find(params[:course_id]).subjects

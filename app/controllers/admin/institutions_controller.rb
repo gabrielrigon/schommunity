@@ -12,7 +12,7 @@ class Admin::InstitutionsController < InheritedResources::Base
 
   add_breadcrumb 'Instituições', :admin_institutions_path
 
-  # ---- methods ----
+  # ---- actions ----
 
   def index
     respond_to do |format|
@@ -29,6 +29,8 @@ class Admin::InstitutionsController < InheritedResources::Base
   def edit
     resource.build_address if resource.address.blank?
   end
+
+  # ---- methods ----
 
   private
 

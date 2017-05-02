@@ -12,7 +12,7 @@ class Teachers::DashboardController < InheritedResources::Base
 
   add_breadcrumb 'Dashboard', :teachers_dashboard_index_path
 
-  # ---- methods ----
+  # ---- actions ----
 
   def index
   end

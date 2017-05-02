@@ -12,7 +12,7 @@ class Teachers::UsersController < InheritedResources::Base
 
   add_breadcrumb 'Usuários', :teachers_users_path
 
-  # ---- methods ----
+  # ---- actions ----
 
   def index
     respond_to do |format|
@@ -34,6 +34,8 @@ class Teachers::UsersController < InheritedResources::Base
   def edit
     resource.build_address if resource.address.blank?
   end
+
+  # ---- methods ----
 
   private
 
