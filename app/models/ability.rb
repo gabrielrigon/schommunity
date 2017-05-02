@@ -5,6 +5,8 @@ class Ability
 
     # ---- defaults ----
 
+    can :manage, :user_profile
+
     cannot :manage, Classroom
     cannot :manage, Course
     cannot :manage, Institution

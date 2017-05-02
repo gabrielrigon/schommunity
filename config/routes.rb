@@ -37,4 +37,9 @@ Rails.application.routes.draw do
   namespace :students do
     resources :dashboard, only: :index
   end
+
+  # extras
+
+  get 'profile', action: :edit, controller: 'profile'
+  resource :profile, only: :update
 end

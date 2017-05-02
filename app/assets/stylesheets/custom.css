@@ -148,3 +148,17 @@ button, input, optgroup, select, textarea {
   background-color: #646C7F;
   color: #fff;
 }
+
+.widget-user-header {
+  background-image: url('img_background_profile.jpg');
+  background-size: contain;
+  background-position: center center;
+}
+
+/*#profile-header {
+  margin-bottom: 87px;
+}*/
+
+/*.widget-user .widget-user-image > img {
+  width: 150px !important;
+}*/

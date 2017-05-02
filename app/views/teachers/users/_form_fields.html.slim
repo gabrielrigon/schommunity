@@ -19,7 +19,8 @@ hr
 
 #student_number_container.row style="display: #{ display_student_number_container(resource) }"
   .col-md-12
-    = form.input :attribute_student_number
+    = form.simple_fields_for :student do |f|
+      = f.input :number
 
 .row
   .col-md-5

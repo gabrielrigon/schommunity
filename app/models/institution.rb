@@ -29,6 +29,11 @@ class Institution < ActiveRecord::Base
 
   accepts_nested_attributes_for :address
 
+  # ---- validates ----
+
+  validates :company_name, :trading_name, :cnpj, presence: true
+  # validates :cnpj, cnpj: true
+
   # ---- aliases ----
 
   alias_attribute :name, :trading_name

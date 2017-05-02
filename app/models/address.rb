@@ -9,4 +9,8 @@ class Address < ActiveRecord::Base
 
   delegate :name, to: :city, prefix: true, allow_nil: true
   delegate :name, to: :state, prefix: true, allow_nil: true
+
+  # ---- validates ----
+
+  validates :street, :number, :district, :zipcode, :city, :state, presence: true
 end

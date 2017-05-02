@@ -30,23 +30,20 @@ class User < ActiveRecord::Base
 
   # ---- validates ----
 
-  validates :institution, presence: true
-  validates :user_type, presence: true
-  validates :cpf, presence: true, uniqueness: true, length: { is: 14 } # mudar para 11 sem mascara
+  validates :first_name, :last_name, :phone, :gender, :user_type,
+            :institution, presence: true
   validates :email, presence: true, uniqueness: true
+  # validates :cpf, presence: true, uniqueness: true, cpf: true
 
   # ---- callbacks ----
 
   after_create :invite
-  after_save   :update_student
+  after_create :update_student
 
   # ---- nested values ----
 
   accepts_nested_attributes_for :address
-
-  # ---- virtual attributes ----
-
-  attr_accessor :attribute_student_number
+  accepts_nested_attributes_for :student
 
   # ---- default values ----
 
@@ -87,22 +84,8 @@ class User < ActiveRecord::Base
     courses_ids.presence
   end
 
-  def attribute_student_number
-    student.present? ? student_number : ''
-  end
-
   def update_student
-    if user_type_id == invoke(UserType, :student)
-      if student.present?
-        student.update_attributes(number: @attribute_student_number)
-      else
-        Student.create(user: self, institution: institution,
-                       number: @attribute_student_number)
-      end
-    else
-      return unless student.present?
-      student.destroy
-    end
+    student.update_attributes(institution: institution)
   end
 
   # ---- user types ----

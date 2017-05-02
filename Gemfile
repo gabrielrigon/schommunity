@@ -50,6 +50,7 @@ gem 'simple-navigation'
 gem 'simple_form'
 gem 'slim'
 gem 'squeel', '~> 1.2.3'
+gem 'validates_cpf_cnpj'
 gem 'will_paginate-bootstrap'
 
 source 'https://rails-assets.org' do

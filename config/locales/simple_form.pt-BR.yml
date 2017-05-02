@@ -39,6 +39,8 @@ pt-BR:
         initials: "Iniciais"
         course: "Curso"
         description: "Descrição"
+      student:
+        number: "Código do aluno - RA"
       user:
         institution: "Instituição"
         user_type: "Tipo de usuário"
@@ -49,4 +51,3 @@ pt-BR:
         gender: "Gênero"
         email: "E-mail"
         password: "Senha"
-        attribute_student_number: "Código do aluno - RA"
