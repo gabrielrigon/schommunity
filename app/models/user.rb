@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   belongs_to :gender
   has_many :courses, as: :coordinator
   has_many :classrooms, as: :teacher
+  has_many :classroom_users
+  has_many :classrooms, through: :classroom_users
   has_one :address, as: :linkable, dependent: :destroy
   has_one :student, dependent: :destroy
 

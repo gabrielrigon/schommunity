@@ -1,3 +1,24 @@
+window.apply_selectize_user_ajax = ->
+  $('.selectize-user-ajax').selectize
+    valueField: 'id'
+    labelField: 'name'
+    searchField: 'name'
+    create: false
+    preload: true
+    load: (query, callback) ->
+      if !query.length
+        callback()
+      $.ajax
+        url: '/teachers/users/search'
+        type: 'GET'
+        dataType: 'json'
+        data:
+          q: query
+        error: ->
+          callback()
+        success: (res) ->
+          callback(res)
+
 $ ->
   window.SubjectDataTable = $("#classrooms").dataTable(
     sDom: "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>"
@@ -55,3 +76,23 @@ $ ->
         $('.selectize-subject').selectize({ create: false })
     else
       $('.selectize-subject').selectize({ create: false })
+
+  # nested users
+
+  $('.grid-classroom-users').on 'click', (e) ->
+    if $("#classroom_user_token").val() > 0
+      return true
+    else
+      alert "Selecione um aluno antes de clicar em adicionar"
+      return false
+
+  $('#classroom_users').on 'cocoon:after-insert', (e, insertedItem) ->
+    grid = $(insertedItem).find(".grid-classroom-users")
+    grid.val($("#classroom_user_token").val())
+    span = $(insertedItem).find("span")
+    span.text($("#classroom_user_token").text())
+    $("#classroom_user_token").selectize()[0].selectize.destroy()
+    apply_selectize_user_ajax()
+
+  if $("#classroom_user_token").length > 0
+    apply_selectize_user_ajax()

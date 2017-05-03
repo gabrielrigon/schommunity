@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325211557) do
+ActiveRecord::Schema.define(version: 20170502192958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 20170325211557) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "classroom_users", force: :cascade do |t|
+    t.integer  "classroom_id"
+    t.integer  "user_id"
+    t.boolean  "approved"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "classroom_users", ["classroom_id"], name: "index_classroom_users_on_classroom_id", using: :btree
+  add_index "classroom_users", ["user_id"], name: "index_classroom_users_on_user_id", using: :btree
+
   create_table "classrooms", force: :cascade do |t|
     t.integer  "institution_id"
     t.integer  "course_id"
@@ -60,9 +71,9 @@ ActiveRecord::Schema.define(version: 20170325211557) do
     t.integer  "teacher_id"
     t.string   "uuid"
     t.text     "description"
-    t.boolean  "active"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.boolean  "active",            default: true
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "classrooms", ["classroom_time_id"], name: "index_classrooms_on_classroom_time_id", using: :btree
@@ -114,12 +125,14 @@ ActiveRecord::Schema.define(version: 20170325211557) do
   create_table "students", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "institution_id"
-    t.string   "student_number"
+    t.integer  "course_id"
+    t.string   "number"
     t.boolean  "active",         default: true
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
 
+  add_index "students", ["course_id"], name: "index_students_on_course_id", using: :btree
   add_index "students", ["institution_id"], name: "index_students_on_institution_id", using: :btree
   add_index "students", ["user_id"], name: "index_students_on_user_id", using: :btree
 
@@ -191,6 +204,8 @@ ActiveRecord::Schema.define(version: 20170325211557) do
   add_foreign_key "addresses", "cities"
   add_foreign_key "addresses", "states"
   add_foreign_key "cities", "states"
+  add_foreign_key "classroom_users", "classrooms"
+  add_foreign_key "classroom_users", "users"
   add_foreign_key "classrooms", "classroom_times"
   add_foreign_key "classrooms", "courses"
   add_foreign_key "classrooms", "institutions"
@@ -199,6 +214,7 @@ ActiveRecord::Schema.define(version: 20170325211557) do
   add_foreign_key "classrooms", "users", column: "teacher_id"
   add_foreign_key "courses", "institutions"
   add_foreign_key "courses", "users", column: "coordinator_id"
+  add_foreign_key "students", "courses"
   add_foreign_key "students", "institutions"
   add_foreign_key "students", "users"
   add_foreign_key "subjects", "courses"

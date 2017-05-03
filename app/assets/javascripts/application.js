@@ -16,6 +16,7 @@
 //= require adminlte
 //= require bootstrap-wysihtml5
 //= require selectize
+//= require cocoon
 //= require bootstrap-datepicker
 //= require bootstrap-switch
 //= require sweetalert2

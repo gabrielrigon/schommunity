@@ -60,6 +60,7 @@ GEM
     climate_control (0.1.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
+    cocoon (1.2.9)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -290,6 +291,7 @@ DEPENDENCIES
   breadcrumbs_on_rails
   byebug
   cancancan (~> 1.10)
+  cocoon
   coffee-rails (~> 4.1.0)
   default_value_for (~> 3.0.0)
   devise

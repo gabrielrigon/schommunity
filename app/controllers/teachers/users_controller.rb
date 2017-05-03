@@ -35,6 +35,16 @@ class Teachers::UsersController < InheritedResources::Base
     resource.build_address if resource.address.blank?
   end
 
+  def search
+    respond_to do |format|
+      format.json do
+        users = User.where(institution_id: current_user.institution_id)
+                    .search(params[:q])
+        render json: users.to_json
+      end
+    end
+  end
+
   # ---- methods ----
 
   private

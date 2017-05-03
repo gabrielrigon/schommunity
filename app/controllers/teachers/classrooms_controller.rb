@@ -37,7 +37,9 @@ class Teachers::ClassroomsController < InheritedResources::Base
 
   def classroom_params
     if request.patch?
-      params.require(:classroom).permit(:teacher_id, :representative_id)
+      params.require(:classroom)
+            .permit(:teacher_id, :representative_id,
+                    classroom_users_attributes: [:id, :user_id, :_destroy])
     else
       params.require(:classroom).permit!
     end

@@ -3,7 +3,7 @@ module Teachers::ClassroomsHelper
     course_id ? Course.find(course_id).subjects : []
   end
 
-  def representative_collection(user)
+  def students_collection(user)
     User.students.where(institution: user.institution)
   end
 

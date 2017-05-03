@@ -9,4 +9,4 @@
   .col-md-6
     = form.association :teacher, collection: teachers_collection(current_user), input_html: { class: 'selectize-single' }
   .col-md-6
-    = form.association :representative, collection: representative_collection(current_user), input_html: { class: 'selectize-single' }
+    = form.association :representative, collection: students_collection(current_user), input_html: { class: 'selectize-single' }

@@ -2,21 +2,19 @@
 
 Gender.create!([
     { name: 'Masculino', alias: 'male' },
-    { name: 'Feminino', alias: 'female' }
+    { name: 'Feminino', alias: 'female' },
+    { name: 'Outro', alias: 'other' }
   ])
 
 UserType.create!([
     { name: 'Administrador', alias: 'admin' },
     { name: 'Diretor', alias: 'schoolmaster' },
-    # { name: 'Coordenador', alias: 'coordinator' },
     { name: 'Professor', alias: 'teacher' },
-    # { name: 'Representante de Classe', alias: 'representant' },
     { name: 'Aluno', alias: 'student' }
   ])
 
 ClassroomTime.create!([
     { name: 'Manhã', initial: 'M', alias: 'morning' },
-    { name: 'Tarde', initial: 'T', alias: 'afternoon' },
     { name: 'Noite', initial: 'N', alias: 'night' }
   ])
 

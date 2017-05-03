@@ -1,6 +1,7 @@
 class ClassroomDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
-           :current_ability, :current_user, to: :@view
+           :members_teachers_classroom_path, :current_ability, :current_user,
+           to: :@view
 
   def initialize(view)
     @view = view
@@ -34,6 +35,13 @@ class ClassroomDatatable < BaseDatatable
           end +
 
           content_tag(:ul, class: 'dropdown-menu pull-right') do
+            content_tag(:li) do
+              link_to members_teachers_classroom_path(item) do
+                content_tag(:i, class: 'fa fa-users') {} +
+                ' Membros'
+              end
+            end +
+
             content_tag(:li) do
               link_to resource_path(item) do
                 content_tag(:i, class: 'fa fa-eye') {} +

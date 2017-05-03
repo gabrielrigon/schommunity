@@ -26,6 +26,7 @@ pt-BR:
         representative: "Aluno representante"
         teacher: "Professor"
         uuid: "ID"
+        user_token: "Alunos"
       course:
         name: "Nome"
         initials: "Iniciais"

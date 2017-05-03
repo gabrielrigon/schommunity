@@ -27,11 +27,21 @@ Rails.application.routes.draw do
       collection do
         get 'subject_field'
       end
+
+      member do
+        get :members
+        patch :members
+      end
     end
 
     resources :courses
     resources :subjects
-    resources :users
+
+    resources :users do
+      collection do
+        get 'search'
+      end
+    end
   end
 
   namespace :students do
