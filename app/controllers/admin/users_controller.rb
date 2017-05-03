@@ -41,6 +41,6 @@ class Admin::UsersController < InheritedResources::Base
   private
 
   def user_params
-    params.require(:user).permit!
+    params.require(:user).permit!.except(:cpf)
   end
 end

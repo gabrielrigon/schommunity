@@ -22,6 +22,6 @@
     .col-md-6
       = f.association :course, collection: institution_courses_collection(form.object.institution_id), input_html: { class: 'selectize-single' }, disabled: true
     .col-md-6
-      = f.input :number
+      = f.input :number, disabled: true
       
 = render 'shared/address_form_fields', form: form

@@ -26,6 +26,18 @@ class Teachers::ClassroomsController < InheritedResources::Base
     create!
   end
 
+  def members
+    if request.patch?
+      if resource.update_attributes(classroom_params)
+        redirect_to members_teachers_classroom_path(resource),
+                    notice: 'Os membros foram atualizados com sucesso'
+      else
+        redirect_to members_teachers_classroom_path(resource),
+                    alert: 'Existem alunos duplicados, nada foi alterado'
+      end
+    end
+  end
+
   # ---- methods ----
 
   def subject_field

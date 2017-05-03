@@ -37,7 +37,7 @@ class Classroom < ActiveRecord::Base
 
   # ---- validates ----
 
-  # validate :user_uniqueness
+  validate :user_uniqueness
 
   # ---- methods ----
 

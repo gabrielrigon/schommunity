@@ -22,7 +22,7 @@ class ProfilesController < InheritedResources::Base
 
   def update
     if resource.update_attributes(user_parameters)
-      redirect_to profile_path, notice: 'Perfil atualizado com sucesso'
+      redirect_to profile_path, notice: 'Perfil foi atualizado com sucesso'
     else
       render :edit
     end
@@ -32,9 +32,9 @@ class ProfilesController < InheritedResources::Base
 
   def user_parameters
     params.require(:user)
-          .permit(:avatar, :first_name, :last_name, :phone, :gender_id, :email,
-                  student_attributes: [:number],
-                  address_attributes: [:street, :number, :complement, :district,
-                                       :city_id, :state_id, :zipcode])
+          .permit(:first_name, :last_name, :phone, :gender_id,
+                  :email, address_attributes: [:street, :number,
+                                               :complement, :district, :city_id,
+                                               :state_id, :zipcode])
   end
 end

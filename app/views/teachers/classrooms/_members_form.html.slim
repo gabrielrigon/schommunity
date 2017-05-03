@@ -1,4 +1,4 @@
-= simple_form_for [:teachers, resource] do |form|
+= simple_form_for [:teachers, resource], url: members_teachers_classroom_path(resource), method: :patch do |form|
   .box-body
     = render 'members_form_fields', form: form
   .box-footer
