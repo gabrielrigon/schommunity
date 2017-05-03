@@ -26,7 +26,10 @@ section.content
 
       - if resource.student?
         .row
-          .col-md-12
+          .col-md-6
+            label.control-label= t 'simple_form.labels.student.course'
+            p= deal_value resource.student_course_name
+          .col-md-6
             label.control-label= t 'simple_form.labels.student.number'
             p= deal_value resource.student_number
 

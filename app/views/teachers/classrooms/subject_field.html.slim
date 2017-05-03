@@ -1,6 +1,5 @@
-.form-group.select.required
-  label.select.required.control-label
+.form-group.select.required.classroom_subject
+  label.control-label.select.required
     / abbr title="required" *
     | Disciplina
-  div
-    = collection_select(:classroom, :subject_id, @subjects, :id, :name, { prompt: '' }, { class: 'select required form-control selectize-subject' })
+  = collection_select(:classroom, :subject_id, @subjects, :id, :name, { prompt: '' }, { class: 'form-control select optional selectize-single selectize-subject' })

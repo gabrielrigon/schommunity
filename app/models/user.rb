@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # ---- devise ----
 
-  devise :database_authenticatable, :invitable, :recoverable, :registerable,
+  devise :database_authenticatable, :invitable, :recoverable, #:registerable,
          :trackable, :timeoutable
 
   # ---- searchkick ----
@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :classrooms, through: :classroom_users
   has_one :address, as: :linkable, dependent: :destroy
   has_one :student, dependent: :destroy
+  has_one :course, through: :student
 
   # ---- paperclip ----
 
@@ -35,7 +36,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :phone, :gender, :user_type,
             :institution, presence: true
   validates :email, presence: true, uniqueness: true
-  # validates :cpf, presence: true, uniqueness: true, cpf: true
+  validates :cpf, presence: true#, uniqueness: true, cpf: true
 
   # ---- callbacks ----
 
@@ -58,7 +59,7 @@ class User < ActiveRecord::Base
   delegate :id, :trading_name, to: :institution, prefix: true, allow_nil: true
   delegate :street, :number, :district, :complement, :city_name,
            :state_name, :zipcode, to: :address, prefix: true, allow_nil: true
-  delegate :number, to: :student, prefix: true, allow_nil: true
+  delegate :number, :course_name, to: :student, prefix: true, allow_nil: true
 
   # ---- scope ----
 

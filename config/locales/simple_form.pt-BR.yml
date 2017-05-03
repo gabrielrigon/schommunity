@@ -42,6 +42,7 @@ pt-BR:
         description: "Descrição"
       student:
         number: "Código do aluno - RA"
+        course: "Curso"
       user:
         institution: "Instituição"
         user_type: "Tipo de usuário"

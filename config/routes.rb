@@ -17,7 +17,11 @@ Rails.application.routes.draw do
     resources :dashboard, only: :index
 
     resources :institutions
-    resources :users
+    resources :users do
+      collection do
+        get 'student_course_field'
+      end
+    end
   end
 
   namespace :teachers do
@@ -26,6 +30,7 @@ Rails.application.routes.draw do
     resources :classrooms do
       collection do
         get 'subject_field'
+        get 'representative_field'
       end
 
       member do

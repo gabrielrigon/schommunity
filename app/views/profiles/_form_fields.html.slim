@@ -17,9 +17,11 @@
   .col-md-12
     = form.input :email
     
-#student_number_container.row style="display: #{ display_student_number_container(resource) }"
-  .col-md-12
-    = form.simple_fields_for :student do |f|
+#student_data_container.row style="display: #{ display_student_data_container(resource) }"
+  = form.simple_fields_for :student do |f|
+    .col-md-6
+      = f.association :course, collection: institution_courses_collection(form.object.institution_id), input_html: { class: 'selectize-single' }, disabled: true
+    .col-md-6
       = f.input :number
       
 = render 'shared/address_form_fields', form: form

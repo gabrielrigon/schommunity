@@ -61,21 +61,29 @@ $ ->
     bAutoWidth: false
   )
 
-  # dependent selectize to subjects
+  # dependent selectize to subjects and representative
 
-  $('.selectize-course').on 'change', ->
+  $('.selectize-classroom-course').on 'change', ->
     $('#classroom_subject_id').selectize()[0].selectize.destroy()
     $('#classroom_subject_id').val('')
+    $('#classroom_representative_id').selectize()[0].selectize.destroy()
+    $('#classroom_representative_id').val('')
 
     if $(this).val() != ""
       course_id = $(this).val()
       subject_url = "/teachers/classrooms/subject_field/?course_id=#{course_id}"
+      representative_url = "/teachers/classrooms/representative_field/?course_id=#{course_id}"
 
       $('#subject_container').empty()
       $('#subject_container').load subject_url, ->
         $('.selectize-subject').selectize({ create: false })
+
+      $('#representative_container').empty()
+      $('#representative_container').load representative_url, ->
+        $('.selectize-representative').selectize({ create: false })
     else
       $('.selectize-subject').selectize({ create: false })
+      $('.selectize-representative').selectize({ create: false })
 
   # nested users
 

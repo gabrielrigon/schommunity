@@ -1,0 +1,6 @@
+.form-group.select.optional.user_student_course
+  label.control-label.select.optional
+    | Curso
+
+  / não pergunte... funciona assim :)
+  = collection_select(:user, 'student_attributes][course_id', @courses, :id, :name, { prompt: '' }, { id: 'user_student_attributes_course_id', class: 'form-control select optional selectize-single selectize-course' })

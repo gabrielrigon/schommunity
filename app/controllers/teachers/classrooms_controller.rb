@@ -33,6 +33,11 @@ class Teachers::ClassroomsController < InheritedResources::Base
     render layout: false
   end
 
+  def representative_field
+    @representatives = Course.find(params[:course_id]).users
+    render layout: false
+  end
+
   private
 
   def classroom_params

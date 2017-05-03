@@ -33,6 +33,11 @@ class Admin::UsersController < InheritedResources::Base
 
   # ---- methods ----
 
+  def student_course_field
+    @courses = Institution.find(params[:institution_id]).courses
+    render layout: false
+  end
+
   private
 
   def user_params

@@ -42,7 +42,23 @@ $ ->
 
   $('#user_user_type_id').on 'change', ->
     if $(@).val() == "<%= Constantine.invoke(UserType, :student) %>"
-      $('#student_number_container').show()
+      $('#student_data_container').show()
     else
-      $('#student_number_container').hide()
+      $('#student_data_container').hide()
       $('#user_student_attributes_number').val("")
+
+  # dependent selectize to students
+
+  $('.selectize-institution').on 'change', ->
+    $('#user_student_attributes_course_id').selectize()[0].selectize.destroy()
+    $('#user_student_attributes_course_id').val('')
+
+    if $(this).val() != ""
+      institution_id = $(this).val()
+      course_url = "/admin/users/student_course_field/?institution_id=#{institution_id}"
+
+      $('#student_course_container').empty()
+      $('#student_course_container').load course_url, ->
+        $('.selectize-course').selectize({ create: false })
+    else
+      $('.selectize-course').selectize({ create: false })
