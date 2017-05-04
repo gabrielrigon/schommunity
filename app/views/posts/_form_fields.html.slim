@@ -1,0 +1,11 @@
+.row
+  .col-md-6
+    = form.association :classroom, collection: classrooms_collection(current_user), input_html: { class: 'selectize-single' }
+  .col-md-6
+    = form.association :post_type, input_html: { class: 'selectize-single' }
+
+.row
+  .col-md-12
+    = form.input :title
+  .col-md-12
+    = form.input :content, input_html: { class: 'texteditor' }

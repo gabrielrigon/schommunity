@@ -7,6 +7,7 @@ window.applyFormControls = ->
     'link': false
     'image': false
     'font-styles': false
+    'blockquote': false
 
   $('img').lazyload()
 

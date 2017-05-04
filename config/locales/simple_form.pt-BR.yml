@@ -35,6 +35,11 @@ pt-BR:
       institution:
         company_name: "Razão social"
         trading_name: "Nome"
+      post:
+        classroom: "Sala de aula"
+        title: "Título"
+        post_type: "Tipo de postagem"
+        content: "Conteúdo"
       subject:
         name: "Nome"
         initials: "Iniciais"

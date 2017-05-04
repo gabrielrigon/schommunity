@@ -10,6 +10,7 @@ class Ability
     cannot :manage, Classroom
     cannot :manage, Course
     cannot :manage, Institution
+    cannot :manage, Post
     cannot :manage, Subject
     cannot :manage, User
 
@@ -33,6 +34,10 @@ class Ability
     if user.schoolmaster?
       can :manage, Classroom, institution_id: user.institution_id
       can :manage, Course,    institution_id: user.institution_id
+
+      can :create, Post
+      can :manage, Post,      user_id: user.id
+
       can :manage, Subject,   institution_id: user.institution_id
       can :manage, User,      institution_id: user.institution_id
 
@@ -50,10 +55,16 @@ class Ability
     if user.teacher?
       can :manage, Classroom, course_id: user.coordinated_courses_ids
 
+      can :create, Post
+      can :manage, Post,      user_id: user.id
+
       can :manage, :teachers_dashboard
     end
 
     if user.student?
+      can :create, Post
+      can :manage, Post, user_id: user.id
+
       can :manage, :students_dashboard
     end
   end

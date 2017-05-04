@@ -1,10 +1,5 @@
 pt-BR:
   resources:
-    classroom:
-      title: "Salas de Aula"
-      description: "manutenção de cadastros"
-      new: "Incluir sala de aula"
-      edit: "Editar sala de aula"
     course:
       title: "Cursos"
       description: "manutenção de cadastros"
@@ -20,6 +15,16 @@ pt-BR:
       description: "manutenção de cadastros"
       new: "Incluir instituição"
       edit: "Editar instituição"
+    post:
+      title: "Postagens"
+      description: "manutenção de cadastros"
+      new: "Incluir postagem"
+      edit: "Editar postagem"
+    classroom:
+      title: "Salas de Aula"
+      description: "manutenção de cadastros"
+      new: "Incluir sala de aula"
+      edit: "Editar sala de aula"
     user:
       title: "Usuários"
       description: "manutenção de cadastros"
@@ -27,10 +32,11 @@ pt-BR:
       edit: "Editar usuário"
   activerecord:
     models:
-      classroom: "Sala de Aula"
       course: "Curso"
-      institution: "Instituição"
       subject: "Disciplina"
+      institution: "Instituição"
+      post: "Postagem"
+      classroom: "Sala de Aula"
       user: "Usuário"
     errors:
       messages:

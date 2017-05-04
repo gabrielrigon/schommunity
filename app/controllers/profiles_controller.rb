@@ -28,6 +28,8 @@ class ProfilesController < InheritedResources::Base
     end
   end
 
+  # ---- methods ----
+
   private
 
   def user_parameters

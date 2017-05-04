@@ -1,0 +1,27 @@
+= render 'form_header'
+
+section.content
+  .box.box-default
+    .box-header.with-border
+      h3.box-title
+        | Informações
+    .box-body
+      .row
+        .col-md-12
+          label.control-label
+            | Logotipo
+          / = image_tag resource.logo.url(:large), class: 'img-crud img-responsive img-circle', lazy: true
+      hr
+      .row
+        .col-md-12
+          label.control-label= t 'simple_form.labels.institution.company_name'
+          / p= deal_value resource.company_name
+      .row
+        .col-md-6
+          label.control-label= t 'simple_form.labels.institution.trading_name'
+          / p= deal_value resource.trading_name
+        .col-md-6
+          label.control-label= t 'simple_form.labels.institution.cnpj'
+          / p.cnpj= deal_value resource.cnpj
+      / = render 'shared/address_fields'
+    = render 'form_footer'

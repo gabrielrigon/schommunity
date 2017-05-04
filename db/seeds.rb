@@ -18,6 +18,12 @@ ClassroomTime.create!([
     { name: 'Noite', initial: 'N', alias: 'night' }
   ])
 
+PostType.create!([
+    { name: 'Dúvida', alias: 'question' },
+    { name: 'Informação', alias: 'information' },
+    { name: 'Material', alias: 'material' }
+  ])
+
 # data
 
 State.create!([
@@ -27,7 +33,10 @@ State.create!([
 
 City.create!([
     { name: 'Mogi Mirim', state_id: 1 },
-    { name: 'Poços de Caldas', state_id: 2 }
+    { name: 'Mogi Guaçu', state_id: 1 },
+    { name: 'Itapira', state_id: 1 },
+    { name: 'Poços de Caldas', state_id: 2 },
+    { name: 'Jacutinga', state_id: 2 }
   ])
 
 institution = Institution.new(trading_name: 'Administration')

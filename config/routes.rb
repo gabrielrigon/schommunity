@@ -55,6 +55,8 @@ Rails.application.routes.draw do
 
   # extras
 
+  resources :posts
+
   resource :profile, only: :update
   get 'profile', action: :edit, controller: 'profiles'
 end

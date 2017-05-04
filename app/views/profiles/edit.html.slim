@@ -26,6 +26,6 @@
                 h5.description-header
                   | Membro Desde
                 span.description-text
-                  = current_user.try(:created_at).strftime('%d - %m - %Y')
+                  = current_user.try(:created_at).strftime('%d-%m-%Y')
 
   = render 'form'

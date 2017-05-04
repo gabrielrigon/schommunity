@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502192958) do
+ActiveRecord::Schema.define(version: 20170503211335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,34 @@ ActiveRecord::Schema.define(version: 20170502192958) do
     t.datetime "updated_at",        null: false
   end
 
+  create_table "post_types", force: :cascade do |t|
+    t.string   "name"
+    t.string   "alias"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "institution_id"
+    t.integer  "course_id"
+    t.integer  "subject_id"
+    t.integer  "classroom_id"
+    t.integer  "post_type_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "content"
+    t.boolean  "active"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "posts", ["classroom_id"], name: "index_posts_on_classroom_id", using: :btree
+  add_index "posts", ["course_id"], name: "index_posts_on_course_id", using: :btree
+  add_index "posts", ["institution_id"], name: "index_posts_on_institution_id", using: :btree
+  add_index "posts", ["post_type_id"], name: "index_posts_on_post_type_id", using: :btree
+  add_index "posts", ["subject_id"], name: "index_posts_on_subject_id", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
   create_table "states", force: :cascade do |t|
     t.string   "name"
     t.string   "initials"
@@ -214,6 +242,12 @@ ActiveRecord::Schema.define(version: 20170502192958) do
   add_foreign_key "classrooms", "users", column: "teacher_id"
   add_foreign_key "courses", "institutions"
   add_foreign_key "courses", "users", column: "coordinator_id"
+  add_foreign_key "posts", "classrooms"
+  add_foreign_key "posts", "courses"
+  add_foreign_key "posts", "institutions"
+  add_foreign_key "posts", "post_types"
+  add_foreign_key "posts", "subjects"
+  add_foreign_key "posts", "users"
   add_foreign_key "students", "courses"
   add_foreign_key "students", "institutions"
   add_foreign_key "students", "users"
