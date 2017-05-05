@@ -1,6 +1,6 @@
 class PostDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
-           :current_ability, to: :@view
+           :current_user, to: :@view
 
   def initialize(view)
     @view = view
@@ -10,7 +10,7 @@ class PostDatatable < BaseDatatable
   protected
 
   def total_records
-    Post.accessible_by(current_ability).count
+    Post.where(user_id: current_user.id).count
   end
 
   private
@@ -18,10 +18,10 @@ class PostDatatable < BaseDatatable
   def data
     collection.map do |item|
       [
-        item.created_at,
+        item.decorate.created_at,
         item.title,
         item.post_type_name,
-        item.active,
+        item.decorate.active,
 
         content_tag(:div, class: 'btn-group') do
           link_to('javascript:;', class: 'btn btn-default btn-sm') do
@@ -64,15 +64,13 @@ class PostDatatable < BaseDatatable
     query = {}
 
     if params[:sSearch].present?
-      ids = Institution.accessible_by(current_ability).valid
-                       .search(params[:sSearch]).records
+      ids = Post.where(user_id: current_user.id)
+                .search(params[:sSearch]).records
       query[:id] = ids
     end
 
-    Institution.accessible_by(current_ability).valid
-               .joins(:address.outer)
-               .includes(address: { city: :state })
-               .where(query).order("#{sort_column} #{sort_direction}")
-               .page(page).per_page(per_page)
+    Post.where(user_id: current_user.id)
+        .where(query).order("#{sort_column} #{sort_direction}")
+        .page(page).per_page(per_page)
   end
 end

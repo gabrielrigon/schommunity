@@ -21,6 +21,12 @@ class PostsController < InheritedResources::Base
     end
   end
 
+  def create
+    resource.institution = current_user.institution
+    resource.user = current_user
+    create!
+  end
+
   # ---- methods ----
 
   private

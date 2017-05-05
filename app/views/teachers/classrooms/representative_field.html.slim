@@ -1,5 +1,5 @@
 .form-group.select.required.classroom_representative
   label.control-label.select.required
     / abbr title="required" *
-    | Aluno Representante
+    | Aluno representante
   = collection_select(:classroom, :representative_id, @representatives, :id, :name, { prompt: '' }, { class: 'form-control select optional selectize-single selectize-representative' })

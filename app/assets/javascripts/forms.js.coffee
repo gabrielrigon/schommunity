@@ -2,6 +2,9 @@ window.applyFormControls = ->
   $('.selectize-single').selectize
     create: false
 
+  $('.bootstrap-switch').bootstrapSwitch
+    size: 'small'
+
   $(".texteditor").wysihtml5 toolbar:
     'fa': true
     'link': false

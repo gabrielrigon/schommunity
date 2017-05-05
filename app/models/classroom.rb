@@ -6,7 +6,9 @@ class Classroom < ActiveRecord::Base
   belongs_to :subject
   belongs_to :classroom_time
   belongs_to :representative, class_name: 'User', foreign_key: 'representative_id'
+  belongs_to :substitute_representative, class_name: 'User', foreign_key: 'substitute_representative_id'
   belongs_to :teacher, class_name: 'User', foreign_key: 'teacher_id'
+  belongs_to :helper, class_name: 'User', foreign_key: 'helper_id'
   has_many :classroom_users
   has_many :users, through: :classroom_users
 
@@ -17,7 +19,9 @@ class Classroom < ActiveRecord::Base
   delegate :initials, :name, to: :subject, prefix: true, allow_nil: true
   delegate :initial, :name, to: :classroom_time, prefix: true, allow_nil: true
   delegate :name, to: :representative, prefix: true, allow_nil: true
+  delegate :name, to: :substitute_representative, prefix: true, allow_nil: true
   delegate :name, to: :teacher, prefix: true, allow_nil: true
+  delegate :name, to: :helper, prefix: true, allow_nil: true
 
   # ---- virtual attributes ----
 

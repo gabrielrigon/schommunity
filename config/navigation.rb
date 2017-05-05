@@ -12,8 +12,11 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :teachers_courses, menu_label_icon('Cursos', 'graduation-cap'), teachers_courses_path, class: 'root-level', highlights_on: %r{/courses} if can?(:manage, Course)
     primary.item :teachers_subjects, menu_label_icon('Disciplinas', 'book'), teachers_subjects_path, class: 'root-level', highlights_on: %r{/subjects} if can?(:manage, Subject)
     primary.item :admin_institutions, menu_label_icon('Instituições', 'university'), admin_institutions_path, class: 'root-level', highlights_on: %r{/institutions} if can?(:manage, Institution)
-    primary.item :posts, menu_label_icon('Minhas Postagens', 'newspaper-o'), posts_path, class: 'root-level', highlights_on: %r{/posts} if can?(:manage, Post)
+    primary.item :posts, menu_label_icon('Postagens', 'newspaper-o'), posts_path, class: 'root-level', highlights_on: %r{/posts} if can?(:manage, Post)
+
+    # ---- type of users
     primary.item :teachers_classrooms, menu_label_icon('Salas', 'users'), teachers_classrooms_path, class: 'root-level', highlights_on: %r{/classrooms} if can?(:manage, Classroom)
+    primary.item :representatives_classrooms, menu_label_icon('Salas', 'users'), representatives_classrooms_path, class: 'root-level', highlights_on: %r{/classrooms} if can?(:manage, :representatives_classrooms)
 
     # ---- types of users ----
     primary.item :admin_users, menu_label_icon('Usuários', 'user'), admin_users_path, class: 'root-level', highlights_on: %r{/users} if can?(:manage, :admin_users)

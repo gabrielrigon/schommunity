@@ -8,5 +8,10 @@
 .row
   .col-md-6
     = form.association :teacher, collection: teachers_collection(current_user), input_html: { class: 'selectize-single' }
+  .col-md-6
+    = form.association :helper, collection: teachers_collection(current_user), input_html: { class: 'selectize-single' }
+.row
   #representative_container.col-md-6
     = form.association :representative, collection: students_collection(form.object.course_id), input_html: { class: 'selectize-single selectize-representative' }
+  #substitute_representative_container.col-md-6
+    = form.association :substitute_representative, collection: students_collection(form.object.course_id), input_html: { class: 'selectize-single selectize-substitute-representative' }

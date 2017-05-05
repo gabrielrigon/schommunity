@@ -1,0 +1,5 @@
+= simple_form_for [:representatives, resource], url: members_representatives_classroom_path(resource), method: :patch do |form|
+  .box-body
+    = render 'members_form_fields', form: form
+  .box-footer
+    = render 'form_navigation', form: form

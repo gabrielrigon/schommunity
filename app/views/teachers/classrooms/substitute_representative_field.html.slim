@@ -1,0 +1,5 @@
+.form-group.select.required.classroom_substitute_representative
+  label.control-label.select.required
+    / abbr title="required" *
+    | Aluno representante suplente
+  = collection_select(:classroom, :substitute_representative_id, @substitute_representatives, :id, :name, { prompt: '' }, { class: 'form-control select optional selectize-single selectize-substitute-representative' })

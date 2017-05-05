@@ -50,6 +50,10 @@ class Teachers::UsersController < InheritedResources::Base
   private
 
   def user_params
-    params.require(:user).permit!.except(:cpf)
+    if request.patch?
+      params.require(:user).permit!.except(:cpf)
+    else
+      params.require(:user).permit!
+    end
   end
 end

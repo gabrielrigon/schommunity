@@ -1,6 +1,6 @@
 class Teachers::UserDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
-           :current_ability, to: :@view
+           :current_ability, :current_user, :can?, to: :@view
 
   def initialize(view)
     @view = view
@@ -10,7 +10,9 @@ class Teachers::UserDatatable < BaseDatatable
   protected
 
   def total_records
-    User.accessible_by(current_ability).valid.count
+    User.accessible_by(current_ability).valid
+        .where.not(id: current_user.id)
+        .count
   end
 
   private
@@ -46,10 +48,12 @@ class Teachers::UserDatatable < BaseDatatable
               end
             end +
 
-            content_tag(:li) do
-              link_to resource_path(item), method: :delete, data: { confirm: 'Confirma?' } do
-                content_tag(:i, class: 'fa fa-trash-o') {} +
-                ' Excluir'
+            if can?(:destroy, item)
+              content_tag(:li) do
+                link_to resource_path(item), method: :delete, data: { confirm: 'Confirma?' } do
+                  content_tag(:i, class: 'fa fa-trash-o') {} +
+                  ' Excluir'
+                end
               end
             end
           end
@@ -64,11 +68,13 @@ class Teachers::UserDatatable < BaseDatatable
 
     if params[:sSearch].present?
       ids = User.accessible_by(current_ability).valid
+                .where.not(id: current_user.id)
                 .search(params[:sSearch]).records
       query[:id] = ids
     end
 
     User.accessible_by(current_ability).valid
+        .where.not(id: current_user.id)
         .joins(:user_type.outer)
         .includes(:user_type)
         .where(query).order("#{sort_column} #{sort_direction}")

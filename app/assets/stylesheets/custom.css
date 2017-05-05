@@ -162,3 +162,8 @@ td {
 .post-title-btn {
   margin-right: 12px !important;
 }
+
+.checkbox {
+  margin-top: 0;
+  margin-left: -20px;
+}

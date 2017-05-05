@@ -14,9 +14,29 @@ class Post < ActiveRecord::Base
   delegate :uuid, to: :classroom, prefix: true, allow_nil: true
   delegate :name, to: :post_type, prefix: true, allow_nil: true
 
+  # ---- default values ----
+
+  default_value_for :active, true
+
+  # ---- callbacks ----
+
+  after_create :complete_data
+
   # ---- searchkick ----
 
   searchkick match: :word_start, searchable: [:title]
+
+  # ---- validates ----
+
+  validates :classroom, :post_type, :title, :content, presence: true
+
+  # ---- methods ----
+
+  def complete_data
+    self.course = classroom.course
+    self.subject = classroom.subject
+    save
+  end
 
   # ---- searchkick ----
 

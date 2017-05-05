@@ -10,20 +10,11 @@ section.content
         .col-md-2
           label.control-label= t 'simple_form.labels.classroom.uuid'
           p= deal_value resource.uuid
-      .row
-        .col-md-6
+        .col-md-5
           label.control-label= t 'simple_form.labels.classroom.teacher'
           p= deal_value resource.teacher_name
-        .col-md-6
-          label.control-label= t 'simple_form.labels.classroom.helper'
-          p= deal_value resource.helper_name
-      .row
-        .col-md-6
+        .col-md-5
           label.control-label= t 'simple_form.labels.classroom.representative'
           p= deal_value resource.representative_name
-        .col-md-6
-          label.control-label= t 'simple_form.labels.classroom.substitute_representative'
-          p= deal_value resource.substitute_representative_name
-
             
     = render 'members_form'

@@ -17,7 +17,7 @@ class Teachers::ClassroomsController < InheritedResources::Base
   def index
     respond_to do |format|
       format.html
-      format.json { render json: ClassroomDatatable.new(view_context) }
+      format.json { render json: Teachers::ClassroomDatatable.new(view_context) }
     end
   end
 
@@ -50,12 +50,17 @@ class Teachers::ClassroomsController < InheritedResources::Base
     render layout: false
   end
 
+  def substitute_representative_field
+    @substitute_representatives = Course.find(params[:course_id]).users
+    render layout: false
+  end
+
   private
 
   def classroom_params
     if request.patch?
       params.require(:classroom)
-            .permit(:teacher_id, :representative_id,
+            .permit(:teacher_id, :helper_id, :representative_id, :substitute_representative_id,
                     classroom_users_attributes: [:id, :user_id, :_destroy])
     else
       params.require(:classroom).permit!

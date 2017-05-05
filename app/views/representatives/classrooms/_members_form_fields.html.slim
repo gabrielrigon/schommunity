@@ -1,0 +1,12 @@
+.row
+  .col-md-10.col-sm-9
+    = form.input :user_token, as: :select, input_html: { class: 'selectize-user-ajax' }, collection: students_collection(form.object.course_id)
+  .col-md-2.col-sm-3.text-center style='margin-top: 24px'
+    = link_to_add_association 'Adicionar', form, :classroom_users, { 'data-association-insertion-node' => '.insert_user_values', 'data-association-insertion-method' => 'prepend', class: 'grid-classroom-users btn btn-default' }
+.row
+  .col-md-12
+    #classroom_users
+      table.table.table-bordered
+        tbody.insert_user_values
+          = form.simple_fields_for :classroom_users do |classroom_user|
+            = render 'classroom_user_fields', f: classroom_user

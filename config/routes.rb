@@ -24,6 +24,15 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :representatives do
+    resources :classrooms do
+      member do
+        get :members
+        patch :members
+      end
+    end
+  end
+
   namespace :teachers do
     resources :dashboard, only: :index
 
@@ -31,6 +40,7 @@ Rails.application.routes.draw do
       collection do
         get 'subject_field'
         get 'representative_field'
+        get 'substitute_representative_field'
       end
 
       member do

@@ -87,6 +87,10 @@ class User < ActiveRecord::Base
     courses_ids.presence
   end
 
+  def represented_classrooms_ids
+    Classroom.where("representative_id = #{id} or substitute_representative_id = #{id}").pluck(:id)
+  end
+
   def update_student
     if student.present?
       student.update_attributes(institution: institution)
@@ -115,6 +119,10 @@ class User < ActiveRecord::Base
 
   def student?
     user_type_id == invoke(UserType, :student)
+  end
+
+  def representative?
+    represented_classrooms_ids.any?
   end
 
   # ---- searchkick ----

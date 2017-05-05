@@ -1,0 +1,12 @@
+.box-body
+  .row
+    .col-md-12
+      table#representative-classrooms.table.table-bordered.datatable.dataTable data-source= collection_url(form: 'json')
+        thead
+          tr
+            th width="*" ID
+            th width="*" Disciplina
+            th width="*" Turno
+            th width="*" Professor
+            th.text-center width="100"
+        tbody

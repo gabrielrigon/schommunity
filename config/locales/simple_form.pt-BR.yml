@@ -24,7 +24,9 @@ pt-BR:
         subject: "Disciplina"
         classroom_time: "Período"
         representative: "Aluno representante"
+        substitute_representative: "Aluno representante suplente"
         teacher: "Professor"
+        helper: "Professor auxiliar"
         uuid: "ID"
         user_token: "Alunos"
       course:
@@ -40,6 +42,7 @@ pt-BR:
         title: "Título"
         post_type: "Tipo de postagem"
         content: "Conteúdo"
+        active: "Ativo"
       subject:
         name: "Nome"
         initials: "Iniciais"

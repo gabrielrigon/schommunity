@@ -34,7 +34,7 @@ class ProfilesController < InheritedResources::Base
 
   def user_parameters
     params.require(:user)
-          .permit(:first_name, :last_name, :phone, :gender_id,
+          .permit(:avatar, :first_name, :last_name, :phone, :gender_id,
                   :email, address_attributes: [:street, :number,
                                                :complement, :district, :city_id,
                                                :state_id, :zipcode])

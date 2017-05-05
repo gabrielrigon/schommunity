@@ -1,4 +1,4 @@
-class ClassroomDatatable < BaseDatatable
+class Teachers::ClassroomDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
            :members_teachers_classroom_path, :current_ability, :current_user,
            to: :@view
