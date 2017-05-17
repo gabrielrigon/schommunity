@@ -12,6 +12,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :teachers_courses, menu_label_icon('Cursos', 'graduation-cap'), teachers_courses_path, class: 'root-level', highlights_on: %r{/courses} if can?(:manage, Course)
     primary.item :teachers_subjects, menu_label_icon('Disciplinas', 'book'), teachers_subjects_path, class: 'root-level', highlights_on: %r{/subjects} if can?(:manage, Subject)
     primary.item :admin_institutions, menu_label_icon('Instituições', 'university'), admin_institutions_path, class: 'root-level', highlights_on: %r{/institutions} if can?(:manage, Institution)
+    primary.item :admin_institutions, menu_label_icon('Mensagens', 'commenting'), chats_path, class: 'root-level', highlights_on: %r{/chats} if can?(:manage, :user_chat)
     primary.item :posts, menu_label_icon('Postagens', 'newspaper-o'), posts_path, class: 'root-level', highlights_on: %r{/posts} if can?(:manage, Post)
 
     # ---- type of users

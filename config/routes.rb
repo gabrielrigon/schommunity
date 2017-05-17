@@ -65,6 +65,13 @@ Rails.application.routes.draw do
 
   # extras
 
+  resources :chats do
+    collection do
+      get 'messages'
+      post 'send_message'
+    end
+  end
+
   resources :posts
 
   resource :profile, only: :update

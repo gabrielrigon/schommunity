@@ -5,6 +5,7 @@ class Institution < ActiveRecord::Base
   has_many :courses
   has_many :subjects
   has_many :students
+  has_many :users
 
   # ---- searchkick ----
 

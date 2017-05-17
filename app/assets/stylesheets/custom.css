@@ -167,3 +167,45 @@ td {
   margin-top: 0;
   margin-left: -20px;
 }
+
+.img-contacts {
+  max-width: 30px;
+  margin: 0 auto;
+}
+
+.chat-placeholder {
+  text-align: center;
+  padding: 150px 0;
+}
+
+.chat-placeholder i {
+  font-size: 100px;
+  color: #eaeaea;
+}
+
+.no-border {
+  border: none;
+}
+
+.no-radius-left {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.no-radius-right {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.badge-count-messages {
+  margin-top: 8px;
+}
+
+.direct-chat-messages {
+  height: 350px !important;
+}
+
+.contacts-container-list {
+  max-height: 400px;
+  overflow-y: scroll;
+}

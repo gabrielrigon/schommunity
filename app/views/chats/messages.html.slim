@@ -1,0 +1,25 @@
+.box-header.with-border
+  h3.box-title
+    = @talk_with
+.box-body.chat-messages
+  - if @messages.any?
+    .direct-chat-messages
+      - @messages.each do |item|
+        .direct-chat-msg
+          .direct-chat-info.clearfix
+            span.direct-chat-name.pull-left
+              = item.user_full_name
+            span.direct-chat-timestamp.pull-right
+              = item.decorate.created_at
+          = image_tag item.user.avatar.url(:thumb), class: "direct-chat-img"
+          .direct-chat-text
+            = item.message
+  - else
+    .chat-placeholder
+      = fa_icon 'comments-o'
+.box-footer
+  = render 'message_form'
+  
+
+coffee:
+  $('.direct-chat-messages').scrollTop(999 * 999 * 999 * 999)

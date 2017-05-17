@@ -6,6 +6,7 @@ class Ability
     # ---- defaults ----
 
     can :manage, :user_profile
+    can :manage, :user_chat
 
     cannot :manage, Classroom
     cannot :manage, Course

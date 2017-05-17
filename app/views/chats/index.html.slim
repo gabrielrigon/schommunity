@@ -1,0 +1,29 @@
+section.content-header
+  h1
+    | Mensagens
+    small
+      | todos os contatos da instituição
+
+  ol.breadcrumb
+    = render_breadcrumbs tag: :li, separator: '>'
+
+section.content
+  .row
+    .col-md-4
+      .box
+        .box-header
+          h3.box-title
+            | Contatos
+        .box-body.table-responsive.no-padding.no-border.contacts-container-list
+          table.table.table-hover
+            tbody
+              - @contacts.each do |item|
+                tr
+                  td= image_tag item.avatar.url(:thumb), class: "img-circle img-responsive img-contacts"
+                  td
+                    a.contact-item data-contact="#{item.id}" href="javascript:;"
+                      = item.full_name
+                    = chat_badge_item(current_user, item)
+    .col-md-8
+      #chat_container.box data-current="#{current_user.id}"
+        = render 'placeholder'

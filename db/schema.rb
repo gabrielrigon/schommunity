@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503211335) do
+ActiveRecord::Schema.define(version: 20170517151341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,6 +181,18 @@ ActiveRecord::Schema.define(version: 20170503211335) do
   add_index "subjects", ["course_id"], name: "index_subjects_on_course_id", using: :btree
   add_index "subjects", ["institution_id"], name: "index_subjects_on_institution_id", using: :btree
 
+  create_table "user_chats", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "contact_id"
+    t.text     "message"
+    t.boolean  "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_chats", ["contact_id"], name: "index_user_chats_on_contact_id", using: :btree
+  add_index "user_chats", ["user_id"], name: "index_user_chats_on_user_id", using: :btree
+
   create_table "user_types", force: :cascade do |t|
     t.string   "name"
     t.string   "alias"
@@ -259,6 +271,8 @@ ActiveRecord::Schema.define(version: 20170503211335) do
   add_foreign_key "students", "users"
   add_foreign_key "subjects", "courses"
   add_foreign_key "subjects", "institutions"
+  add_foreign_key "user_chats", "users"
+  add_foreign_key "user_chats", "users", column: "contact_id"
   add_foreign_key "users", "genders"
   add_foreign_key "users", "institutions"
   add_foreign_key "users", "user_types"
