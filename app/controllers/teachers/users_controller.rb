@@ -24,6 +24,7 @@ class Teachers::UsersController < InheritedResources::Base
   def new
     @user = User.new
     @user.build_address
+    @user.build_student
   end
 
   def create

@@ -11,7 +11,7 @@ module Admin::UsersHelper
     UserType.where.not(alias: 'admin')
   end
 
-  def institution_courses_collection(institution_id)
-    Course.where(institution_id: institution_id)
+  def institution_courses_collection(user)
+    Course.where(institution_id: user.institution_id)
   end
 end

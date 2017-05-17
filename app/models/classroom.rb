@@ -50,6 +50,10 @@ class Classroom < ActiveRecord::Base
     save
   end
 
+  def name
+    "#{uuid} - #{subject_name}"
+  end
+
   private
 
   def user_uniqueness

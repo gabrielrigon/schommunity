@@ -7,21 +7,21 @@ section.content
         | Informações
     .box-body
       .row
-        .col-md-12
-          label.control-label
-            | Logotipo
-          / = image_tag resource.logo.url(:large), class: 'img-crud img-responsive img-circle', lazy: true
-      hr
+        .col-md-5
+          label.control-label= t 'simple_form.labels.post.classroom_name'
+        p= deal_value resource.classroom_name
+        .col-md-5
+          label.control-label= t 'simple_form.labels.post.post_type'
+          p= deal_value resource.post_type_name
+        .col-md-2
+          label.control-label= t 'simple_form.labels.post.active'
+          p= deal_value resource.decorate.active
       .row
         .col-md-12
-          label.control-label= t 'simple_form.labels.institution.company_name'
-          / p= deal_value resource.company_name
-      .row
-        .col-md-6
-          label.control-label= t 'simple_form.labels.institution.trading_name'
-          / p= deal_value resource.trading_name
-        .col-md-6
-          label.control-label= t 'simple_form.labels.institution.cnpj'
-          / p.cnpj= deal_value resource.cnpj
-      / = render 'shared/address_fields'
+          label.control-label= t 'simple_form.labels.post.title'
+          p= deal_value resource.title
+        .col-md-12
+          label.control-label= t 'simple_form.labels.post.content'
+          div.description-box
+            = resource.content.html_safe
     = render 'form_footer'

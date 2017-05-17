@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   # ---- delegates ----
 
   delegate :full_name, to: :user, prefix: true, allow_nil: true
-  delegate :uuid, to: :classroom, prefix: true, allow_nil: true
+  delegate :uuid, :name, to: :classroom, prefix: true, allow_nil: true
   delegate :name, to: :post_type, prefix: true, allow_nil: true
 
   # ---- default values ----

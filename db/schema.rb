@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 20170503211335) do
   create_table "classroom_users", force: :cascade do |t|
     t.integer  "classroom_id"
     t.integer  "user_id"
-    t.boolean  "approved"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.boolean  "approved",     default: true
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "classroom_users", ["classroom_id"], name: "index_classroom_users_on_classroom_id", using: :btree
@@ -68,19 +68,23 @@ ActiveRecord::Schema.define(version: 20170503211335) do
     t.integer  "subject_id"
     t.integer  "classroom_time_id"
     t.integer  "representative_id"
+    t.integer  "substitute_representative_id"
     t.integer  "teacher_id"
+    t.integer  "helper_id"
     t.string   "uuid"
     t.text     "description"
-    t.boolean  "active",            default: true
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.boolean  "active",                       default: true
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   add_index "classrooms", ["classroom_time_id"], name: "index_classrooms_on_classroom_time_id", using: :btree
   add_index "classrooms", ["course_id"], name: "index_classrooms_on_course_id", using: :btree
+  add_index "classrooms", ["helper_id"], name: "index_classrooms_on_helper_id", using: :btree
   add_index "classrooms", ["institution_id"], name: "index_classrooms_on_institution_id", using: :btree
   add_index "classrooms", ["representative_id"], name: "index_classrooms_on_representative_id", using: :btree
   add_index "classrooms", ["subject_id"], name: "index_classrooms_on_subject_id", using: :btree
+  add_index "classrooms", ["substitute_representative_id"], name: "index_classrooms_on_substitute_representative_id", using: :btree
   add_index "classrooms", ["teacher_id"], name: "index_classrooms_on_teacher_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
@@ -238,7 +242,9 @@ ActiveRecord::Schema.define(version: 20170503211335) do
   add_foreign_key "classrooms", "courses"
   add_foreign_key "classrooms", "institutions"
   add_foreign_key "classrooms", "subjects"
+  add_foreign_key "classrooms", "users", column: "helper_id"
   add_foreign_key "classrooms", "users", column: "representative_id"
+  add_foreign_key "classrooms", "users", column: "substitute_representative_id"
   add_foreign_key "classrooms", "users", column: "teacher_id"
   add_foreign_key "courses", "institutions"
   add_foreign_key "courses", "users", column: "coordinator_id"
