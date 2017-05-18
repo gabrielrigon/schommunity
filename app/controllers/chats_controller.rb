@@ -23,9 +23,17 @@ class ChatsController < InheritedResources::Base
     @talk_with = "Conversa com #{User.find(params[:contact_id].to_i).full_name}"
     @messages = UserChat.where { (user_id.in ids) & (contact_id.in ids) }
                         .order(:created_at)
+    @counter = @messages.count
 
     mark_as_read(params[:contact_id].to_i)
 
+    render layout: false
+  end
+
+  def counter
+    ids = [params[:current_user_id].to_i, params[:contact_id].to_i]
+    @counter = UserChat.where { (user_id.in ids) & (contact_id.in ids) }
+                       .order(:created_at).count
     render layout: false
   end
 
@@ -36,7 +44,6 @@ class ChatsController < InheritedResources::Base
       @user_chat.message    = params[:message_content]
       @user_chat.user_id    = params[:current_user_id]
       @user_chat.contact_id = params[:contact_id]
-
       @user_chat.save
     end
 

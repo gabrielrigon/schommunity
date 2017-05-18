@@ -67,6 +67,7 @@ Rails.application.routes.draw do
 
   resources :chats do
     collection do
+      get 'counter'
       get 'messages'
       post 'send_message'
     end

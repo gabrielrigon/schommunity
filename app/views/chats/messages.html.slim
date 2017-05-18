@@ -2,8 +2,10 @@
   h3.box-title
     = @talk_with
 .box-body.chat-messages
+  #counter_container
+    .direct-chat-messages-fake data-message-count="#{@counter}"
   - if @messages.any?
-    .direct-chat-messages
+    .direct-chat-messages data-message-count="#{@counter}"
       - @messages.each do |item|
         .direct-chat-msg
           .direct-chat-info.clearfix
@@ -23,3 +25,14 @@
 
 coffee:
   $('.direct-chat-messages').scrollTop(999 * 999 * 999 * 999)
+  
+  setInterval (->
+    current_user_id = $('#chat_container').data('current')
+    contact_id      = $('#chat_container').data('current-contact')
+    counter_url     = "/chats/counter/?current_user_id=#{current_user_id}&contact_id=#{contact_id}"
+    
+    $('#counter_container').empty()
+    $('#counter_container').load counter_url
+
+    return
+  ), 1000

@@ -1,0 +1,14 @@
+.direct-chat-messages-fake data-message-count="#{@counter}"
+
+coffee:
+  current_user_id = $('#chat_container').data('current')
+  contact_id      = $('#chat_container').data('current-contact')
+
+  current_count = $('.direct-chat-messages').data('message-count')
+  fake_count    = $('.direct-chat-messages-fake').data('message-count')
+  
+  if (current_count != fake_count) && ($('#message_to_send').val() == "")
+    console.log('new message')
+    
+    messages_url = "/chats/messages/?current_user_id=#{current_user_id}&contact_id=#{contact_id}"
+    $('#chat_container').load messages_url
