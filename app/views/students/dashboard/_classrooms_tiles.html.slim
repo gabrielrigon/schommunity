@@ -1,0 +1,13 @@
+- classrooms.each do |item|
+  .col-md-4.col-sm-6.col-xs-12
+    .info-box
+      span.info-box-icon.bg-dark-gray
+        = fa_icon 'users'
+      .info-box-content
+        .info-box-text.info-classrooms-first
+          = item.classroom.name
+        .info-box-text.info-classrooms
+          = classroom_data(item)
+        .info-box-text.info-classrooms
+          a
+            | Ver mais...

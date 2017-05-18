@@ -6,7 +6,6 @@ class Ability
     # ---- defaults ----
 
     can :manage, :user_profile
-    can :manage, :user_chat
 
     cannot :manage, Classroom
     cannot :manage, Course
@@ -23,6 +22,7 @@ class Ability
     cannot :manage, :teachers_users
 
     cannot :manage, :representatives_classrooms
+    cannot :manage, :user_chat
 
     # ---- user types ----
 
@@ -43,6 +43,7 @@ class Ability
 
       can :manage, :teachers_dashboard
       can :manage, :teachers_users
+      can :manage, :user_chat
 
       cannot :destroy, User, id: user.id
     end
@@ -54,6 +55,7 @@ class Ability
       can :manage, Post, user_id: user.id
 
       can :manage, :teachers_dashboard
+      can :manage, :user_chat
     end
 
     if user.coordinator?
@@ -66,6 +68,7 @@ class Ability
       can :manage, Post, user_id: user.id
 
       can :manage, :students_dashboard
+      can :manage, :user_chat
     end
 
     if user.representative?

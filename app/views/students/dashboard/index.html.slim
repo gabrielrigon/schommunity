@@ -1,31 +1,22 @@
-section.content-header
-  h1
-    | Dashboard
-    small
-      | Feed
+- if @classrooms.any?
+  section.content-header
+    h1
+      | Salas
+      small
+        | suas salas de aula
+  section.content style="min-height: 10px"
+    .row
+      = render 'classrooms_tiles', classrooms: @classrooms
   
-  ol.breadcrumb
-    = render_breadcrumbs tag: :li, separator: '>'
-  
-section.content
-  .row
-  ul.timeline
-  
-    / post
-    li
-      i.fa.fa-question.bg-red
-      .timeline-item
-        span.time
-          i.fa.fa-clock-o
-          |  01-02-17 | 13:19
-        h3.timeline-header
-          .btn.btn-xs.btn-default.post-title-btn
-            | ADS-INAF-M-3
-          | Inteligência Artificial 
-          = fa_icon('paperclip')
-        .timeline-body
-          | Pessoal, gostaria de saber se quando vocês fizeram esta matéria tiveram a necessidade de comprar um robô que vende na nasa, tem que encomendar e fazer o pagamento antecipado. Estou com medo de ter que comprar isso também e sei lá, acabar fazendo besteira.
-        .timeline-footer.text-right
-          a.btn.btn-default.btn-xs
-            | Ver mais
-    / end post
+- if @posts.any?
+  section.content-header
+    h1
+      | Dashboard
+      small
+        | feed
+    
+  section.content
+    .row
+    ul.timeline
+      - @posts.each do |post|
+        = render 'post', post: post

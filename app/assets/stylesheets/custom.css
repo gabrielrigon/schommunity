@@ -209,3 +209,13 @@ td {
   max-height: 400px;
   overflow-y: scroll;
 }
+
+.info-classrooms, .info-classrooms-first {
+  margin-top: 0px;
+  text-transform: none !important;
+  color: #767676;
+}
+
+.info-classrooms-first {
+  margin-top: 11px !important;
+}

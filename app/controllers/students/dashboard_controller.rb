@@ -15,5 +15,9 @@ class Students::DashboardController < InheritedResources::Base
   # ---- actions ----
 
   def index
+    @classrooms = current_user.classroom_users
+
+    classrooms_ids = current_user.classroom_users.pluck(:classroom_id)
+    @posts = Post.where { classroom_id.in classrooms_ids }.order('created_at desc')
   end
 end

@@ -1,0 +1,19 @@
+li
+  / = content_tag(:i, class: "fa fa-#{post_type_icon(post)}")
+  / i.fa.fa-question.bg-red
+  
+  i class="#{post_type_icon(post)}"
+  .timeline-item
+    span.time
+      = fa_icon 'clock-o'
+      |  
+      = post.decorate.created_at
+    h3.timeline-header
+      .btn.btn-xs.btn-default.post-title-btn
+        = post.classroom.uuid
+      = post.classroom.subject_name
+    .timeline-body.clearfix
+      = truncate(post.content, length: 140, separator: ' ', escape: false)
+    .timeline-footer.text-right
+      a.btn.btn-default.btn-xs
+        | Ver mais

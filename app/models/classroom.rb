@@ -11,6 +11,7 @@ class Classroom < ActiveRecord::Base
   belongs_to :helper, class_name: 'User', foreign_key: 'helper_id'
   has_many :classroom_users
   has_many :users, through: :classroom_users
+  has_many :posts
 
   # ---- delegates ----
 
