@@ -42,7 +42,7 @@ class PostsController < InheritedResources::Base
                     alert: 'O comentário não pode ser inserido'
       end
     else
-      @comments = resource.comments
+      @comments = resource.comments.order(:created_at)
     end
   end
 

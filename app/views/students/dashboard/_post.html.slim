@@ -10,7 +10,7 @@ li
         = post.classroom.uuid
       = post.classroom.subject_name
     .timeline-body.clearfix
-      .post-owner-data.clearfix
+      .post-owner-data.clearfix class="#{'post-by-teacher bg-dark-gray' if post.user.teacher?}"
         = image_tag post.user.avatar.url(:thumb), class: "img-circle img-responsive post-owner-avatar"
         .post-owner-name
           = post.user_full_name

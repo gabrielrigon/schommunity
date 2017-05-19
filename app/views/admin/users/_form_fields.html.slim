@@ -13,14 +13,14 @@ hr
   .col-md-8
     = form.association :institution, collection: institutions_collection, input_html: { class: 'selectize-single selectize-institution' }
   .col-md-4
-    = form.association :user_type, collection: user_type_collection,input_html: { class: 'selectize-single' }
+    = form.association :user_type, collection: user_type_collection(current_user), input_html: { class: 'selectize-single' }
 
-#student_data_container.row style="display: #{ display_student_data_container(resource) }"
-  = form.simple_fields_for :student do |f|
-    #student_course_container.col-md-6
-      = f.association :course, collection: institution_courses_collection(current_user), input_html: { class: 'selectize-single selectize-course' }
-    .col-md-6
-      = f.input :number
+/ #student_data_container.row style="display: #{ display_student_data_container(resource) }"
+/   = form.simple_fields_for :student do |f|
+/     #student_course_container.col-md-6
+/       = f.association :course, collection: institution_courses_collection(current_user), input_html: { class: 'selectize-single selectize-course' }
+/     .col-md-6
+/       = f.input :number
 
 .row
   .col-md-6

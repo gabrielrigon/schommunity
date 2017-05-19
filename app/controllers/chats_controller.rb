@@ -15,7 +15,7 @@ class ChatsController < InheritedResources::Base
   # ---- actions ----
 
   def index
-    @contacts = current_user.institution.users.where.not(id: current_user.id)
+    @contacts = contacts_collection(current_user)
   end
 
   def messages
@@ -62,5 +62,16 @@ class ChatsController < InheritedResources::Base
   def mark_as_read(contact_id)
     messages = UserChat.where(user_id: contact_id, contact_id: current_user.id, read: false)
     messages.update_all(read: true)
+  end
+
+  def contacts_collection(current_user)
+    if current_user.schoolmaster?
+      users = current_user.institution.users.where.not(id: current_user.id)
+      users.where.not(user_type_id: Constantine.invoke(UserType, :student)).order(:first_name)
+    elsif current_user.teacher?
+      User.where { id.in current_user.teacher_contacts_ids }.order(:first_name)
+    elsif current_user.student?
+      User.where { id.in current_user.student_contacts_ids }.order(:first_name)
+    end
   end
 end

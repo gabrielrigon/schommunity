@@ -103,6 +103,39 @@ class User < ActiveRecord::Base
     classroom_users.pluck(:classroom_id)
   end
 
+  def teacher_contacts_ids
+    courses_ids = coordinated_courses_ids
+    self_id = id
+    classrooms_ids = Classroom.where { (course_id.in courses_ids) | (teacher_id.eq self_id) | (helper_id.eq self_id) }.ids
+
+    ids = ClassroomUser.where(classroom_id: classrooms_ids)
+                       .pluck(:user_id)
+
+    ids << Classroom.where(id: classrooms_ids)
+                    .pluck(:representative_id, :substitute_representative_id)
+
+    ids << User.where(institution: institution)
+               .where(user_type_id: invoke(UserType, [:schoolmaster, :teacher]))
+               .where.not(id: self_id)
+               .ids
+
+    ids.flatten.uniq.reject { |item| item.nil? || item == '' }
+  end
+
+  def student_contacts_ids
+    self_id = id
+    classrooms_ids = classrooms.ids
+
+    ids = ClassroomUser.where(classroom_id: classrooms_ids)
+                       .pluck(:user_id)
+
+    ids << Classroom.where(id: classrooms_ids)
+                    .pluck(:teacher_id, :helper_id, :representative_id, :substitute_representative_id)
+
+    ids << student.course.coordinator.id if student.course.present?
+    ids.flatten.uniq.reject { |item| item.nil? || item == '' || item == self_id }
+  end
+
   # ---- user types ----
 
   def admin?

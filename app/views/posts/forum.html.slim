@@ -27,11 +27,11 @@ section.content style="min-height: 10px"
         .col-md-4
           label.control-label= t 'simple_form.labels.classroom.teacher'
           p= deal_value resource.classroom.teacher_name
+      br
       .row
         .col-md-12
-          .description-box.no-background-color
-            h4.text-light-blue= deal_value resource.title
-            br
+          .description-box
+            h4= deal_value resource.title
             p.text-muted= deal_value resource.content.html_safe
       br
     .box-footer

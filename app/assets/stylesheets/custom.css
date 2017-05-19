@@ -199,6 +199,7 @@ td {
 
 .badge-count-messages {
   margin-top: 8px;
+  margin-right: 15px;
 }
 
 .direct-chat-messages {
@@ -279,4 +280,17 @@ td {
   padding: 30px 0;
   font-size: 15px;
   color: #999;
+}
+
+.img-logo-top {
+  width: 28px;
+  float: left;
+  margin-right: 7px;
+  margin-top: -4px;
+}
+
+.post-by-teacher {
+  padding: 10px;
+  border: 0px;
+  border-radius: 3px;
 }

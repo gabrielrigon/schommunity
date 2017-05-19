@@ -13,6 +13,7 @@ header.main-header
       ul.nav.navbar-nav
         li.institution
           = link_to 'javascript:;'
+            = image_tag current_user.institution.logo.url(:thumb), class: "img-circle img-responsive img-logo-top"
             = current_user.decorate.institution_trading_name
         li.signout
           = link_to destroy_user_session_path, method: :delete do

@@ -11,7 +11,7 @@ hr
 
 .row
   .col-md-4
-    = form.association :user_type, collection: user_type_collection, input_html: { class: 'selectize-single' }
+    = form.association :user_type, collection: user_type_collection(current_user), input_html: { class: 'selectize-single' }
   .col-md-4
     = form.input :first_name
   .col-md-4
