@@ -1,0 +1,5 @@
+= simple_form_for :comment, method: :patch do |form|
+  .input-group.margin
+    = form.input :content, label: false, input_html: { class: 'no-radius-right' }
+    .input-group-btn
+      = form.button :button, 'Enviar', class: "btn btn-success no-radius-left", style: "height: 34px"

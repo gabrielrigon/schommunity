@@ -65,6 +65,7 @@ class Ability
 
     if user.student?
       can :create, Post
+      can :forum,  Post, classroom_id: user.studies_classrooms_ids
       can :manage, Post, user_id: user.id
 
       can :manage, :students_dashboard

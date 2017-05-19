@@ -1,0 +1,16 @@
+- if @comments.any?
+  - @comments.each do |comment|
+    .box-comment
+      = image_tag comment.user.avatar.url(:thumb), class: "img-circle img-sm"
+      .comment-text
+        span.username
+          = deal_value comment.user_full_name
+          span.text-muted.pull-right
+            = fa_icon 'clock-o'
+            |  
+            = comment.decorate.created_at
+        = comment.content
+- else
+  .comments-placeholder.text-center
+    = fa_icon 'comment-o'
+    |  Ainda sem comentários... Seja o primeiro!

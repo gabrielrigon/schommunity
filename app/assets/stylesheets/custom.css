@@ -219,3 +219,64 @@ td {
 .info-classrooms-first {
   margin-top: 11px !important;
 }
+
+.post-owner-data {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #ddd;
+}
+
+.post-owner-avatar {
+  border: 3px solid #ddd;
+  padding: 2px;
+  float: left;
+  margin-right: 13px;
+  height: 50px;
+}
+
+.post-owner-name {
+  margin-top: 15px;
+}
+
+.post-title-text {
+  margin-bottom: 8px;
+}
+
+.icon-post-forum {
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  line-height: 30px;
+  background: #d2d6de;
+  border-radius: 50%;
+  text-align: center;
+  float: right;
+  margin-top: 6px;
+}
+
+.comments-section-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.no-background-color {
+  background-color: transparent !important;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.post-data-container {
+  color: #999;
+}
+
+.comments-placeholder {
+  padding: 30px 0;
+  font-size: 15px;
+  color: #999;
+}

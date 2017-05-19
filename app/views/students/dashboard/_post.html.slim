@@ -1,7 +1,4 @@
 li
-  / = content_tag(:i, class: "fa fa-#{post_type_icon(post)}")
-  / i.fa.fa-question.bg-red
-  
   i class="#{post_type_icon(post)}"
   .timeline-item
     span.time
@@ -13,7 +10,17 @@ li
         = post.classroom.uuid
       = post.classroom.subject_name
     .timeline-body.clearfix
-      = truncate(post.content, length: 140, separator: ' ', escape: false)
-    .timeline-footer.text-right
-      a.btn.btn-default.btn-xs
-        | Ver mais
+      .post-owner-data.clearfix
+        = image_tag post.user.avatar.url(:thumb), class: "img-circle img-responsive post-owner-avatar"
+        .post-owner-name
+          = post.user_full_name
+      .post-title-text.text-light-blue
+        = post.title
+      .post-content-text.text-muted
+        = truncate(post.content, length: 280, separator: ' ', escape: false)
+    .timeline-footer.clearfix
+      .float-left.post-data-container
+        = post_comments_count(post)
+      .float-right
+        = link_to 'Ver mais...', forum_post_path(post), class: "btn btn-default btn-xs"
+        

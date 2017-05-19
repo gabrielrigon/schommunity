@@ -18,6 +18,6 @@ class Students::DashboardController < InheritedResources::Base
     @classrooms = current_user.classroom_users
 
     classrooms_ids = current_user.classroom_users.pluck(:classroom_id)
-    @posts = Post.where { classroom_id.in classrooms_ids }.order('created_at desc')
+    @posts = Post.where { classroom_id.in classrooms_ids }.order('created_at desc').last(15)
   end
 end

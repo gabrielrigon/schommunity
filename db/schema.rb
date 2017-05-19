@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517151341) do
+ActiveRecord::Schema.define(version: 20170518223418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,17 @@ ActiveRecord::Schema.define(version: 20170517151341) do
   add_index "classrooms", ["subject_id"], name: "index_classrooms_on_subject_id", using: :btree
   add_index "classrooms", ["substitute_representative_id"], name: "index_classrooms_on_substitute_representative_id", using: :btree
   add_index "classrooms", ["teacher_id"], name: "index_classrooms_on_teacher_id", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -233,6 +244,7 @@ ActiveRecord::Schema.define(version: 20170517151341) do
     t.datetime "avatar_updated_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -258,6 +270,8 @@ ActiveRecord::Schema.define(version: 20170517151341) do
   add_foreign_key "classrooms", "users", column: "representative_id"
   add_foreign_key "classrooms", "users", column: "substitute_representative_id"
   add_foreign_key "classrooms", "users", column: "teacher_id"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "courses", "institutions"
   add_foreign_key "courses", "users", column: "coordinator_id"
   add_foreign_key "posts", "classrooms"

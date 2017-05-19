@@ -27,6 +27,25 @@ class PostsController < InheritedResources::Base
     create!
   end
 
+  def forum
+    if request.patch?
+      @comment = Comment.new
+      @comment.post = resource
+      @comment.user = current_user
+      @comment.content = params[:comment][:content]
+
+      if @comment.save
+        redirect_to forum_post_path(resource),
+                    notice: 'Comentário inserido com sucesso'
+      else
+        redirect_to forum_post_path(resource),
+                    alert: 'O comentário não pode ser inserido'
+      end
+    else
+      @comments = resource.comments
+    end
+  end
+
   # ---- methods ----
 
   private

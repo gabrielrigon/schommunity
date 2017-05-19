@@ -73,7 +73,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts
+  resources :posts do
+    member do
+      get :forum
+      patch :forum
+    end
+  end
 
   resource :profile, only: :update
   get 'profile', action: :edit, controller: 'profiles'

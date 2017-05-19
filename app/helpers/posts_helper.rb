@@ -20,8 +20,14 @@ module PostsHelper
       'fa fa-paperclip bg-yellow'
     end
   end
-end
 
-# { name: 'Dúvida', alias: 'question' },
-# { name: 'Informação', alias: 'information' },
-# { name: 'Material', alias: 'material' }
+  def post_comments_count(post)
+    if post.comments.count > 1
+      "#{post.comments.count} comentários"
+    elsif post.comments.count < 1
+      'ainda sem comentários'
+    else
+      '1 comentário'
+    end
+  end
+end

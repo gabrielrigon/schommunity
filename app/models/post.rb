@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
   belongs_to :classroom
   belongs_to :post_type
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
   # ---- delegates ----
 
@@ -29,6 +30,10 @@ class Post < ActiveRecord::Base
   # ---- validates ----
 
   validates :classroom, :post_type, :title, :content, presence: true
+
+  # ---- nested values ----
+
+  accepts_nested_attributes_for :comments
 
   # ---- methods ----
 

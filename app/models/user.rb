@@ -99,6 +99,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def studies_classrooms_ids
+    classroom_users.pluck(:classroom_id)
+  end
+
   # ---- user types ----
 
   def admin?
