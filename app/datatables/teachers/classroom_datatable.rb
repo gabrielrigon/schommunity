@@ -5,7 +5,7 @@ class Teachers::ClassroomDatatable < BaseDatatable
 
   def initialize(view)
     @view = view
-    @columns = %w(uuid courses.name subjects.name classroom_times.name teachers.name)
+    @columns = %w(uuid courses.name subjects.name classroom_times.name users.name)
   end
 
   protected

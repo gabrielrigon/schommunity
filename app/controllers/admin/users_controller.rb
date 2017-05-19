@@ -31,6 +31,13 @@ class Admin::UsersController < InheritedResources::Base
     resource.build_address if resource.address.blank?
   end
 
+  def resend_invitation
+    user = User.find params[:id]
+    user.invite!
+
+    redirect_to collection_path, notice: 'Convite reenviado'
+  end
+
   # ---- methods ----
 
   def student_course_field

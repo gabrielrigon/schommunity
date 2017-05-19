@@ -20,7 +20,7 @@ class ChatsController < InheritedResources::Base
 
   def messages
     ids = [params[:current_user_id].to_i, params[:contact_id].to_i]
-    @talk_with = "Conversa com #{User.find(params[:contact_id].to_i).full_name}"
+    @talk_with = "Conversa com #{User.find(params[:contact_id].to_i).name}"
     @messages = UserChat.where { (user_id.in ids) & (contact_id.in ids) }
                         .order(:created_at)
     @counter = @messages.count
@@ -67,11 +67,11 @@ class ChatsController < InheritedResources::Base
   def contacts_collection(current_user)
     if current_user.schoolmaster?
       users = current_user.institution.users.where.not(id: current_user.id)
-      users.where.not(user_type_id: Constantine.invoke(UserType, :student)).order(:first_name)
+      users.where.not(user_type_id: Constantine.invoke(UserType, :student)).order(:name)
     elsif current_user.teacher?
-      User.where { id.in current_user.teacher_contacts_ids }.order(:first_name)
+      User.where { id.in current_user.teacher_contacts_ids }.order(:name)
     elsif current_user.student?
-      User.where { id.in current_user.student_contacts_ids }.order(:first_name)
+      User.where { id.in current_user.student_contacts_ids }.order(:name)
     end
   end
 end

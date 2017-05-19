@@ -1,6 +1,6 @@
 class Admin::UserDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
-           :current_ability, to: :@view
+           :current_ability, :resend_invitation_admin_user_path, to: :@view
 
   def initialize(view)
     @view = view
@@ -33,6 +33,13 @@ class Admin::UserDatatable < BaseDatatable
           end +
 
           content_tag(:ul, class: 'dropdown-menu pull-right') do
+            content_tag(:li) do
+              link_to resend_invitation_admin_user_path(item), method: :patch do
+                content_tag(:i, class: 'fa fa-ticket') {} +
+                ' Reenviar convite'
+              end
+            end +
+
             content_tag(:li) do
               link_to resource_path(item) do
                 content_tag(:i, class: 'fa fa-eye') {} +

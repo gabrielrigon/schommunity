@@ -15,11 +15,15 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: :index
-
     resources :institutions
+
     resources :users do
       collection do
         get 'student_course_field'
+      end
+
+      member do
+        patch :resend_invitation
       end
     end
   end
@@ -55,6 +59,10 @@ Rails.application.routes.draw do
     resources :users do
       collection do
         get 'search'
+      end
+
+      member do
+        patch :resend_invitation
       end
     end
   end

@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
 
   # ---- delegates ----
 
-  delegate :full_name, to: :user, prefix: true, allow_nil: true
+  delegate :name, to: :user, prefix: true, allow_nil: true
 
   # ---- validates ----
 

@@ -6,7 +6,7 @@ class Subject < ActiveRecord::Base
 
   # ---- searchkick ----
 
-  searchkick match: :word_start, searchable: [:name, :initials, :institution, :course, :description]
+  searchkick match: :word_start, searchable: [:name, :initials, :course]
 
   # ---- delegates ----
 
@@ -19,9 +19,7 @@ class Subject < ActiveRecord::Base
     {
       name: name,
       initials: initials,
-      institution: institution_trading_name,
-      course: course_name,
-      description: description
+      course: course_name
     }
   end
 end

@@ -1,6 +1,7 @@
 class Teachers::UserDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
-           :current_ability, :current_user, :can?, to: :@view
+           :current_ability, :current_user, :resend_invitation_teachers_user_path,
+           :can?, to: :@view
 
   def initialize(view)
     @view = view
@@ -34,6 +35,13 @@ class Teachers::UserDatatable < BaseDatatable
           end +
 
           content_tag(:ul, class: 'dropdown-menu pull-right') do
+            content_tag(:li) do
+              link_to resend_invitation_teachers_user_path(item), method: :patch do
+                content_tag(:i, class: 'fa fa-ticket') {} +
+                ' Reenviar convite'
+              end
+            end +
+
             content_tag(:li) do
               link_to resource_path(item) do
                 content_tag(:i, class: 'fa fa-eye') {} +

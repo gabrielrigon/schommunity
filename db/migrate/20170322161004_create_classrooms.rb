@@ -9,7 +9,7 @@ class CreateClassrooms < ActiveRecord::Migration
       t.references :substitute_representative, index: true, references: :users
       t.references :teacher, index: true, references: :users
       t.references :helper, index: true, references: :users
-      t.string :uuid
+      t.string :uuid, index: true
       t.text :description
       t.boolean :active, default: true
 

@@ -4,7 +4,7 @@ class PostDatatable < BaseDatatable
 
   def initialize(view)
     @view = view
-    @columns = %w(created_at title post_types.name active )
+    @columns = %w(created_at title post_types.name active)
   end
 
   protected
@@ -77,6 +77,8 @@ class PostDatatable < BaseDatatable
     end
 
     Post.where(user_id: current_user.id)
+        .joins(:post_type.outer)
+        .includes(:post_type)
         .where(query).order("#{sort_column} #{sort_direction}")
         .page(page).per_page(per_page)
   end

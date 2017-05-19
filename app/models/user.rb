@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
 
   after_create :invite
   after_create :update_student
+  after_save   :update_name
 
   # ---- nested values ----
 
@@ -66,10 +67,6 @@ class User < ActiveRecord::Base
   scope :valid, -> { where.not(id: 1) }
   scope :students, -> { where(user_type_id: invoke(UserType, :student)) }
   scope :teachers, -> { where(user_type_id: invoke(UserType, :teacher)) }
-
-  # ---- aliases ----
-
-  alias_attribute :name, :full_name
 
   # ---- methods ----
 
@@ -97,6 +94,10 @@ class User < ActiveRecord::Base
     else
       Student.create(user: self, institution: institution)
     end
+  end
+
+  def update_name
+    update_column(:name, full_name)
   end
 
   def studies_classrooms_ids
@@ -166,7 +167,7 @@ class User < ActiveRecord::Base
 
   def search_data
     {
-      name: full_name,
+      name: name,
       email: email,
       institution: institution_trading_name
     }

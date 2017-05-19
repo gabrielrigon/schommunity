@@ -13,7 +13,7 @@ li
       .post-owner-data.clearfix class="#{'post-by-teacher bg-dark-gray' if post.user.teacher?}"
         = image_tag post.user.avatar.url(:thumb), class: "img-circle img-responsive post-owner-avatar"
         .post-owner-name
-          = post.user_full_name
+          = post.user_name
       .post-title-text.text-light-blue
         = post.title
       .post-content-text.text-muted

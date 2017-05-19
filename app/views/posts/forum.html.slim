@@ -10,7 +10,7 @@ section.content style="min-height: 10px"
         = image_tag resource.user.avatar.url(:thumb), class: "img-circle img-responsive post-owner-avatar"
         i class="#{post_type_icon(resource)} icon-post-forum"
         span.username
-          = deal_value resource.user_full_name
+          = deal_value resource.user_name
         span.description
           = fa_icon 'clock-o'
           |  

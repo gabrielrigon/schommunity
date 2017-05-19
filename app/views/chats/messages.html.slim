@@ -10,7 +10,7 @@
         .direct-chat-msg
           .direct-chat-info.clearfix
             span.direct-chat-name.pull-left
-              = item.user_full_name
+              = item.user_name
             span.direct-chat-timestamp.pull-right
               = item.decorate.created_at
           = image_tag item.user.avatar.url(:thumb), class: "direct-chat-img"

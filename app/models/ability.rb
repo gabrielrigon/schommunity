@@ -28,7 +28,7 @@ class Ability
 
     if user.admin?
       can :manage, Institution
-      can :manage, User
+      can :manage, User, user_type_id: Constantine.invoke(UserType, :schoolmaster)
 
       can :manage, :admin_dashboard
       can :manage, :admin_users

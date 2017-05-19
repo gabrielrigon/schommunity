@@ -6,8 +6,8 @@ class UserChat < ActiveRecord::Base
 
   # ---- delegates ----
 
-  delegate :full_name, :first_name, to: :user, prefix: true, allow_nil: true
-  delegate :full_name, :first_name, to: :contact, prefix: true, allow_nil: true
+  delegate :name, :first_name, to: :user, prefix: true, allow_nil: true
+  delegate :name, :first_name, to: :contact, prefix: true, allow_nil: true
 
   # ---- default values ----
 

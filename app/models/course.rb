@@ -9,7 +9,7 @@ class Course < ActiveRecord::Base
 
   # ---- searchkick ----
 
-  searchkick match: :word_start, searchable: [:name, :initials, :coordinator, :institution, :description]
+  searchkick match: :word_start, searchable: [:name, :initials, :coordinator]
 
   # ---- delegates ----
 
@@ -22,9 +22,7 @@ class Course < ActiveRecord::Base
     {
       name: name,
       initials: initials,
-      coordinator: coordinator_name,
-      institution: institution_trading_name,
-      description: description
+      coordinator: coordinator_name
     }
   end
 end

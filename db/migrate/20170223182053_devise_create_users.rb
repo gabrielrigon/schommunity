@@ -33,7 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # defaults
       t.string     :first_name
       t.string     :last_name
-      t.string     :name
+      t.string     :name, index: true
       t.string     :phone
       t.string     :cpf
       t.references :gender, index: true, foreign_key: true

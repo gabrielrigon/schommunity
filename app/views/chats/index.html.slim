@@ -22,7 +22,7 @@ section.content
                   td= image_tag item.avatar.url(:thumb), class: "img-circle img-responsive img-contacts"
                   td
                     a.contact-item data-contact="#{item.id}" href="javascript:;"
-                      = item.full_name
+                      = item.name
                     = chat_badge_item(current_user, item)
     .col-md-8
       #chat_container.box data-current="#{current_user.id}"

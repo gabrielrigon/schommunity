@@ -46,6 +46,13 @@ class Teachers::UsersController < InheritedResources::Base
     end
   end
 
+  def resend_invitation
+    user = User.find params[:id]
+    user.invite!
+
+    redirect_to collection_path, notice: 'Convite reenviado'
+  end
+
   # ---- methods ----
 
   private

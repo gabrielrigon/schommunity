@@ -7,7 +7,7 @@ class CreatePosts < ActiveRecord::Migration
       t.references :classroom, index: true, foreign_key: true
       t.references :post_type, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
-      t.string :title
+      t.string :title, index: true
       t.text :content
       t.boolean :active
 

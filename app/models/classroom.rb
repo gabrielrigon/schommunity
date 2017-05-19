@@ -13,6 +13,10 @@ class Classroom < ActiveRecord::Base
   has_many :users, through: :classroom_users
   has_many :posts
 
+  # ---- searchkick ----
+
+  searchkick match: :word_start, searchable: [:uuid, :course, :subject, :classroom_time, :teacher]
+
   # ---- delegates ----
 
   delegate :id, :trading_name, to: :institution, prefix: true, allow_nil: true
@@ -54,6 +58,20 @@ class Classroom < ActiveRecord::Base
   def name
     "#{uuid} - #{subject_name}"
   end
+
+  # ---- searchkick ----
+
+  def search_data
+    {
+      uuid: uuid,
+      course: course_name,
+      subject: subject_name,
+      classroom_time: classroom_time_name,
+      teacher: teacher_name
+    }
+  end
+
+  # ---- methods ----
 
   private
 
