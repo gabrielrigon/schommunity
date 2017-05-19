@@ -10,6 +10,11 @@
             |  
             = comment.decorate.created_at
         = comment.content
+        - if comment.user == current_user
+          .remove-comment.clearfix
+            a.text-muted.btn-remove-comment href="javascript:;" data-comment-id="#{comment.id}" data-confirm="Confirma a exclusão do seu comentário?"
+              = fa_icon 'trash-o'
+              |  Excluir comentário
 - else
   .comments-placeholder.text-center
     = fa_icon 'comment-o'

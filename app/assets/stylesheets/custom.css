@@ -294,3 +294,17 @@ td {
   border: 0px;
   border-radius: 3px;
 }
+
+.remove-comment {
+  font-weight: 400;
+  font-size: 12px;
+  margin-top: 7px;
+}
+
+.box-comments .username {
+  margin-bottom: 7px;
+}
+
+.btn-remove-comment {
+
+}

@@ -65,8 +65,11 @@ class Ability
 
     if user.student?
       can :create, Post
-      can :forum,  Post, classroom_id: user.studies_classrooms_ids
       can :manage, Post, user_id: user.id
+
+      can [:forum, :remove_comment], Post do |post|
+        user.studies_classrooms_ids.include?(post.classroom_id) && post.active
+      end
 
       can :manage, :students_dashboard
       can :manage, :user_chat

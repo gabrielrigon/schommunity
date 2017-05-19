@@ -82,6 +82,10 @@ Rails.application.routes.draw do
   end
 
   resources :posts do
+    collection do
+      post 'remove_comment'
+    end
+
     member do
       get :forum
       patch :forum

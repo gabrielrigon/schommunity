@@ -35,6 +35,10 @@ class Post < ActiveRecord::Base
 
   accepts_nested_attributes_for :comments
 
+  # ---- scope ----
+
+  scope :valid, -> { where(active: true) }
+
   # ---- methods ----
 
   def complete_data

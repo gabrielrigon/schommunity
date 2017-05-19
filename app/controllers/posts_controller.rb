@@ -29,12 +29,12 @@ class PostsController < InheritedResources::Base
 
   def forum
     if request.patch?
-      @comment = Comment.new
-      @comment.post = resource
-      @comment.user = current_user
-      @comment.content = params[:comment][:content]
+      comment = Comment.new
+      comment.post = resource
+      comment.user = current_user
+      comment.content = params[:comment][:content]
 
-      if @comment.save
+      if comment.save
         redirect_to forum_post_path(resource),
                     notice: 'Comentário inserido com sucesso'
       else
@@ -44,6 +44,13 @@ class PostsController < InheritedResources::Base
     else
       @comments = resource.comments.order(:created_at)
     end
+  end
+
+  def remove_comment
+    comment = Comment.find(params[:comment_id].to_i)
+    comment.destroy if comment.user == current_user
+
+    render nothing: true
   end
 
   # ---- methods ----

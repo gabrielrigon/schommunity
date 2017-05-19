@@ -39,3 +39,14 @@ $ ->
 
     bAutoWidth: false
   )
+
+
+  $(document).on 'click', '.btn-remove-comment', ->
+    comment_id = $(this).data('comment-id')
+    remove_comment_url = "/posts/remove_comment/?comment_id=#{comment_id}"
+
+    $.ajax
+      url: remove_comment_url
+      type: 'POST'
+
+    $(this).parents('.box-comment').remove()
