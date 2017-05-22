@@ -1,0 +1,21 @@
+.post.clearfix
+  .user-block
+    = image_tag post.user.avatar.url(:thumb), class: "img-circle img-responsive post-owner-avatar"
+    i class="#{post_type_icon(post)} icon-post-forum"
+    span.username
+      = deal_value post.user_name
+    span.description
+      = fa_icon 'clock-o'
+      |  
+      | Criado em 
+      = post.decorate.created_at
+  .post-content
+    .post-title-text.text-light-blue
+      = post.title
+    .post-content-text.text-muted
+      = truncate(post.content, length: 280, separator: ' ', escape: false)
+  .timeline-footer.clearfix
+    .float-left.post-data-container
+      = post_comments_count(post)
+    .float-right
+      = link_to 'Ver mais...', forum_post_path(post), class: "btn btn-default btn-xs"

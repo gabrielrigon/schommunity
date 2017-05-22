@@ -11,5 +11,6 @@ class ClassroomsController < InheritedResources::Base
   # ---- actions ----
 
   def forum
+    @posts = resource.posts.order('created_at desc')
   end
 end

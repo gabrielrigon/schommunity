@@ -305,6 +305,7 @@ td {
   margin-bottom: 7px;
 }
 
-.btn-remove-comment {
-
+.classroom-posts-container {
+  max-height: 800px;
+  overflow-y: scroll;
 }
