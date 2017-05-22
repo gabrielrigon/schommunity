@@ -44,12 +44,15 @@ section.content
       .box.box-default
         .box-header.with-border
           h3.box-title
-            | Posts
+            | Postagens
           .box-tools.pull-right.hidden-lg.hidden-md
             button.btn.btn-box-tool data-widget="collapse"
               = fa_icon 'minus'
         .box-body.classroom-posts-container
           = render 'posts', posts: @posts
+        - if @posts.count > 5
+          .box-footer.text-center.will-paginate-manual
+            = will_paginate @posts
     .col-md-4
       .box.box-default
         .box-header.with-border

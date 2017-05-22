@@ -1,7 +1,7 @@
 class Representatives::ClassroomDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
            :members_representatives_classroom_path, :current_user,
-           :forum_classroom_path, to: :@view
+           :forum_classroom_path, :can?, to: :@view
 
   def initialize(view)
     @view = view
@@ -34,10 +34,16 @@ class Representatives::ClassroomDatatable < BaseDatatable
           end +
 
           content_tag(:ul, class: 'dropdown-menu pull-right') do
-            content_tag(:li) do
-              link_to forum_classroom_path(item) do
-                content_tag(:i, class: 'fa fa-comment-o') {} +
-                ' Fórum'
+            if can?(:forum, item)
+              content_tag(:li) do
+                link_to forum_classroom_path(item) do
+                  content_tag(:i, class: 'fa fa-comment-o') {} +
+                  ' Fórum'
+                end
+              end
+            else
+              content_tag(:div) do
+                {}
               end
             end +
 

@@ -11,6 +11,8 @@ class ClassroomsController < InheritedResources::Base
   # ---- actions ----
 
   def forum
-    @posts = resource.posts.order('created_at desc')
+    @posts = resource.posts
+                     .paginate(page: params[:page], per_page: 5)
+                     .order('created_at desc')
   end
 end

@@ -13,7 +13,7 @@
     .post-title-text.text-light-blue
       = post.title
     .post-content-text.text-muted
-      = truncate(post.content, length: 280, separator: ' ', escape: false)
+      = truncate(strip_tags(post.content), length: 230, separator: ' ', escape: false)
   .timeline-footer.clearfix
     .float-left.post-data-container
       = post_comments_count(post)

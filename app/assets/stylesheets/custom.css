@@ -305,7 +305,46 @@ td {
   margin-bottom: 7px;
 }
 
-.classroom-posts-container {
-  max-height: 800px;
-  overflow-y: scroll;
+/* will paginate */
+
+.will-paginate-manual .pagination {
+  margin: 0;
+}
+
+.will-paginate-manual .pagination .previous_page,
+.will-paginate-manual .pagination .next_page,
+.will-paginate-manual .pagination .current,
+.will-paginate-manual .pagination .next,
+.will-paginate-manual .pagination a {
+  display: inline-block;
+  margin: 0;
+  width: 27px;
+  height: 27px;
+  border: 1px solid #dedede;
+  line-height: 27px;
+  margin: 0 3px;
+  border-radius: 3px;
+}
+
+.will-paginate-manual .pagination a {
+  color: #3c8dbc !important
+}
+
+.will-paginate-manual .pagination .current {
+  font-style: normal;
+}
+
+.will-paginate-manual .pagination .disabled,
+.will-paginate-manual .pagination .current {
+  color: #aaa;
+}
+
+/* end will paginate */
+
+.post-content-text {
+  margin-bottom: 9px;
+}
+
+.timeline-body .post-content-text {
+  margin-bottom: 0px;
 }
