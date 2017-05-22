@@ -17,7 +17,7 @@
           .direct-chat-text
             = item.message
   - else
-    .chat-placeholder
+    .direct-chat-messages.chat-placeholder data-message-count="0"
       = fa_icon 'comments-o'
 .box-footer
   = render 'message_form'
@@ -26,7 +26,12 @@
 coffee:
   $('.direct-chat-messages').scrollTop(999 * 999 * 999 * 999)
   
-  setInterval (->
+  i = 0
+  while i < 9999
+    clearInterval(i)
+    i++
+  
+  interval = setInterval (->
     current_user_id = $('#chat_container').data('current')
     contact_id      = $('#chat_container').data('current-contact')
     counter_url     = "/chats/counter/?current_user_id=#{current_user_id}&contact_id=#{contact_id}"
@@ -35,4 +40,4 @@ coffee:
     $('#counter_container').load counter_url
 
     return
-  ), 10000
+  ), 3000

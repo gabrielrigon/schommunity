@@ -45,6 +45,9 @@ section.content
         .box-header.with-border
           h3.box-title
             | Posts
+          .box-tools.pull-right.hidden-lg.hidden-md
+            button.btn.btn-box-tool data-widget="collapse"
+              = fa_icon 'minus'
         .box-body.classroom-posts-container
           = render 'posts', posts: @posts
     .col-md-4
