@@ -104,6 +104,16 @@ class User < ActiveRecord::Base
     classroom_users.pluck(:classroom_id)
   end
 
+  def studies_classrooms_ids
+    classroom_users.pluck(:classroom_id)
+  end
+
+  def teaches_classrooms_ids
+    self_id = id
+
+    Classroom.where { (teacher_id.eq self_id) | (helper_id.eq self_id) }.ids
+  end
+
   def teacher_contacts_ids
     courses_ids = coordinated_courses_ids
     self_id = id

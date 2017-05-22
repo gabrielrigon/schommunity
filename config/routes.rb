@@ -73,6 +73,12 @@ Rails.application.routes.draw do
 
   # extras
 
+  resources :classrooms do
+    member do
+      get :forum
+    end
+  end
+
   resources :chats do
     collection do
       get 'counter'

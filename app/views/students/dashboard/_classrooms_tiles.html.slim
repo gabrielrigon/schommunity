@@ -9,5 +9,4 @@
         .info-box-text.info-classrooms
           = classroom_data(item)
         .info-box-text.info-classrooms
-          a
-            | Ver mais...
+          = link_to 'Ver mais...', forum_path(item.classroom_id)

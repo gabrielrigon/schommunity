@@ -37,7 +37,12 @@ class Ability
     if user.schoolmaster?
       can :manage, Classroom, institution_id: user.institution_id
       can :manage, Course,    institution_id: user.institution_id
+
       can :manage, Post,      user_id: user.id
+      can [:forum, :remove_comment], Post do |post|
+        user.institution.classrooms.ids.include?(post.classroom_id) && post.active
+      end
+
       can :manage, Subject,   institution_id: user.institution_id
       can :manage, User,      institution_id: user.institution_id
 
@@ -49,10 +54,12 @@ class Ability
     end
 
     if user.teacher?
-      can :update, Classroom, teacher_id: user.id
+      can [:index, :forum, :members], Classroom, id: user.teaches_classrooms_ids
 
-      can :create, Post
       can :manage, Post, user_id: user.id
+      can [:forum, :remove_comment], Post do |post|
+        user.teaches_classrooms_ids.include?(post.classroom_id) && post.active
+      end
 
       can :manage, :teachers_dashboard
       can :manage, :user_chat
@@ -64,9 +71,10 @@ class Ability
     end
 
     if user.student?
+      can :forum,  Classroom, id: user.studies_classrooms_ids
+
       can :create, Post
       can :manage, Post, user_id: user.id
-
       can [:forum, :remove_comment], Post do |post|
         user.studies_classrooms_ids.include?(post.classroom_id) && post.active
       end
@@ -77,6 +85,7 @@ class Ability
 
     if user.representative?
       can :members, Classroom, id: user.represented_classrooms_ids
+
       can :manage, :representatives_classrooms
     end
   end

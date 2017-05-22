@@ -16,7 +16,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :posts, menu_label_icon('Postagens', 'newspaper-o'), posts_path, class: 'root-level', highlights_on: %r{/posts} if can?(:manage, Post)
 
     # ---- type of users
-    primary.item :teachers_classrooms, menu_label_icon('Salas', 'users'), teachers_classrooms_path, class: 'root-level', highlights_on: %r{/classrooms} if can?(:manage, Classroom)
+    primary.item :teachers_classrooms, menu_label_icon('Salas', 'users'), teachers_classrooms_path, class: 'root-level', highlights_on: %r{/classrooms} if can?(:index, Classroom)
     primary.item :representatives_classrooms, menu_label_icon('Salas', 'users'), representatives_classrooms_path, class: 'root-level', highlights_on: %r{/classrooms} if can?(:manage, :representatives_classrooms)
 
     # ---- types of users ----

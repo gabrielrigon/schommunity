@@ -1,7 +1,7 @@
 class Teachers::ClassroomDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
            :members_teachers_classroom_path, :current_ability, :current_user,
-           to: :@view
+           :forum_classroom_path, to: :@view
 
   def initialize(view)
     @view = view
@@ -36,30 +36,39 @@ class Teachers::ClassroomDatatable < BaseDatatable
 
           content_tag(:ul, class: 'dropdown-menu pull-right') do
             content_tag(:li) do
+              link_to forum_classroom_path(item) do
+                content_tag(:i, class: 'fa fa-comment-o') {} +
+                ' Fórum'
+              end
+            end +
+
+            content_tag(:li) do
               link_to members_teachers_classroom_path(item) do
                 content_tag(:i, class: 'fa fa-users') {} +
                 ' Membros'
               end
             end +
 
-            content_tag(:li) do
-              link_to resource_path(item) do
-                content_tag(:i, class: 'fa fa-eye') {} +
-                ' Detalhes'
-              end
-            end +
+            unless current_user.teacher?
+              content_tag(:li) do
+                link_to resource_path(item) do
+                  content_tag(:i, class: 'fa fa-eye') {} +
+                  ' Detalhes'
+                end
+              end +
 
-            content_tag(:li) do
-              link_to edit_resource_path(item) do
-                content_tag(:i, class: 'fa fa-pencil') {} +
-                ' Editar'
-              end
-            end +
+              content_tag(:li) do
+                link_to edit_resource_path(item) do
+                  content_tag(:i, class: 'fa fa-pencil') {} +
+                  ' Editar'
+                end
+              end +
 
-            content_tag(:li) do
-              link_to resource_path(item), method: :delete, data: { confirm: 'Confirma?' } do
-                content_tag(:i, class: 'fa fa-trash-o') {} +
-                ' Excluir'
+              content_tag(:li) do
+                link_to resource_path(item), method: :delete, data: { confirm: 'Confirma?' } do
+                  content_tag(:i, class: 'fa fa-trash-o') {} +
+                  ' Excluir'
+                end
               end
             end
           end
