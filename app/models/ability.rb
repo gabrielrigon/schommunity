@@ -54,7 +54,8 @@ class Ability
     end
 
     if user.teacher?
-      can [:index, :forum, :members], Classroom, id: user.teaches_classrooms_ids
+      can [:index, :forum, :members, :chat_counter, :chat_messages, :chat_send_message],
+          Classroom, id: user.teaches_classrooms_ids
 
       can :manage, Post, user_id: user.id
       can [:forum, :remove_comment], Post do |post|
@@ -71,7 +72,8 @@ class Ability
     end
 
     if user.student?
-      can :forum,  Classroom, id: user.studies_classrooms_ids
+      can [:forum, :chat_counter, :chat_messages, :chat_send_message],
+          Classroom, id: user.studies_classrooms_ids
 
       can :create, Post
       can :manage, Post, user_id: user.id

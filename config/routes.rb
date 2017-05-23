@@ -74,6 +74,12 @@ Rails.application.routes.draw do
   # extras
 
   resources :classrooms do
+    collection do
+      get 'chat_counter'
+      get 'chat_messages'
+      post 'chat_send_message'
+    end
+
     member do
       get :forum
     end

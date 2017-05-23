@@ -1,0 +1,13 @@
+.classroom-chat-messages-fake data-message-count="#{@counter}"
+
+coffee:
+  current_id = $('#classroom_chat_container').data('current')
+
+  current_count = $('.classroom-chat-messages').data('message-count')
+  fake_count    = $('.classroom-chat-messages-fake').data('message-count')
+
+  if (current_count != fake_count)
+    chat_messages_url = "/classrooms/chat_messages/?current_id=#{current_id}"
+    
+    $('#classroom_chat_container').empty()
+    $('#classroom_chat_container').load chat_messages_url

@@ -348,3 +348,12 @@ td {
 .timeline-body .post-content-text {
   margin-bottom: 0px;
 }
+
+#classroom_chat_container {
+  height: 370px;
+}
+
+.classroom-chat-messages {
+  height: 350px !important;
+  overflow-y: scroll;
+}

@@ -1,0 +1,26 @@
+$ ->
+  setInterval (->
+    current_id  = $('#classroom_chat_container').data('current')
+    classroom_counter_url = "/classrooms/chat_counter/?current_id=#{current_id}"
+
+    $('#counter_classroom_container').empty()
+    $('#counter_classroom_container').load classroom_counter_url
+
+    return
+  ), 3000
+
+  $(document).on 'click', '#btn_send_classroom_message', ->
+    current_id      = $('#classroom_chat_container').data('current')
+    current_user_id = $('#classroom_chat_container').data('current-user')
+
+    message_content = $('#classroom_message_to_send').val()
+
+    url = "/classrooms/chat_send_message/?message_content=#{message_content}&current_user_id=#{current_user_id}&current_id=#{current_id}"
+    messages_url = "/classrooms/chat_messages/?current_id=#{current_id}"
+
+    $.ajax
+      url: url
+      type: 'POST'
+
+    $('#classroom_message_to_send').val('')
+    $('#classroom_chat_container').load messages_url

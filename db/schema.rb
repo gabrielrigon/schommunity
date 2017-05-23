@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518223418) do
+ActiveRecord::Schema.define(version: 20170523001804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 20170518223418) do
   end
 
   add_index "cities", ["state_id"], name: "index_cities_on_state_id", using: :btree
+
+  create_table "classroom_chats", force: :cascade do |t|
+    t.integer  "classroom_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "classroom_chats", ["classroom_id"], name: "index_classroom_chats_on_classroom_id", using: :btree
+  add_index "classroom_chats", ["user_id"], name: "index_classroom_chats_on_user_id", using: :btree
 
   create_table "classroom_times", force: :cascade do |t|
     t.string   "name"
@@ -156,6 +167,7 @@ ActiveRecord::Schema.define(version: 20170518223418) do
   add_index "posts", ["institution_id"], name: "index_posts_on_institution_id", using: :btree
   add_index "posts", ["post_type_id"], name: "index_posts_on_post_type_id", using: :btree
   add_index "posts", ["subject_id"], name: "index_posts_on_subject_id", using: :btree
+  add_index "posts", ["title"], name: "index_posts_on_title", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "states", force: :cascade do |t|
@@ -260,6 +272,8 @@ ActiveRecord::Schema.define(version: 20170518223418) do
   add_foreign_key "addresses", "cities"
   add_foreign_key "addresses", "states"
   add_foreign_key "cities", "states"
+  add_foreign_key "classroom_chats", "classrooms"
+  add_foreign_key "classroom_chats", "users"
   add_foreign_key "classroom_users", "classrooms"
   add_foreign_key "classroom_users", "users"
   add_foreign_key "classrooms", "classroom_times"

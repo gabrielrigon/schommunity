@@ -58,4 +58,13 @@ section.content
         .box-header.with-border
           h3.box-title
             | Mensagens
-        .box-body
+        #counter_classroom_container
+          .classroom-chat-messages-fake data-message-count="0"
+        #classroom_chat_container.box-body data-current="#{resource.id}" data-current-user="#{current_user.id}"
+          = render 'placeholder'
+        .box-footer
+          .input-group.margin
+            input.form-control.no-radius-right#classroom_message_to_send type="text"
+            .input-group-btn
+              button.btn.btn-success.no-radius-left#btn_send_classroom_message style="height: 34px"
+                | Enviar
