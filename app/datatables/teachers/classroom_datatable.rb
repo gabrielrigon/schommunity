@@ -1,7 +1,7 @@
 class Teachers::ClassroomDatatable < BaseDatatable
   delegate :content_tag, :params, :link_to, :resource_path, :edit_resource_path,
            :members_teachers_classroom_path, :current_ability, :current_user,
-           :forum_classroom_path, to: :@view
+           :forum_classroom_path, :can?, to: :@view
 
   def initialize(view)
     @view = view
@@ -49,7 +49,7 @@ class Teachers::ClassroomDatatable < BaseDatatable
               end
             end +
 
-            unless current_user.teacher?
+            if can?(:manage, item)
               content_tag(:li) do
                 link_to resource_path(item) do
                   content_tag(:i, class: 'fa fa-eye') {} +
@@ -71,6 +71,9 @@ class Teachers::ClassroomDatatable < BaseDatatable
                 end
               end
             end
+
+
+
           end
         end
       ]

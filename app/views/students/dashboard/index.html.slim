@@ -1,3 +1,6 @@
+- if @classrooms.blank? && @posts.blank?
+  = render 'shared/dashboard_placeholder'
+
 - if @classrooms.any?
   section.content-header
     h1
