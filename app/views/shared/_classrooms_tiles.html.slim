@@ -5,8 +5,8 @@
         = fa_icon 'users'
       .info-box-content
         .info-box-text.info-classrooms-first
-          = item.classroom.name
+          = item.name
         .info-box-text.info-classrooms
           = classroom_data(item)
         .info-box-text.info-classrooms
-          = link_to 'Ver mais...', forum_classroom_path(item.classroom_id)
+          = link_to 'Ver mais...', forum_classroom_path(item.id)

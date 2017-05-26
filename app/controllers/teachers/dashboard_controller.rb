@@ -17,7 +17,6 @@ class Teachers::DashboardController < InheritedResources::Base
   def index
     if current_user.teacher?
       classrooms_ids = Classroom.where("teacher_id = #{current_user.id} or helper_id = #{current_user.id}").ids
-      classrooms_ids << Classroom.where(course_id: current_user.coordinated_courses_ids).ids if current_user.coordinator?
       classrooms_ids = classrooms_ids.flatten.uniq.reject { |item| item.nil? || item == '' }
 
       @classrooms = Classroom.where(id: classrooms_ids)

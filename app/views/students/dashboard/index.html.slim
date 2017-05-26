@@ -9,7 +9,7 @@
         | suas salas de aula
   section.content style="min-height: 10px"
     .row
-      = render 'classrooms_tiles', classrooms: @classrooms
+      = render 'shared/classrooms_tiles', classrooms: @classrooms
   
 - if @posts.any?
   section.content-header
@@ -22,4 +22,4 @@
     .row
     ul.timeline
       - @posts.each do |post|
-        = render 'post', post: post
+        = render 'shared/post', post: post

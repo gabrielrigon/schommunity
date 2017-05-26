@@ -180,7 +180,7 @@ td {
 
 .chat-placeholder i {
   font-size: 100px;
-  color: #eaeaea;
+  color: #cecece;
 }
 
 .no-border {
@@ -356,4 +356,20 @@ td {
 .classroom-chat-messages {
   height: 350px !important;
   overflow-y: scroll;
+}
+
+.classroom-posts-container .dashboard-placeholder {
+  margin: 131px 0;
+  color: #cecece;
+}
+
+.dashboard-placeholder {
+  text-align: center;
+  margin: 150px 0;
+  color: #aeaeae;
+}
+
+.dashboard-placeholder i {
+  font-size: 95px;
+  margin-bottom: 17px;
 }

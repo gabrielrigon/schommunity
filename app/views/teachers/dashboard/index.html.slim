@@ -1,4 +1,39 @@
-.row
-  .col-md-12
-    h2
-      | Dashboard : Teachers
+- if current_user.schoolmaster?
+  section.content-header
+    h1
+      | Resumo
+      small
+        |
+
+  section.content.content style="min-height: 10px"
+    .row
+      = render 'shared/dashboard_tile', icon: 'users', name: 'Usuários', collection: @registered_users
+      = render 'shared/dashboard_tile', icon: 'users', name: 'Salas de aula', collection: @classrooms_count
+
+- if (current_user.teacher? && @classrooms.any?)
+  section.content-header
+    h1
+      | Salas
+      small
+        | suas salas de aula
+  section.content style="min-height: 10px"
+    .row
+      = render 'shared/classrooms_tiles', classrooms: @classrooms
+  
+- if @posts.any?
+  section.content-header
+    h1
+      | Dashboard
+      small
+        | ultimas postagens
+    
+  section.content
+    .row
+    ul.timeline
+      - @posts.each do |post|
+        = render 'shared/post', post: post
+        
+- if (current_user.schoolmaster? && @posts.blank?)
+  = render 'shared/dashboard_placeholder'
+- elsif (current_user.teacher? && @classrooms.blank? && @posts.blank?)
+  = render 'shared/dashboard_placeholder'
