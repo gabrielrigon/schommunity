@@ -3,7 +3,7 @@
     h1
       | Resumo
       small
-        |
+        | cadastros ativos na instituição
 
   section.content.content style="min-height: 10px"
     .row
@@ -33,7 +33,5 @@
       - @posts.each do |post|
         = render 'shared/post', post: post
         
-- if (current_user.schoolmaster? && @posts.blank?)
-  = render 'shared/dashboard_placeholder'
-- elsif (current_user.teacher? && @classrooms.blank? && @posts.blank?)
+- else
   = render 'shared/dashboard_placeholder'
