@@ -20,7 +20,7 @@ pt-BR:
       confirmation_instructions:
         subject: "Instruções de confirmação"
       reset_password_instructions:
-        subject: "Instruções de troca de senha"
+        subject: "Instruções para alteração de senha."
       unlock_instructions:
         subject: "Instruções de desbloqueio"
     omniauth_callbacks:

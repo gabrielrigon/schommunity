@@ -16,8 +16,8 @@ pt-BR:
         submit_button: "Atualizar minha senha"
     mailer:
       invitation_instructions:
-        subject: 'Instruções do convite'
-        hello: 'Olá %{email}'
-        someone_invited_you: 'Alguém convidou você para acessar %{url}, você pode aceitar o convite através do link abaixo'
+        subject: 'Convite Schommunity!'
+        hello: 'Olá %{name}!'
+        someone_invited_you: 'Alguém convidou você para acessar o sistema Schommunity, você pode aceitar o convite através do link abaixo.'
         accept: 'Aceitar convite'
-        ignore: "Se você não quer aceitar esse convite, por favor ignore esse e-mail.<br />Sua conta não será criada até você acessar o link abaixo e escolher sua senha"
+        ignore: "Se você não quer aceitar esse convite, por favor ignore esse e-mail.<br />Sua conta não será criada até você acessar o link abaixo e escolher sua senha."

@@ -13,9 +13,4 @@ class ForumsController < InheritedResources::Base
   def resource
     @classroom ||= Classroom.find(params[:id].to_i)
   end
-
-  # ---- actions ----
-
-  def show
-  end
 end

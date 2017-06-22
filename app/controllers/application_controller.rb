@@ -26,6 +26,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # ---- cancan ----
+
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.json { head :forbidden, content_type: 'text/html' }
+      format.html { redirect_to root_path, alert: 'A página que você tentou acessar não está disponível' }
+      format.js   { head :forbidden, content_type: 'text/html' }
+    end
+  end
+
   # ---- methods ----
 
   protected
