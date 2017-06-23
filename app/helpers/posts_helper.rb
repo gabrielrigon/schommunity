@@ -30,4 +30,8 @@ module PostsHelper
       '1 comentário'
     end
   end
+
+  def display_attachment_data_container(resource)
+    resource.post_type_id == Constantine.invoke(PostType, :material) ? 'block' : 'none'
+  end
 end

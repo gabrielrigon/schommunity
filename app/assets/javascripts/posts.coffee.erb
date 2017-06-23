@@ -50,3 +50,9 @@ $ ->
       type: 'POST'
 
     $(this).parents('.box-comment').remove()
+
+  $('#post_post_type_id').on 'change', ->
+    if $(@).val() == "<%= Constantine.invoke(PostType, :material) %>"
+      $('#attachment_data_container').show()
+    else
+      $('#attachment_data_container').hide()

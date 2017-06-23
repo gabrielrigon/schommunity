@@ -27,6 +27,12 @@ section.content style="min-height: 10px"
         .col-md-4
           label.control-label= t 'simple_form.labels.classroom.teacher'
           p= deal_value resource.classroom.teacher_name
+      - if resource.attachment.present?
+        br
+        .row
+          .col-md-12
+            label.control-label=t 'simple_form.labels.post.attachment'
+            p= link_to 'Download do arquivo', resource.attachment.url, class: "btn btn-default btn-xs"
       br
       .row
         .col-md-12

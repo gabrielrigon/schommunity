@@ -15,6 +15,11 @@ class Post < ActiveRecord::Base
   delegate :uuid, :name, to: :classroom, prefix: true, allow_nil: true
   delegate :name, to: :post_type, prefix: true, allow_nil: true
 
+  # ---- paperclip ----
+
+  has_attached_file :attachment
+  do_not_validate_attachment_file_type :attachment
+
   # ---- default values ----
 
   default_value_for :active, true
@@ -35,6 +40,10 @@ class Post < ActiveRecord::Base
 
   accepts_nested_attributes_for :comments
 
+  # ---- callbacks ----
+
+  after_save :update_attachment
+
   # ---- scope ----
 
   scope :valid, -> { where(active: true) }
@@ -45,6 +54,14 @@ class Post < ActiveRecord::Base
     self.course = classroom.course
     self.subject = classroom.subject
     save
+  end
+
+  def update_attachment
+  return if post_type_id == invoke(PostType, :material)
+  update_column(:attachment_file_name, nil)
+  update_column(:attachment_content_type, nil)
+  update_column(:attachment_file_size, nil)
+  update_column(:attachment_updated_at, nil)
   end
 
   # ---- searchkick ----

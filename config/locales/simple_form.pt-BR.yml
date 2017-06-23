@@ -43,6 +43,7 @@ pt-BR:
         post_type: "Tipo de postagem"
         content: "Conteúdo"
         active: "Ativo"
+        attachment: "Anexo"
       subject:
         name: "Nome"
         initials: "Iniciais"

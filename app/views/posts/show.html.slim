@@ -16,6 +16,11 @@ section.content
         .col-md-2
           label.control-label= t 'simple_form.labels.post.active'
           p= deal_value resource.decorate.active
+      - if resource.attachment.present?
+        .row
+          .col-md-12
+            label.control-label=t 'simple_form.labels.post.attachment'
+            p= link_to 'Download do arquivo', resource.attachment.url, class: "btn btn-default btn-xs"
       .row
         .col-md-12
           label.control-label= t 'simple_form.labels.post.title'

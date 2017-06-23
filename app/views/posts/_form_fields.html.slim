@@ -7,6 +7,9 @@
     label
       | Ativo
     = form.input :active, label: false, input_html: { class: 'bootstrap-switch' }
+#attachment_data_container.row style="display: #{ display_attachment_data_container(resource) }"
+  .col-md-12
+    = form.input :attachment, as: :file
 .row
   .col-md-12
     = form.input :title
