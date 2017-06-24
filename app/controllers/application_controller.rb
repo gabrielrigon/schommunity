@@ -36,6 +36,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # ---- default rescues ----
+
+  rescue_from ActionController::RoutingError do
+    redirect_to root_path, alert: 'Endereço não encontrado'
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do
+    redirect_to root_path, alert: 'Registro não encontrado'
+  end
+
+  rescue_from ActiveRecord::DeleteRestrictionError do
+    redirect_to root_path, alert: 'O registro possui dependências e não pode ser excluído'
+  end
+
   # ---- methods ----
 
   protected

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'application#go_home'
+  root to: 'application#go_home'
 
   devise_for :users, path: '',
     path_names: { sign_in: 'sign_in',
