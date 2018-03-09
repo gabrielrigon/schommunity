@@ -21,10 +21,10 @@ As principais funcionalidades do sistema são:
 ## Requisitos para instalação
 
 * Ruby v2.3.0
-* PostgreSQL v9.6.2
+* PostgreSQL v9.6
 * Elasticsearch v2.4.5
-* Redis v3.2.8
-* Gem bundler instalada
+* Gem bundler pré instalada
+* ImageMagick
 
 ## Instalação do sistema
 
@@ -41,7 +41,7 @@ $ bundle exec rake db:setup
 $ bundle exec rake db:migrate
 $ bundle exec rake db:seed
 ```
-6. Iniciar os serviços ``Redis`` e ``Elasticsearch``
+6. Iniciar o serviço ``Elasticsearch``
 7. Iniciar o projeto com o comando abaixo:
 ```sh
 $ rails s
@@ -60,4 +60,3 @@ A partir deste momento, você deverá fazer a configuração da estrutura da ins
 * Além de enviar o token para o usuário, o sistema indexa o cadastro deste usuário, permitindo uma busca mais rápida nos datatables, realizada pelo [Searchkick](https://github.com/ankane/searchkick)
 * A gestão de permissionamento foi construido com [CanCanCan](https://github.com/CanCanCommunity/cancancan)
 * O sistema não utiliza subdomínios para controle de acesso as instituições
-

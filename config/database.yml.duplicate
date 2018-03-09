@@ -5,15 +5,15 @@ default: &default
 
 development:
   <<: *default
-  database: trabalho_graduacao
+  database: schommunity
 
 # test:
 #   <<: *default
-#   database: trabalho_graduacao_test
+#   database: schommunity_test
 #
 # production:
 #   <<: *default
-#   database: trabalho_graduacao_production
-  username: gabriel
-  # password: <%= ENV['TCC_DATABASE_PASSWORD'] %>
+#   database: schommunity_production
+  username: db_username
+  # password: <%= ENV['SCHOMMUNITY_DATABASE_PASSWORD'] %>
   password:
