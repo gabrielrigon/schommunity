@@ -35,9 +35,11 @@ $ bundle install
 ```
 3. Renomear arquivo ``database.yml.duplicate`` para ``database.yml`` (localizado dentro da pasta ``/config``) e editar as configurações de acordo com seu banco de dados postgres instalado.
 4. Iniciar o servico do banco de dados PostgreSQL.
-5. Rodar o seguinte comando para instalar o banco de dados e fazer o setup inicial:
+5. Executar os seguintes comandos para instalar o banco de dados, fazer o setup inicial e alimentar com dados padrões:
 ```sh
 $ bundle exec rake db:setup
+$ bundle exec rake db:migrate
+$ bundle exec rake db:seed
 ```
 6. Iniciar os serviços ``Redis`` e ``Elasticsearch``
 7. Iniciar o projeto com o comando abaixo:
