@@ -38,8 +38,6 @@ $ bundle install
 5. Executar os seguintes comandos para instalar o banco de dados, fazer o setup inicial e alimentar com dados padrões:
 ```sh
 $ bundle exec rake db:setup
-$ bundle exec rake db:migrate
-$ bundle exec rake db:seed
 ```
 6. Iniciar o serviço ``Elasticsearch``
 7. Iniciar o projeto com o comando abaixo:
