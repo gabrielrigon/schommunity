@@ -1,60 +1,55 @@
 # Schommunity
-### Sistema colaborativo para alunos e corpo docente
+### Collaborative system for students and school
 
-Projeto com objetivo de aproximar os alunos e professores de uma instituição, provendo uma ferramenta que facilita a comunicação de forma geral.
+This project aims to bring students and teachers closer to an institution, providing a tool that facilitates communication in general.
 
-O sistema contempla funcionalidades administrativas como:
+**The system includes administrative functions such as**:
+- Registered educational institutions (where every user must be bound to use the system)
+- Course management for institutions, courses for courses, classrooms for disciplines
+- User registration (students, teachers, coordinators, and directors)
 
-* Cadastro instituições de ensino (onde todo usuário deve ser vinculado para uso do sistema)
-* Gestão de cursos para instituições, disciplinas para cursos, salas de aulas para disciplinas
-* Cadastro de usuários (alunos, professores, coordenadores e diretores)
+**The main functionalities of the system are**:
+- Posting template within the classrooms (forum)
+  - Allows within each post users include comments 
+  - Will be displayed only to users who belong to the classroom, classroom teacher, and course coordinator
 
-As principais funcionalidades do sistema são:
+**Chat**
+  - Allows all users who have some type of link (classrooms) to exchange messages with each other.
 
-* Modelo de postagem dentro das salas de aula (fórum)
-  * Permite que dentro de cada postagem os usuários incluam comentários
-  * Serão exibidas somente para os usuários que pertencem a sala de aula, professor da sala e coodenador do curso
+## Installation requirements
+- Ruby 2.3.0
+- PostgreSQL 9.6
+- Elasticsearch 2.4.5
+- Gem bundler preinstalled
+- ImageMagick
 
-* Chat
-  * Permite que todos usuários que tem algum tipo de vinculo (salas de aula), possam trocar mensagens entre sí.
-
-## Requisitos para instalação
-
-* Ruby v2.3.0
-* PostgreSQL v9.6
-* Elasticsearch v2.4.5
-* Gem bundler pré instalada
-* ImageMagick
-
-## Instalação do sistema
-
-1. Clonar o projeto
-2. Acessar a pasta e instalar a gems com o seguinte comando:
+## System installation
+1. Clone the project
+2. Access the folder and install the gems with the following command:
 ```sh
-$ bundle install
+  $ bundle install
 ```
-3. Renomear arquivo ``database.yml.duplicate`` para ``database.yml`` (localizado dentro da pasta ``/config``) e editar as configurações de acordo com seu banco de dados postgres instalado.
-4. Iniciar o servico do banco de dados PostgreSQL.
-5. Executar os seguintes comandos para instalar o banco de dados, fazer o setup inicial e alimentar com dados padrões:
+3. Rename `database.yml.duplicate` file to `database.yml` (located inside the `/config` folder) and edit the settings according to your installed postgres database.
+4. Start the PostgreSQL database service.
+5. Execute the following commands to install the database, do the initial setup and feed with standard data:
 ```sh
-$ bundle exec rake db:setup
+  $ bundle exec rake db:setup
 ```
-6. Iniciar o serviço ``Elasticsearch``
-7. Iniciar o projeto com o comando abaixo:
+6. Start the `Elasticsearch` service
+7. Start the project with the command below:
 ```sh
-$ rails s
+  $ rails s
 ```
 
-Realizado os passos acima, o projeto estará rodando.
+Performed the above steps, the project will be running.
 
-## Usando o sistema
+## Using the system
+To use the system, open the browser and go to `localhost:3000`, the login screen will be loaded. The only pre-created user is the administrator with email `admin@admin.com` and `qwerty` as password.
 
-Para usar o sistema, abra o navegador e acesse ``localhost:3000``, a tela de login irá ser carregada. O único usuário pré criado é o administrador com email ``admin@admin.com`` e senha ``qwerty``.
+From this moment on, you will have to configure the institution structure, defining a `director` type of access that will later be used to access the system already inside the institution's register, where it will be possible to register teachers and students to assign it to the institution, the classrooms.
 
-A partir deste momento, você deverá fazer a configuração da estrutura da instituição, definindo um acesso do tipo ``diretor`` que posteriormente será utilizado para acessar o sistema já dentro do cadastro da instituição, onde será possível cadastrar professores e alunos para atribuí-los as salas de aula.
-
-## Extras
-* Todos os cadastros de usuários assim que inseridos no banco de dados, receberão um e-mail com um token para cadastrar a senha, para tal funcionalidade foi utilizado [Devise](https://github.com/plataformatec/devise) e [Devise Invitable](https://github.com/scambra/devise_invitable)
-* Além de enviar o token para o usuário, o sistema indexa o cadastro deste usuário, permitindo uma busca mais rápida nos datatables, realizada pelo [Searchkick](https://github.com/ankane/searchkick)
-* A gestão de permissionamento foi construido com [CanCanCan](https://github.com/CanCanCommunity/cancancan)
-* O sistema não utiliza subdomínios para controle de acesso as instituições
+## Extra information
+- All user registrations as soon as they are inserted in the database will receive an email with a token to register the password, for this functionality was used [Devise] (https://github.com/plataformatec/devise) and [Devise Invitable] (https://github.com/scambra/devise_invitable)
+- In addition to sending the token to the user, the system indexes this user's registration, allowing a faster search in the datatables, performed by Elasticsearch with [Searchkick] (https://github.com/ankane/searchkick)
+- The permission management was built with [CanCanCan] (https://github.com/CanCanCommunity/cancancan)
+- The system does not use subdomains to control access to institutions
